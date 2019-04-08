@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaazaTV.View.Accounts.MyProfilePage"
+              xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:ci="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+              xmlns:tools="clr-namespace:TaazaTV.View.Tools">
+    <!--<ContentPage.ToolbarItems>
+        <OnPlatform x:TypeArguments="ToolbarItem">
+            <OnPlatform.iOS>
+                <ToolbarItem Order="Primary" Text="Back" Priority="0" Clicked="HomeButton_Clicked" />
+            </OnPlatform.iOS>
+            <OnPlatform.Android>
+                <ToolbarItem Order="Primary" Priority="0" Text=""/>
+            </OnPlatform.Android>
+        </OnPlatform>
+    </ContentPage.ToolbarItems>-->
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout  BackgroundColor="#2196F3" Orientation="Horizontal" Grid.Row="0">
+                <Image x:Name="Backbtn" Source="back.png" Margin="15,15,0,15" WidthRequest="25">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackBtn_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="logo" Source="taazalogo.png" Margin="15" WidthRequest="80" Aspect="Fill"/>
+                <StackLayout x:Name="TaazaCashSection" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                    <Image Source="taazaicon.png" Margin="10,15,0,15" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    <Label x:Name="TaazaCashAmount" VerticalOptions="Center" Margin="0,0,10,0" TextColor="White" FontAttributes="Bold"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="NavToTransactionsPage"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </StackLayout>
+
+            <ScrollView Grid.Row="1">
+            <Grid BackgroundColor="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid x:Name="MainContainer" BackgroundColor="White" IsVisible="False">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <!--<Image Aspect="AspectFill" Source="nophoto.png" HorizontalOptions="Fill" VerticalOptions="Fill"></Image>
+                    <Image x:Name="avatar" Aspect="AspectFill"  HorizontalOptions="Fill" VerticalOptions="Fill"/>-->
+
+                    <ci:CircleImage Aspect="AspectFill" HeightRequest="150" WidthRequest="150" Source="nophoto.png" VerticalOptions="Center" HorizontalOptions="Center" />
+                    <ci:CircleImage x:Name="avatar" HeightRequest="150" WidthRequest="150" Aspect="AspectFill"  VerticalOptions="Center" HorizontalOptions="Center" />
+                    <StackLayout Grid.Row="1">
+                        <Label x:Name="lblReferral" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Text="Referral Code" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button Text="Invite Friends" FontAttributes="Bold" Clicked="InviteButtonClicked" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10,0,0" Grid.Row="2" BackgroundColor="#f7f7f7" x:Name="Name">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="80*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="profilename.png" HeightRequest="5"/>
+                            <StackLayout Grid.Column="1">
+                                <Label Text="Name" TextColor="#42aaf4" />
+                                <Entry x:Name="lblName" IsEnabled="False"/>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3"  BackgroundColor="#f7f7f7" x:Name="Email">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="80*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="profileemail.png" HeightRequest="5"/>
+                            <StackLayout Grid.Column="1">
+                                <Label Text="Email" TextColor="#42aaf4" />
+                                <Entry x:Name="lblEmailId" IsEnabled="False"/>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Grid.Row="4" BackgroundColor="#f7f7f7" x:Name="phone">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="80*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="profilephone.png" HeightRequest="5"/>
+                            <StackLayout Grid.Column="1">
+                                <Label Text="Phone No." TextColor="#42aaf4" />
+                                <Entry x:Name="lblPhoneNo" IsEnabled="False" />
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Grid.Row="5" BackgroundColor="#f7f7f7" x:Name="city">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="80*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="city.png" HeightRequest="5" />
+                            <StackLayout Grid.Column="1">
+                                <Label Text="Enter Your City" TextColor="#42aaf4" />
+                                <Entry  x:Name="cityEntry" IsEnabled="False"></Entry>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Grid.Row="6"  BackgroundColor="#f7f7f7" x:Name="Alertcategory">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="80*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="alertcategory.png" HeightRequest="8" ></Image>
+                            <StackLayout Grid.Column="1">
+                                <Label Text="Alert Category"   TextColor="#42aaf4" />
+                                <Label x:Name="alert"></Label>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                    <Button  Text="Edit Profile"  Grid.Row="7" HorizontalOptions="FillAndExpand"  TextColor="White" BackgroundColor="#42aaf4"  HeightRequest="60" Clicked="UpdateButtonClicked" />
+                    <!--<StackLayout  Grid.Row="6" HorizontalOptions="FillAndExpand" x:Name="button" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Text="Change Password" TextColor="White" BackgroundColor="#42aaf4"  HeightRequest="60" Clicked="ChangePasswordButtonClicked" />
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Grid.Row="7"></StackLayout>-->
+                </Grid>
+                <tools:NoInternetPage x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="CenterAndExpand" ClickedButton="DoSomething"></tools:NoInternetPage>
+                <tools:Loader x:Name="Loader" IsVisible="False"></tools:Loader>
+            </Grid>
+        </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

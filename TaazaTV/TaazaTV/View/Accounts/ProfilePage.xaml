@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaazaTV.View.Accounts.ProfilePage"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:Class="WorkingWithImages.DownloadImagesXaml"
+            xmlns:tools="clr-namespace:TaazaTV.View.Tools"
+             Icon="Icon.png">
+    <ContentPage.Content>
+        <Grid BackgroundColor="White" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                <ScrollView>
+                    <Grid x:Name="MainContainer">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="200" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Image Aspect="AspectFill" Source="nophoto.png" HorizontalOptions="Fill" VerticalOptions="Fill"></Image>
+                        <Image x:Name="Avatar" Source="{Binding avatar}" Aspect="AspectFill"  HorizontalOptions="Fill" VerticalOptions="Fill">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Photo_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="plus.png" HorizontalOptions="End" VerticalOptions="End" Margin="20" HeightRequest="40">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Photo_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <StackLayout Grid.Row="1" BackgroundColor="#f7f7f7" x:Name="profileName">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*" />
+                                    <ColumnDefinition Width="80*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="profilename.png" HeightRequest="5"/>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Name*" TextColor="#42aaf4" />
+                                    <Entry x:Name="Name" Text="{Binding name}"  />
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="2"  BackgroundColor="#f7f7f7" x:Name="email">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*" />
+                                    <ColumnDefinition Width="80*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="profileemail.png" HeightRequest="5"/>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Email" TextColor="#42aaf4" />
+                                    <Entry x:Name="EmailId" Text="{Binding email_id}" />
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="3" BackgroundColor="#f7f7f7" x:Name="Phone">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*" />
+                                    <ColumnDefinition Width="80*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="profilephone.png" HeightRequest="5"/>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Phone No.*" TextColor="#42aaf4" />
+                                    <Entry x:Name="PhoneNo" Text="{Binding phone_no}" IsEnabled="False" />
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="4" BackgroundColor="#f7f7f7" x:Name="city">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*" />
+                                    <ColumnDefinition Width="80*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="city.png" HeightRequest="5" />
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Enter Your City" TextColor="#42aaf4" />
+                                    <Label  x:Name="cityEntry" Text="{Binding city_name}" ></Label>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="City_Tapped"/>
+                                    </StackLayout.GestureRecognizers>
+
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="5" x:Name="AlertCategory">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*" />
+                                    <ColumnDefinition Width="80*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="alertcategory.png" HeightRequest="5"></Image>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Alert Category"   TextColor="#42aaf4" />
+                                    <ListView Footer="" x:Name="AlertListView">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <ViewCell.View>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Image Source="{Binding category_image}" HeightRequest="30"></Image>
+                                                            <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand">
+                                                                <controls:CheckBox DefaultText="{Binding category_name}" Checked="{Binding IsSelected}" HorizontalOptions="Fill"  />
+                                                            </StackLayout>
+                                                        </Grid>
+                                                    </ViewCell.View>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout  Grid.Row="6" HorizontalOptions="FillAndExpand" x:Name="button" >
+                            <Button Text="Update" TextColor="White" BackgroundColor="#42aaf4"  HeightRequest="60" Clicked="SaveButtonClicked" />
+                        </StackLayout>
+                    </Grid>
+                </ScrollView>
+            </StackLayout>
+            <tools:NoInternetPage x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething"></tools:NoInternetPage>
+            <tools:Loader x:Name="Loader" IsVisible="False"></tools:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

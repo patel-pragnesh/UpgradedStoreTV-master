@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             NavigationPage.HasNavigationBar="False"
+              xmlns:tools="clr-namespace:TaazaTV.View.Tools"
+              xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             x:Class="TaazaTV.View.TaazaCash.RestaurantListPage">
+
+    <Grid x:Name="DetectWidth" BackgroundColor="White" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" RowSpacing="0" x:Name="CustomToolbar" BackgroundColor="#2196F3" VerticalOptions="CenterAndExpand">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="44"/>
+                <RowDefinition Height="48"/>
+                <RowDefinition Height="38"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout  Grid.Row="0" Grid.Column="0"  Margin="10,5" Orientation="Horizontal">
+                <Image x:Name="BackButton" HeightRequest="35" WidthRequest="30" Source="back.png" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackButton_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Picker SelectedIndex="-1" SelectedIndexChanged="FilterSelectionChanged" IsVisible="False" x:Name="FilterPicker"/>
+                <Picker SelectedIndex="-1" SelectedIndexChanged="LocationFilterSelectionChanged" IsVisible="False" x:Name="LocationFilterPicker"/>
+                <StackLayout  HorizontalOptions="Center" Orientation="Horizontal">
+                    <Image Margin="0,8" Source="location.png" HorizontalOptions="FillAndExpand"/>
+                    <Label Text="Location" TextColor="White" FontSize="15" VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="NavToCityList"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+                <StackLayout x:Name="TaazaCashTab" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                    <Image Source="taazaicon.png" Margin="10,5,0,5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    <Label x:Name="TaazaCashAmount" VerticalOptions="Center" Margin="0,0,10,5" TextColor="White" FontAttributes="Bold"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TaazaCashTapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </StackLayout>
+            <Grid Margin="7" ColumnSpacing="2" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="32"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" VerticalOptions="FillAndExpand" Source="taazalogo.png" />
+                    <SearchBar Grid.Column="1" HorizontalOptions="FillAndExpand" x:Name="RestaurantSearchBar"  SearchButtonPressed="SearchRestaurantsPressed" Placeholder="Search Restaurants..." FontSize="13" PlaceholderColor="Gray" BackgroundColor="White"/>
+                <Image Grid.Column="2" Margin="3" Source="filter.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OpenFilterSelection"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+            
+            <ScrollView Grid.Row="2" Orientation="Horizontal">
+                <controls:WrapLayout Padding="5,0,0,0" x:Name="CategoryList"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal" BackgroundColor="#2196F3" />
+            </ScrollView>
+
+
+            
+            <!--<Grid BackgroundColor="#2196F3" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Margin="5,0,0,0" VerticalOptions="Center" Orientation="Horizontal" Grid.Column="0">
+                    <Label x:Name="Cat1ID" IsVisible="False"/>
+                    <Label x:Name="Cat1Txt" VerticalOptions="CenterAndExpand" FontSize="12" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="White"/>
+                    <StackLayout WidthRequest="1" BackgroundColor="Black" HeightRequest="40" HorizontalOptions="EndAndExpand"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LoadRestListCategory"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout VerticalOptions="Center" Orientation="Horizontal" Grid.Column="1">
+                    <Label x:Name="Cat2ID" IsVisible="False"/>
+                    <Label x:Name="Cat2Txt" FontSize="12" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="White"/>
+                    <StackLayout WidthRequest="1" BackgroundColor="Black" HeightRequest="40" HorizontalOptions="EndAndExpand"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LoadRestListCategory"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout VerticalOptions="Center" Orientation="Horizontal" Grid.Column="2">
+                    <Label x:Name="Cat3ID" IsVisible="False"/>
+                    <Label x:Name="Cat3Txt" FontSize="12" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="White"/>
+                    <StackLayout WidthRequest="1" BackgroundColor="Black" HeightRequest="40" HorizontalOptions="EndAndExpand"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LoadRestListCategory"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout VerticalOptions="Center" Orientation="Horizontal" Grid.Column="3">
+                    <Label x:Name="Cat4ID" IsVisible="False"/>
+                    <Label x:Name="Cat4Txt" FontSize="12" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="White"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LoadRestListCategory"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </Grid>-->
+     
+        </Grid>
+
+        <ListView Grid.Row="1" x:Name="RestaurantlstView" RowHeight="100" SeparatorColor="Black" ItemTapped="NavToRestDetails">
+            <!--ItemsSource="{Binding event_data}">-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid Padding="7" RowSpacing="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.RowSpan="4" Grid.Column="0" Source="noevent.png" Aspect="AspectFill"/>
+                                <Image Grid.RowSpan="4" Grid.Column="0" Source="{Binding RestBannerImg}" Aspect="AspectFill"/>
+                                <Label  Grid.Column="1" Grid.Row="0"  Text = "{Binding restaurant_name}" FontSize="Small" LineBreakMode="TailTruncation" Font="Bold" TextColor="Black" />
+                                <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+                                    <Image Source="time.png" HeightRequest="10"></Image>
+                                    <Label Text="{Binding opening_time}" FontSize="12" VerticalOptions="Center" TextColor="Black"/>
+                                    <Label Text = "{Binding closing_time, StringFormat='- {0}'} " FontSize="12" TextColor="Black" />
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                    <Image Source="locationblue.png" HeightRequest="10"></Image>
+                                    <Label Text="{Binding restaurant_vanue.location}" FontSize="12" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#2196F3"/>
+                                </StackLayout>
+                                <StackLayout  Padding="15,0" Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+                                    <Label Text="{Binding seat_price, StringFormat='Rs. {0:F2}'} " FontSize="12" TextColor="Green"/>
+                                    <Label HorizontalOptions="EndAndExpand" FontSize="12" TextColor="Green"  Text="{Binding cash_back, StringFormat='Cashback {0:F2}'} "/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Row="2" BackgroundColor="LightGray">
+            <cv:CarouselView Margin="0"  x:Name="CarouselAd" ItemSelected="CarouselAd_ItemSelected" HeightRequest="60">
+                <cv:CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image Grid.RowSpan="2" Source="bannergray.png" ></Image>
+                            <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding Add_image}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CarouselAd_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </DataTemplate>
+                </cv:CarouselView.ItemTemplate>
+            </cv:CarouselView>
+        </Grid>
+        <tools:NoInternetPage Grid.Row="1" x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething"></tools:NoInternetPage>
+        <tools:NoDataPage Grid.Row="1" x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
+        <tools:Loader x:Name="Loader" Grid.Row="1" IsVisible="False"></tools:Loader>
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             x:Class="TaazaTV.View.Accounts.RegistrationPage"
+             xmlns:tools="clr-namespace:TaazaTV.View.Tools">
+    <!--<ContentPage.BindingContext>
+        <Model:RegistrationModel/>
+    </ContentPage.BindingContext>-->
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollView>
+                <Grid x:Name="MainFrame" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <StackLayout>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="150" />
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout Padding="30">
+                                <Image Source="logo.png" x:Name="logoimg" Aspect="AspectFit" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
+                            </StackLayout>
+                            <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" BackgroundColor="#f7f7f7" x:Name="name">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Padding="5">
+                                        <Image Source="user.png" HeightRequest="40" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1">
+                                        <Label Text="Enter Your Name *" TextColor="#42aaf4" />
+                                        <Entry x:Name="Name" Text="{Binding user_name}" Placeholder="Eg. Amit Kumar">
+                                            <Entry.HeightRequest>
+                                                <OnPlatform x:TypeArguments="x:Double">
+                                                    <On Platform="iOS">30</On>
+                                                    <On Platform="Android">50</On>
+                                                </OnPlatform>
+                                            </Entry.HeightRequest>
+                                        </Entry>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Grid.Row="2" HorizontalOptions="FillAndExpand" BackgroundColor="#f7f7f7" x:Name="Phone">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Padding="5">
+                                        <Image Source="phoneno.png" HeightRequest="40" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1">
+                                        <Label Text="Enter Your Phone Number *" TextColor="#42aaf4" />
+                                        <Entry x:Name="PhoneNo" Text="{Binding phone_no}"   Placeholder="Eg. 9609521458" Keyboard="Numeric">
+                                            <Entry.HeightRequest>
+                                                <OnPlatform x:TypeArguments="x:Double">
+                                                    <On Platform="iOS">30</On>
+                                                    <On Platform="Android">50</On>
+                                                </OnPlatform>
+                                            </Entry.HeightRequest>
+                                        </Entry>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand" BackgroundColor="#f7f7f7" x:Name="photo">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Padding="5" >
+                                        <Image Source="photochoose.png" HeightRequest="40" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1">
+                                        <Label Text="Choose Your Photo (Optional)" TextColor="#42aaf4" />
+                                        <Label x:Name="ImageSourceName" Text="Tap Here"></Label>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Photo_Tapped" />
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand" BackgroundColor="#f7f7f7" x:Name="email">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Padding="5">
+                                        <Image Source="email.png" HeightRequest="40" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout  Grid.Column="1">
+                                        <Label Text="Enter Email Id (Optional)" TextColor="#42aaf4" />
+                                        <Entry x:Name="EmailId" Text="{Binding email_id}" Placeholder="Eg. name@domain.com">
+                                            <Entry.HeightRequest>
+                                                <OnPlatform x:TypeArguments="x:Double">
+                                                    <On Platform="iOS">30</On>
+                                                    <On Platform="Android">50</On>
+                                                </OnPlatform>
+                                            </Entry.HeightRequest>
+                                        </Entry>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="5" HorizontalOptions="FillAndExpand"  BackgroundColor="#f7f7f7" x:Name="cityList">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Padding="5" >
+                                        <Image Source="city.png" HeightRequest="40" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1">
+                                        <Label Text="Enter Your City" TextColor="#42aaf4" />
+                                        <Label  x:Name="cityEntry" Text="Tap Here"></Label>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer  x:Name="city" Tapped="City_Tapped" />
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                            
+                            <StackLayout Grid.Row="6" HorizontalOptions="FillAndExpand" BackgroundColor="#f7f7f7" x:Name="referral">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Padding="5">
+                                        <Image Source="refferal.png" HeightRequest="40" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout  Grid.Column="1">
+                                        <Label Text="Referral Code" TextColor="#42aaf4" />
+                                        <Entry x:Name="ReferCode" Text="{Binding referral_code}" Placeholder="Your Referral Code...">
+                                            <Entry.HeightRequest>
+                                                <OnPlatform x:TypeArguments="x:Double">
+                                                    <On Platform="iOS">30</On>
+                                                    <On Platform="Android">50</On>
+                                                </OnPlatform>
+                                            </Entry.HeightRequest>
+                                        </Entry>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+
+                            <Grid Margin="5,0,15,0" Grid.Row="7" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="31*"/>
+                                    <ColumnDefinition Width="48*"/>
+                                    <ColumnDefinition Width="21*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0" x:Name="MerchantLogin" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Margin="7,0" Text="Merchant"  >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="MerchantLoginButton_Clicked"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <Button Margin="0,10" Grid.Column="1" x:Name="button" TextColor="Black" Text="SUBMIT" HorizontalOptions="CenterAndExpand" BackgroundColor="#42aaf4" WidthRequest="210" Clicked="RegisterButton_Clicked">
+                                    <Button.HeightRequest>
+                                        <OnPlatform x:TypeArguments="x:Double">
+                                            <On Platform="iOS">48</On>
+                                            <On Platform="Android,Windows">60</On>
+                                        </OnPlatform>
+                                    </Button.HeightRequest>
+                                </Button>
+                                <Label Grid.Column="2" x:Name="SkipLogin" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="Skip"  >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="skipButton_Clicked"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+
+                            <Grid x:Name="social" Margin="10,0,5,10" Grid.Row="8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0" HorizontalOptions="FillAndExpand" FontSize="11" x:Name="Facebook" Image="facebook.png" TextColor="White" BackgroundColor="#3b5998" Text="LOGIN VIA FB" Clicked="Facebook_Clicked">
+                                    <Button.HeightRequest>
+                                        <OnPlatform x:TypeArguments="x:Double">
+                                            <On Platform="iOS">48</On>
+                                            <On Platform="Android,Windows">60</On>
+                                        </OnPlatform>
+                                    </Button.HeightRequest>
+                                </Button>
+                                <Button Grid.Column="1" BackgroundColor="#f64a4a"  HorizontalOptions="FillAndExpand" x:Name="Mobile" FontSize="11" Image="save.png" TextColor="White"  Text="LOGIN VIA PHONE" Clicked="LoginButton_Clicked">
+                                    <Button.HeightRequest>
+                                        <OnPlatform x:TypeArguments="x:Double">
+                                            <On Platform="iOS">48</On>
+                                            <On Platform="Android,Windows">60</On>
+                                        </OnPlatform>
+                                    </Button.HeightRequest>
+                                </Button>
+                            </Grid>
+                            
+                            
+                            <!--<Grid Grid.Row="7" HorizontalOptions="FillAndExpand"  x:Name="button">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="50*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Text="Login" Image="save.png" TextColor="White" BackgroundColor="#db3236"  HeightRequest="60" Clicked="LoginButton_Clicked"/> 
+                                <Button Grid.Column="1" Image="save.png" Text="Register" TextColor="White" BackgroundColor="#42aaf4"  HeightRequest="60" Clicked="RegisterButton_Clicked" />
+                            </Grid>-->
+
+                            <!--<StackLayout Grid.Row="7"  x:Name="skiplogin" IsVisible="True">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        --><!--<ColumnDefinition Width="Auto" />--><!--
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="SkipLogin" Text="Skip" HeightRequest="60" Clicked="skipButton_Clicked" BackgroundColor="White"></Button>
+                                    --><!--<Button x:Name="Google" TextColor="White" BackgroundColor="#db3236" Text="GOOGLE" HeightRequest="60" Grid.Row="0" Grid.Column="1" IsVisible="False"></Button>--><!--
+                                </Grid>
+                            </StackLayout>-->
+                           
+                            <!--<StackLayout Grid.Row="9"  x:Name="social" IsVisible="True">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        --><!--<ColumnDefinition Width="Auto" />--><!--
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="Facebook" Image="facebook.png" TextColor="White" BackgroundColor="#3b5998" Text="Login with Facebook" HeightRequest="60" Clicked="Facebook_Clicked"></Button>
+                                    --><!--<Button x:Name="Google" TextColor="White" BackgroundColor="#db3236" Text="GOOGLE" HeightRequest="60" Grid.Row="0" Grid.Column="1" IsVisible="False"></Button>--><!--
+                                </Grid>
+                            </StackLayout>-->
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+            <tools:NoInternetPage  x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething"></tools:NoInternetPage>
+            <tools:Loader x:Name="Loader" IsVisible="False"></tools:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

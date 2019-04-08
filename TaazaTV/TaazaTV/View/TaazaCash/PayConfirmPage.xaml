@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:tools="clr-namespace:TaazaTV.View.Tools"
+             x:Class="TaazaTV.View.TaazaCash.PayConfirmPage">
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout BackgroundColor="#2196F3" Orientation="Horizontal" Grid.Row="0">
+            <Image x:Name="Backbtn" Source="back.png" Margin="15,15,0,15" WidthRequest="25">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BackBtn_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="logo" Source="taazalogo.png" Margin="15" Aspect="AspectFit"/>
+            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                <Image Source="taazaicon.png" Margin="15,15,0,15" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                <Label x:Name="TaazaCashAmount" VerticalOptions="Center" Margin="0,0,10,0" TextColor="White" FontAttributes="Bold"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="NavToTransactionDetails"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </StackLayout>
+
+        <ScrollView x:Name="MainFrame" Grid.Row="1">
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <!--<RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>-->
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!--<StackLayout Grid.Row="0" HeightRequest="30" Orientation="Horizontal">
+                    <Image Source="payment.png" HeightRequest="20" WidthRequest="20"/>
+                    <Label VerticalOptions="CenterAndExpand" Text="Payment Details" FontSize="Small"/>
+                </StackLayout>-->
+
+                <!--<StackLayout Grid.Row="1" BackgroundColor="Black" HeightRequest="1" Orientation="Horizontal"/>-->
+
+                <Grid Margin="0,-4,0,0" Grid.Row="0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.RowSpan="2" HeightRequest="160" Source="noevent.png" Aspect="AspectFill"/>
+                    <Image x:Name="TopImage" Grid.RowSpan="2" HeightRequest="240" Aspect="AspectFill"/>
+                    <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
+                        <Label x:Name="TopText" TextColor="White" FontAttributes="Bold" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                        <Label x:Name="TopSubText" TextColor="White" FontSize="12" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                </Grid>
+
+                <Grid Grid.Row="1" Margin="10,5,10,10">
+
+                    <StackLayout>
+
+                        <StackLayout  HeightRequest="55" Orientation="Horizontal" HorizontalOptions="Center" IsVisible="False" x:Name="RestaurantDirected">
+                            
+                            <StackLayout   VerticalOptions="CenterAndExpand" Orientation="Horizontal" >
+                                <Image Source="calendar_event.png" VerticalOptions="Center" HeightRequest="25" WidthRequest="25"/>
+                                <DatePicker HorizontalOptions="StartAndExpand"  DateSelected="RestBookDateChanged" x:Name="RestBookDate"/>
+                            </StackLayout>
+
+                            <StackLayout Margin="5,0,0,0" Spacing="5" WidthRequest="120" VerticalOptions="Center" Orientation="Horizontal">
+                                <Image Source="time.png" VerticalOptions="Center" HeightRequest="25" WidthRequest="25"/>
+                                <Picker SelectedIndex="-1" WidthRequest="95" SelectedIndexChanged="RestBookTimeChanged" Title="    Time" x:Name="RestBookTime"/>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                        <StackLayout HeightRequest="50" Orientation="Horizontal">
+                            <Label x:Name="SeatsOrTickets" TextColor="Black" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <StackLayout WidthRequest="90" HorizontalOptions="End" Spacing="10"  VerticalOptions="Center" Orientation="Horizontal">
+                                <Image Source="decrease.png" VerticalOptions="Center" HeightRequest="25" WidthRequest="25">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="DecreaseTicketNo"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                    <Label x:Name="NoOfTickets" VerticalOptions="Center" TextColor="Black" FontSize="12" FontAttributes="Bold"/>
+                                <Image Source="increase.png" VerticalOptions="Center" HeightRequest="25" WidthRequest="25">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="IncreaseTicketNo"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout BackgroundColor="Gray" HeightRequest="1" Orientation="Horizontal"/>
+
+                        <StackLayout HeightRequest="50" Orientation="Horizontal">
+                            <Label Text="Amount" TextColor="Black" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+
+                            <StackLayout WidthRequest="90" HorizontalOptions="End" Spacing="10"  VerticalOptions="Center" Orientation="Horizontal">
+                                <Image Source="rupeesblack.png" VerticalOptions="Center" HeightRequest="20" WidthRequest="20">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="DecreaseTicketNo"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label x:Name="AmountPayable" TextColor="Black" FontAttributes="Bold"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout BackgroundColor="Gray" HeightRequest="1" Orientation="Horizontal"/>
+
+                        <StackLayout HeightRequest="50" Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                <Label Text="Taaza Cash" TextColor="Black" FontSize="Medium" />
+                                <Label x:Name="ErrorMessage" IsVisible="False" TextColor="Red" Text="Invalid Payment Value" FontSize="Micro"/>
+                            </StackLayout>
+
+                            <StackLayout Spacing="10"  VerticalOptions="Center" WidthRequest="90" HorizontalOptions="End" Orientation="Horizontal">
+                                <Image Source="taazaicon.png" VerticalOptions="Center" HeightRequest="22" WidthRequest="22"/>
+                                <Entry Keyboard="Numeric" x:Name="TaazaPayable" VerticalOptions="Center" Placeholder="000" TextChanged="TaazaPayableChanged" TextColor="Black" FontAttributes="Bold"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout BackgroundColor="Gray" HeightRequest="1" Orientation="Horizontal"/>
+
+                        <StackLayout HeightRequest="50" Orientation="Horizontal">
+                            <Label Text="Net Pay" TextColor="Black" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+
+                            <StackLayout Spacing="10" WidthRequest="90" HorizontalOptions="End" VerticalOptions="Center" Orientation="Horizontal">
+                                <Image Source="rupees.png" VerticalOptions="Center" HeightRequest="20" WidthRequest="20"/>
+                                <Label x:Name="NetPayable" VerticalOptions="Center" TextColor="Black" FontAttributes="Bold"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout BackgroundColor="Gray" HeightRequest="1" Orientation="Horizontal"/>
+
+                        <StackLayout Margin="20,10" Grid.Row="4" VerticalOptions="EndAndExpand" HeightRequest="50" WidthRequest="100" BackgroundColor="#42aaf4">
+                            <Label VerticalOptions="CenterAndExpand" FontSize="16" HorizontalOptions="CenterAndExpand" TextColor="White" FontAttributes="Bold" Text="Pay Now"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CallPaymentGateway"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+        <tools:NoInternetPage Grid.Row="1" x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething"></tools:NoInternetPage>
+        <tools:Loader Grid.Row="1" x:Name="Loader" IsVisible="False"></tools:Loader>
+    </Grid>
+</ContentPage>

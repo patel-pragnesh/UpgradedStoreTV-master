@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaazaTV.View.TestPage"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             Title="Test Page"
+             Icon="Icon.png"             
+             >
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label x:Name="LabelText" Text="Welcome to Xamarin Forms!" />
+                
+                <controls:CheckBox DefaultText="Default text"
+                           FontSize="25" TextColor="Black"
+                           HorizontalOptions="FillAndExpand" />
+                <Button Text="Click" Clicked="Button_Clicked" />
+                <ActivityIndicator x:Name="activityIndicator" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+          IsRunning="True" IsVisible="False"  />
+            </StackLayout>
+        </ScrollView>
+
+        <!--<AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            
+            -->
+        <!--<ActivityIndicator x:Name="activityIndicator" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+          IsRunning="True" IsVisible="False"  />-->
+        <!--
+        </AbsoluteLayout>-->
+
+    </ContentPage.Content>
+</ContentPage>

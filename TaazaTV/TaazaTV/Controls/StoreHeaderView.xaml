@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaazaTV.Controls.StoreHeaderView">
+
+    <ContentView.Resources>
+
+        <Style x:Key="barLabelStyle" TargetType="Label">
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="Micro" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="Margin" Value="-5"/>
+        </Style>
+
+        <Style x:Key="barImgStyle" TargetType="Image">
+            <Setter Property="HeightRequest" Value="23" />
+            <Setter Property="WidthRequest" Value="23" />
+            <Setter Property="Margin" Value="0,10,10,10" />
+            <Setter Property="Aspect" Value="AspectFit"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+
+        <Style x:Key="barFrameStyle" TargetType="Frame">
+            <Setter Property="Margin" Value="-23,0,0,24" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="BackgroundColor" Value="#f84c4b" />
+            <Setter Property="HeightRequest" Value="2"/>
+            <Setter Property="WidthRequest" Value="5"/>
+            <Setter Property="CornerRadius" Value="12"/>
+        </Style>
+
+        <Style x:Key="backBtnImgStyle" TargetType="Image">
+            <Setter Property="Margin" Value="15" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="WidthRequest" Value="25" />
+        </Style>
+
+    </ContentView.Resources>
+
+    <ContentView.Content>
+
+        <StackLayout BackgroundColor="#2196F3" HeightRequest="50" Orientation="Horizontal">
+
+            <Image Source="back.png" Style="{StaticResource backBtnImgStyle}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BackBtn_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image x:Name="logo" Source="taazalogo.png" Margin="-5,10,25,10" Aspect="AspectFit"/>
+
+            <StackLayout Margin="0,0,10,0" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+
+                <Image Source="magnifier.png" Style="{StaticResource barImgStyle}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Search_Btn_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Image Style="{StaticResource barImgStyle}" Source="bell.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Bell_Btn_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Frame Style="{StaticResource barFrameStyle}">
+                    <Label Style="{StaticResource barLabelStyle}" Text="2"/>
+                </Frame>
+
+                <Image Style="{StaticResource barImgStyle}" Source="cart.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Cart_Btn_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Frame Style="{StaticResource barFrameStyle}">
+                    <Label Style="{StaticResource barLabelStyle}" Text="25"/>
+                </Frame>
+
+            </StackLayout>
+           
+        </StackLayout>
+
+    </ContentView.Content>
+</ContentView>

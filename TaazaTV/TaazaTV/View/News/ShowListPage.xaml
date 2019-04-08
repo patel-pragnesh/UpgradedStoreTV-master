@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:tools="clr-namespace:TaazaTV.View.Tools"
+             x:Class="TaazaTV.View.News.ShowListPage">
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ScrollView>
+                <Grid x:Name="MainFrame">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Orientation="Horizontal" Padding="5">
+                        <Image Source="newsdetails.png" x:Name="TitleImage" HeightRequest="30" VerticalOptions="Center"></Image>
+                        <Label x:Name="TitleText" Text="News" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" HeightRequest="0.5" BackgroundColor="#01062d" ></StackLayout>
+                    <ListView Grid.Row="2" x:Name="lstView" RowHeight="120" ItemTapped="lstView_ItemTapped"
+                              ItemsSource="{Binding items}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <Grid Padding="5,10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="noshows.png" Aspect="AspectFill"/>
+                                            <Image Source="{Binding snippet.thumbnails.default.url}"/>
+                                            <Grid Grid.Column="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Label Text = "{Binding snippet.title}" FontSize="15" AbsoluteLayout.LayoutBounds="0.25, 0.25, 400, 40" TextColor="#01062d"/>
+                                                <Label Grid.Row="1" Text = "{Binding snippet.description}" FontSize="10" AbsoluteLayout.LayoutBounds="50, 35, 200, 25" LineBreakMode="CharacterWrap" />
+                                            </Grid>
+                                            <Label Grid.Row="1" Grid.Column="1" Text = "{Binding snippet.publishedAt}" FontSize="10" VerticalOptions="Center" HorizontalOptions="Start"/>
+                                        </Grid>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <StackLayout Grid.Row="3" x:Name="lasyLoader" IsVisible="False">
+                        <ActivityIndicator AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                               IsRunning="True" IsVisible="True"/>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+            <tools:NoInternetPage x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething"></tools:NoInternetPage>
+            <tools:NoDataPage x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
+
+            <tools:Loader x:Name="Loader" IsVisible="False"></tools:Loader>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

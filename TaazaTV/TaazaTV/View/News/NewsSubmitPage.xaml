@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaazaTV.View.News.NewsSubmitPage"
+             xmlns:tools="clr-namespace:TaazaTV.View.Tools"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView">
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ScrollView>
+                    <Grid>
+                        <Grid.RowDefinitions >
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <StackLayout  HorizontalOptions="FillAndExpand" BackgroundColor="#f7f7f7" x:Name="submitform">
+
+                        </StackLayout>
+                        <StackLayout Grid.Row="1" Padding="10,5" x:Name="Headline">
+                            <Label Text="Tiltle :"/>
+                            <Entry x:Name="Headlines" BackgroundColor="White"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="2" Padding="10,5" x:Name="shortdes">
+                            <Label Text="Story Description :"/>
+                            <Frame CornerRadius="10"  
+                                OutlineColor="LightGray" 
+                                   HasShadow="False"
+                                Padding="1">
+                                <Editor x:Name="StoryDescription"  HeightRequest="180" BackgroundColor="White"/>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Grid.Row="3" Padding="10,5" x:Name="LongDes" HorizontalOptions="CenterAndExpand">
+                            <Label Text="Upload Image" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*"/>
+                                    <ColumnDefinition Width="80*"/>
+                                    <ColumnDefinition Width="20*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="1" Padding="2" BackgroundColor="#42aaf4"></StackLayout>
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand" BackgroundColor="#f7f7f7" x:Name="pickimg">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="50*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="photo.png" VerticalOptions="FillAndExpand" HorizontalOptions="End" Aspect="AspectFit" Margin="20,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer  Tapped="LoadGallery" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image Grid.Column="1" Source="camera.png" VerticalOptions="FillAndExpand" HorizontalOptions="Start" Aspect="AspectFit" Margin="20,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer  Tapped="LoadCamera" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+
+                            <ListView x:Name="ImageListView" RowHeight="50" ItemTapped="ImageListView_ItemTapped" HeightRequest="50">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <ViewCell.View>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="{Binding ImgSource}" Aspect="AspectFill" HeightRequest="50" WidthRequest="50"></Image>
+                                                    <Label Grid.Column="1" Text="{Binding Name}" LineBreakMode="MiddleTruncation" VerticalOptions="Center"></Label>
+                                                    <Image Grid.Column="2" Source="del.png" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="End"  Margin="10"/>
+                                                </Grid>
+                                            </ViewCell.View>
+                                        </ViewCell>
+                                    </DataTemplate>
+
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                        <StackLayout Grid.Row="5" Padding="10,5" x:Name="videotitle" HorizontalOptions="CenterAndExpand">
+                            <Label Text="Upload Video" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*"/>
+                                    <ColumnDefinition Width="80*"/>
+                                    <ColumnDefinition Width="20*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="1" Padding="2" BackgroundColor="#42aaf4"></StackLayout>
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout Grid.Row="6" HorizontalOptions="CenterAndExpand" BackgroundColor="#f7f7f7" x:Name="pickvideo" >
+                            <Grid HorizontalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="video.png" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"  Margin="20,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer  Tapped="LoadVideoList" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                            <flv:FlowListView  x:Name="VideoListView" FlowItemTapped="VideoListView_ItemTapped"  SeparatorVisibility="None" FlowColumnCount="4" RowHeight="100" HeightRequest="120" >
+                                <flv:FlowListView.FlowColumnTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Source="{Binding ImgSource}" Aspect="AspectFill"></Image>
+                                            <Image Source="del.png" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="End" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </flv:FlowListView.FlowColumnTemplate>
+                            </flv:FlowListView>
+                        </StackLayout>
+                    </Grid>
+                </ScrollView>
+                <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" x:Name="button" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Submit News" TextColor="White" BackgroundColor="#42aaf4"  HeightRequest="60" Clicked="SubmitNewsButton_Clicked" BorderRadius="0" />
+                </Grid>
+            </Grid>
+            <tools:NoInternetPage x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething"></tools:NoInternetPage>
+            <tools:Loader x:Name="Loader" IsVisible="False"></tools:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

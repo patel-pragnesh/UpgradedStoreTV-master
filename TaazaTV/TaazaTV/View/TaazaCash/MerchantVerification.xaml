@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:tools="clr-namespace:TaazaTV.View.Tools"
+             x:Class="TaazaTV.View.TaazaCash.MerchantVerification">
+
+    <Grid BackgroundColor="White">
+        <Grid x:Name="MainFrame" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Image x:Name="logoimg" Source="logo.png" VerticalOptions="Center" Grid.Row="1" Aspect="AspectFit"></Image>
+
+                <StackLayout Grid.Row="2" HorizontalOptions="FillAndExpand" BackgroundColor="#f7f7f7" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Margin="10" Grid.Column="1">
+                            <Label Text="Enter Ticket's Unique Key" FontAttributes="Bold" TextColor="#42aaf4" />
+                            <Entry x:Name="UniqueCode">
+                                <Entry.HeightRequest>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <On Platform="iOS">30</On>
+                                        <On Platform="Android">50</On>
+                                    </OnPlatform>
+                                </Entry.HeightRequest>
+                            </Entry>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+                
+                <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand" x:Name="button">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Close" Image="cancel.png" TextColor="White" BackgroundColor="#db3236"  HeightRequest="60" Margin="10,0,0,0" Clicked="CloseButton_Clicked"/>
+                        <Button x:Name="SubmitButton" Image="save.png" Grid.Column="1" Text="Continue" TextColor="White" BackgroundColor="#42aaf4"  HeightRequest="60" Margin="0,0,10,0" Clicked="CheckUniqueKey"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="4">
+                    
+                    <!--All the details about the ticket-->
+                    
+                </StackLayout>
+            </Grid>
+        </Grid>
+        <tools:NoInternetPage x:Name="NoInternet"  TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething"></tools:NoInternetPage>
+        <tools:Loader  x:Name="Loader" IsVisible="False"></tools:Loader>
+    </Grid>
+   
+</ContentPage>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             	
+             xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             x:Class="TaazaTV.View.Navigation.MasterDetailsPageDetail"  
+             NavigationPage.HasNavigationBar="False"
+             xmlns:appdata ="clr-namespace:TaazaTv.Helper.AppData"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:tools="clr-namespace:TaazaTV.View.Tools"
+             Icon="logos.png">
+  
+    <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid x:Name="CustomToolbar" HeightRequest="60" BackgroundColor="#2196F3" VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="Menu" Source="menu.png" WidthRequest="23" HeightRequest="23" VerticalOptions="Center" Margin="15,15,5,15" HorizontalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Menu_Tapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                <Image x:Name="logo" Grid.Column="1" Source="taazalogo.png" Margin="5,15" Aspect="AspectFit"/>
+                    <StackLayout x:Name="TaazaCashTab" Grid.Column="2" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                        <Image Source="taazaicon.png" Margin="10,15,0,15" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    <Label x:Name="TaazaCashAmount" VerticalOptions="Center" Margin="0,0,10,0" TextColor="White" FontAttributes="Bold"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TaazaCashTapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </Grid>
+
+
+                <StackLayout Grid.Row="1"  x:Name="MainFrame" Margin="0">
+                    <ScrollView>
+                        <Grid VerticalOptions="Start" ColumnSpacing="0" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <cv:CarouselView Margin="0" ItemsSource="{Binding breaingNews}" x:Name="CarouselZoos" ItemSelected="CarouselZoos_ItemSelected" >
+                                <cv:CarouselView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Grid.RowSpan="2" Source="bannergray.png" ></Image>
+                                            <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding ImageUrl}"/>
+                                            <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
+                                                <Label TextColor="White" Text="{Binding Name}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap"/>
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                                </StackLayout.GestureRecognizers>
+                                            </StackLayout>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                            </Grid.GestureRecognizers>
+                                        </Grid>
+                                    </DataTemplate>
+                                </cv:CarouselView.ItemTemplate>
+                            </cv:CarouselView>
+                            <WebView Grid.Row="1" Margin="0" x:Name="HeadlinesTicker" BackgroundColor="Black" VerticalOptions="FillAndExpand" HeightRequest="35" Navigating="HeadlinesTicker_Navigating"></WebView>
+                            <!--<ScrollView Grid.Row="2">-->
+                            <controls:WrapLayout x:Name="CategoryList" Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal" BackgroundColor="White" Margin="0,20,0,0"></controls:WrapLayout>
+                            <!--</ScrollView>-->
+                        </Grid>
+                    </ScrollView>
+                </StackLayout>
+                <Grid Grid.Row="2" BackgroundColor="LightGray">
+                    <cv:CarouselView Margin="0" x:Name="CarouselAd" ItemSelected="CarouselAd_ItemSelected" HeightRequest="60">
+                        <cv:CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.RowSpan="2" Source="bannergray.png" ></Image>
+                                    <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding Add_image}">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="CarouselAd_Tapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </DataTemplate>
+                        </cv:CarouselView.ItemTemplate>
+                    </cv:CarouselView>
+                </Grid>
+                <tools:NoInternetPage x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething"></tools:NoInternetPage>
+            </Grid>
+            <tools:NoDataPage x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="DoSomething"></tools:NoDataPage>
+            <Grid x:Name="Loader" IsVisible="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout BackgroundColor="#00FFFFFF">
+
+                </StackLayout>
+                <Grid Padding="10" BackgroundColor="White" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="150" HeightRequest="50">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ActivityIndicator x:Name="indicator" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                               IsRunning="True" IsVisible="True"/>
+                    <Label Grid.Column="1" Text="Loading.." VerticalOptions="Center"></Label>
+                </Grid>
+            </Grid>
+        </Grid>
+</ContentPage>

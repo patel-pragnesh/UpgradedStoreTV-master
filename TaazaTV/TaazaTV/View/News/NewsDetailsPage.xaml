@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaazaTV.View.News.NewsDetailsPage"
+             xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             xmlns:forms="clr-namespace:InTheHand.Forms;assembly=InTheHand.Forms"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:tools="clr-namespace:TaazaTV.View.Tools"
+             xmlns:usercontrol="clr-namespace:TaazaTV.Controls"
+             xmlns:local="clr-namespace:PinchGesture;assembly=PinchGesture">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0" BackgroundColor="White">
+                <Grid x:Name="MainFrame">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition>
+                            <RowDefinition.Height>
+                                <OnPlatform
+                                    x:TypeArguments="GridLength"
+                                    iOS="400"
+                                    Android="*"/>
+                            </RowDefinition.Height>
+                        </RowDefinition>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Orientation="Horizontal" HeightRequest="30" x:Name="NewsDetailslbl" Padding="10,10,10,0">
+                        <Image Source="newsdetails.png"></Image>
+                        <Label Text="News Details" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" HeightRequest="0.5" BackgroundColor="#01062d" ></StackLayout>
+                    <cv:CarouselView Grid.Row="2" Margin="1" x:Name="CarouselZoos" ItemSelected="CarouselZoos_ItemSelected" PositionSelected="CarouselZoos_PositionSelected" HeightRequest="200" >
+                        <cv:CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid x:Name="imageview">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Aspect="AspectFill" Source="bannergray.png" >
+                                    </Image>
+                                    <Image Aspect="AspectFill" Source="{Binding thumb}"  >
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </DataTemplate>
+                        </cv:CarouselView.ItemTemplate>
+
+                    </cv:CarouselView>
+                    <Label x:Name="newsTitle" Grid.Row="3" Text="{Binding news_title}" FontSize="15" FontAttributes="Bold" TextColor="Black" Margin="10,0"></Label>
+                    <Label x:Name="shortDesc" Grid.Row="4" Text="{Binding sort_description}" VerticalOptions="Center" FontSize="15" TextColor="Gray" Margin="10,0"></Label>
+                    <Grid Grid.Row="5" Margin="10,5" x:Name="share_time">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="share.png" HeightRequest="20"/>
+                            <Label Text=" Share" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer  Tapped="Share_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Orientation="Horizontal">
+                            <Image Source="calendar.png" HeightRequest="15"/>
+                            <Label x:Name="date" Text="{Binding date}" FontSize="Micro" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" Orientation="Horizontal">
+                            <Image Source="time.png" HeightRequest="15"/>
+                            <Label  x:Name="time" Text="{Binding time}" FontSize="Micro" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                    </Grid>
+                    <StackLayout Grid.Row="6" BackgroundColor="Black" HeightRequest="1" x:Name="bar"></StackLayout>
+                    <!--<Grid Padding="20">
+                        <local:PinchToZoomContainer>
+                            <local:PinchToZoomContainer.Content>
+                                <Image Source="newsdetails.png" />
+                            </local:PinchToZoomContainer.Content>
+                        </local:PinchToZoomContainer>
+                    </Grid>-->
+
+
+                    <!--<local:PinchToZoomContainer>
+                                        <local:PinchToZoomContainer.Content>
+                                            <Image Source="{Binding normal}">
+                                                <Image.GestureRecognizers>
+                                                    <PinchGestureRecognizer PinchUpdated="OnPinchUpdated" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </local:PinchToZoomContainer.Content>
+                                    </local:PinchToZoomContainer>-->
+
+
+                    <usercontrol:ExtendedWebView Grid.Row="7" x:Name="NewsDetails" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></usercontrol:ExtendedWebView>
+                    <!--<WebView Grid.Row="7" x:Name="NewsDetails" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" MinimumHeightRequest="100"></WebView>-->
+                    <!--<StackLayout Grid.Row="7" x:Name="NewsDetails"></StackLayout>-->
+                    <ListView Grid.Row="8" x:Name="VideoView" RowHeight="200" ItemTapped="VideoView_ItemTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <Grid Padding="5,10">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="logosgray.png" Aspect="AspectFill"/>
+                                            <Image Source="{Binding video_thumb}" Aspect="AspectFill"/>
+                                            <Image Source="play.png" HeightRequest="100" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                        </Grid>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </ScrollView>
+            <Grid Grid.Row="1" Margin="0,-10,0,0" BackgroundColor="LightGray">
+                <cv:CarouselView Margin="0" x:Name="CarouselAd" ItemSelected="CarouselAd_ItemSelected"  HeightRequest="50">
+                    <cv:CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.RowSpan="2" Source="bannergray.png" ></Image>
+                                <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding Add_image}">
+                                <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="CarouselAd_Tapped"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </DataTemplate>
+                    </cv:CarouselView.ItemTemplate>
+                </cv:CarouselView>
+            </Grid>
+            <tools:NoInternetPage x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething" Margin="0,70,0,0"></tools:NoInternetPage>
+            <tools:NoDataPage x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
+            <tools:Loader x:Name="Loader" IsVisible="False"></tools:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaazaTV.View.Accounts.CityListPage"
+             xmlns:tools="clr-namespace:TaazaTV.View.Tools">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="MainFrame" BackgroundColor="White" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout HeightRequest="20" BackgroundColor="White">
+                    <StackLayout.IsVisible>
+                        <OnPlatform x:TypeArguments="x:Boolean"
+                      iOS="True"
+                      Android="False" />
+                    </StackLayout.IsVisible>
+                </StackLayout>
+                <StackLayout Grid.Row="1" BackgroundColor="#2196F3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80*"/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
+                        <SearchBar  Grid.Column="0" x:Name="MainSearchBox" Placeholder="Search City" TextChanged="TextChanged" 
+                           BackgroundColor="#2196F3" PlaceholderColor="#dfdfdf" CancelButtonColor="White" VerticalOptions="Center">
+                            <SearchBar.TextColor>
+                                <OnPlatform x:TypeArguments="Color"
+                      iOS="Black"
+                      Android="White" />
+                            </SearchBar.TextColor>
+                        </SearchBar>
+                        <StackLayout Grid.Column="1">
+                            <Label Text="Back" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="End" Margin="0,0,10,0">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="BackButton"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+                <ListView Grid.Row="2" x:Name="CityListView" ItemTapped="OnItemTapped">
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="32"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="location.png"></Image>
+                                    <Label Grid.Column="1" Text="{Binding city_name}" TextColor="Black" VerticalOptions="Center"></Label>
+                                </Grid>
+                            </ViewCell>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <tools:NoInternetPage x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething"></tools:NoInternetPage>
+            <tools:NoDataPage x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
+            <tools:Loader x:Name="Loader" IsVisible="False"></tools:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

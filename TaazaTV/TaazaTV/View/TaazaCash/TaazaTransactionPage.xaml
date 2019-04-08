@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:ci="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             NavigationPage.HasNavigationBar="False"
+               xmlns:tools="clr-namespace:TaazaTV.View.Tools"
+             x:Class="TaazaTV.View.TaazaCash.TaazaTransactionPage">
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout BackgroundColor="#2196F3" Orientation="Horizontal" Grid.Row="0">
+            <Image x:Name="Backbtn" Source="back.png" Margin="15,15,0,15" WidthRequest="25">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BackBtn_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="logo" Source="taazalogo.png" Margin="15" Aspect="AspectFit"/>
+            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                <Image Source="taazaicon.png" Margin="10,15,0,15" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                <Label x:Name="TaazaCashAmount" VerticalOptions="Center" Margin="0,0,10,0" TextColor="White" FontAttributes="Bold"/>
+            </StackLayout>
+        </StackLayout>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Margin="15" x:Name="Selection" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" HorizontalOptions="FillAndExpand" x:Name="TranscationsBtn" TextColor="White" BackgroundColor="#3b5998" Text="Transactions" Clicked="Transactions_Clicked">
+                    <Button.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS">48</On>
+                            <On Platform="Android,Windows">60</On>
+                        </OnPlatform>
+                    </Button.HeightRequest>
+                </Button>
+                <Button Grid.Column="1" BackgroundColor="#f64a4a" HorizontalOptions="FillAndExpand" x:Name="BookingsBtn" TextColor="White"  Text="Bookings" Clicked="Bookings_Clicked">
+                    <Button.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS">48</On>
+                            <On Platform="Android,Windows">60</On>
+                        </OnPlatform>
+                    </Button.HeightRequest>
+                </Button>
+            </Grid>
+            <StackLayout Grid.Row="1" BackgroundColor="Black" HeightRequest="1"/>
+
+            <ListView Grid.Row="2" RowHeight="70" Footer="" Margin="10" x:Name="TranscationsList" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell IsEnabled="False">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="{Binding transactionimg}" HeightRequest="60" WidthRequest="60" Aspect="AspectFill"  VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+                                <StackLayout VerticalOptions="Center" Grid.Column="1">
+                                    <Label FontSize="14" FontAttributes="Bold" Text="{Binding transaction_type}"/>
+                                    <Label FontSize="12" Text="{Binding date}"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Grid.Column="2" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                                    <Image VerticalOptions="CenterAndExpand" HeightRequest="25" WidthRequest="30" Source="taazaicon.png"/>
+                                    <Label VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" WidthRequest="70" Text="{Binding amount}" TextColor="{Binding TransactionColor}"/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView Grid.Row="2" RowHeight="70" Footer="" ItemTapped="NavToBookingDetails" Margin="10" x:Name="BookingsList" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <ci:CircleImage Grid.Column="0" Source="{Binding details.image}" HeightRequest="60" WidthRequest="60" Aspect="AspectFill"  VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+                                <StackLayout VerticalOptions="Center" Grid.Column="1">
+                                    <Label FontSize="14" FontAttributes="Bold" Text="{Binding details.name}"/>
+                                    <Label FontSize="12" Text="{Binding booking_data_time}"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Grid.Column="2" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                                    <Image HeightRequest="30" WidthRequest="30" Source="rupeesblack.png"/>
+                                    <Label HorizontalOptions="EndAndExpand" WidthRequest="70" Text="{Binding booking_details.paid_amount}" TextColor="Black"/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <!--<tools:NoInternetPage Grid.Row="1" x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething"></tools:NoInternetPage>
+        <tools:Loader Grid.Row="1" x:Name="Loader" IsVisible="False"></tools:Loader>-->
+        
+        <tools:NoDataPage Grid.Row="1" x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
+    </Grid>
+</ContentPage>

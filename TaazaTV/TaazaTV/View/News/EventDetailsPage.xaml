@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaazaTV.View.News.EventDetailsPage"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             xmlns:usercontrol="clr-namespace:TaazaTV.Controls"
+             xmlns:tools="clr-namespace:TaazaTV.View.Tools">
+
+    <Grid RowSpacing="0" BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout BackgroundColor="#2196F3" Orientation="Horizontal" Grid.Row="0">
+            <Image x:Name="Backbtn" Source="back.png" Margin="15,15,0,15" WidthRequest="25">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BackBtn_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="logo" Source="taazalogo.png" Margin="15" Aspect="AspectFit"/>
+            <StackLayout x:Name="TaazaCashTab" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                <Image Source="taazaicon.png" Margin="10,15,0,10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                <Label x:Name="TaazaCashAmount" VerticalOptions="Center" Margin="0,5,10,0" TextColor="White" FontAttributes="Bold"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="NavToTransactionDetails"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </StackLayout>
+
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <!--<StackLayout Padding="10">-->
+                <Grid  x:Name="MainFrame" Padding="10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition>
+                            <RowDefinition.Height>
+                                <OnPlatform
+                                    x:TypeArguments="GridLength"
+                                    iOS="400"
+                                    Android="Auto"/>
+                            </RowDefinition.Height>
+                        </RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="170"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="bannergray.png" Aspect="AspectFill"/>
+                        <Image Aspect="AspectFill" x:Name="Bannerimg">
+                            <Image.Source>
+                                <UriImageSource Uri="{Binding banner_image}" />
+                            </Image.Source>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Banner_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="40*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Margin="7" Grid.Column="0" Orientation="Vertical">
+                            <Label Text="{Binding event_name}" FontSize="25" FontAttributes="Bold" TextColor="Green"></Label>
+                        </StackLayout>
+                        <Picker SelectedIndexChanged="NavToPayment" SelectedIndex="-1" IsVisible="False" x:Name="PricesPicker"/>
+                        <StackLayout x:Name="BookNowButton" Margin="7" HorizontalOptions="Center" HeightRequest="50" WidthRequest="120"  VerticalOptions="CenterAndExpand" BackgroundColor="#fea500" Grid.Column="1">
+                            <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Book Now" TextColor="White"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="PopUpPicker"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Grid>
+                    <StackLayout Grid.Row="2" Orientation="Vertical">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="calendar_event.png" WidthRequest="30"></Image>
+                            <Label Text="{Binding show_data}" FontSize="15" LineBreakMode="TailTruncation" VerticalOptions="Center"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="organizer.png" WidthRequest="30"></Image>
+                            <Label Text="{Binding event_organiser_name}" FontSize="15" LineBreakMode="TailTruncation" VerticalOptions="Center"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="time.png" WidthRequest="30"></Image>
+                            <Label Text="{Binding event_duration_value}" FontSize="15" LineBreakMode="TailTruncation" VerticalOptions="Center"></Label>
+                        </StackLayout>
+                        
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="map.png" WidthRequest="25"></Image>
+                            <Label Text="{Binding event_vanue.picklocation}" FontSize="15" VerticalOptions="Center"></Label>
+                        </StackLayout>
+
+                        <StackLayout x:Name="BookNowCategory"  Margin="0,10,0,0" BackgroundColor="Gray" HeightRequest="60">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Margin="10,0,0,0" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Italic" Text="Ticket Type" TextColor="White" FontSize="15"/>
+                                <Label Grid.Column="1" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Italic" Text="Date" TextColor="White" FontSize="15"/>
+                                <Label Grid.Column="2" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Italic" Text="Time" TextColor="White" FontSize="15"/>
+                                <Label Grid.Column="3" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Italic" Text="Amount" TextColor="White" FontSize="15"/>
+                                <Label Grid.Column="4" Margin="10,0,0,0" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Italic" Text="TaazaCash" TextColor="White" FontSize="15"/>
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout  Margin="0,-10,0,0" x:Name="PriceListView">
+                            <ListView  x:Name="PricelstView" RowHeight="60" SeparatorColor="Black">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell IsEnabled="False">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="4*"/>
+                                                    <ColumnDefinition Width="3.5*"/>
+                                                    <ColumnDefinition Width="3*"/>
+                                                    <ColumnDefinition Width="3*"/>
+                                                    <ColumnDefinition Width="3.5*"/>
+                                                </Grid.ColumnDefinitions>
+                                            <Label VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Grid.Column="0" Text="{Binding ticket_type}" TextColor="Black" FontSize="15"/>
+                                            <Label VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Grid.Column="1" Text="{Binding date}" TextColor="Black" FontSize="15"/>
+                                            <Label VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Grid.Column="2" Text="{Binding time}" TextColor="Black" FontSize="15"/>
+                                            <Label VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Grid.Column="3" Text="{Binding ticket_price}" TextColor="Black" FontSize="15"/>
+                                            <StackLayout Grid.Column="4" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                                                    <Image Source="taazaicon.png" HeightRequest="30" WidthRequest="30"/>
+                                                    <Label VerticalOptions="Center" Text="{Binding max_taazacash_can_use}" TextColor="Black" FontSize="15"/>
+                                                </StackLayout>
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+
+                        <!--<Image Source="tickets.png" WidthRequest="30"></Image>
+                            <Label Text="{Binding event_ticket_option_text}" FontSize="15" LineBreakMode="TailTruncation" VerticalOptions="Center"></Label>-->
+
+                       
+                    </StackLayout>
+                    <WebView Grid.Row="3" x:Name="Map" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" HeightRequest="200"></WebView>
+                    <Label Grid.Row="4" Text="Overview" FontAttributes="Bold" FontSize="20"></Label>
+                    <Label Grid.Row="5" Text="{Binding overview}"></Label>
+                    <Label Grid.Row="6" Text="Event Description" FontAttributes="Bold" FontSize="20"></Label>
+                    <usercontrol:ExtendedWebView Grid.Row="7" x:Name="EventDesc" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></usercontrol:ExtendedWebView>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+        <Grid Grid.Row="2" BackgroundColor="LightGray">
+            <cv:CarouselView Margin="0"  x:Name="CarouselAd" ItemSelected="CarouselAd_ItemSelected" HeightRequest="60">
+                <cv:CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image Grid.RowSpan="2" Source="bannergray.png" ></Image>
+                            <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding Add_image}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CarouselAd_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </DataTemplate>
+                </cv:CarouselView.ItemTemplate>
+            </cv:CarouselView>
+        </Grid>
+        <tools:NoInternetPage  x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething"></tools:NoInternetPage>
+        <tools:NoDataPage  x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
+        <tools:Loader x:Name="Loader" Grid.Row="1" IsVisible="False"></tools:Loader>
+    </Grid>
+</ContentPage>

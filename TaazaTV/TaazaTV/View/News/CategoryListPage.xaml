@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tools="clr-namespace:TaazaTV.View.Tools"
+             x:Class="TaazaTV.View.News.CategoryListPage">
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ListView x:Name="CategoryListView"   ItemTapped="OnItemTapped">
+                <!--ItemsSource="{Binding news_list}">-->
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+
+                        <TextCell x:Name="CategoryList" Text="{Binding CategoryName}" TextColor="Black" />
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <tools:NoInternetPage x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething"></tools:NoInternetPage>
+            <tools:NoDataPage x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
+            <tools:Loader x:Name="Loader" IsVisible="False"></tools:Loader>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:tools="clr-namespace:TaazaTV.View.Tools"
+             x:Class="TaazaTV.View.News.ShowsPage">
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout x:Name="MainFrame" HorizontalOptions="FillAndExpand">
+                <ScrollView>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <Image Source="newsdetails.png" x:Name="TitleImage" HeightRequest="30" VerticalOptions="Center"></Image>
+                            <Label x:Name="TitleText" Text="News" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Row="1" HeightRequest="0.5" BackgroundColor="#01062d" ></StackLayout>
+                        <controls:WrapLayout Grid.Row="2" x:Name="CategoryList" HorizontalOptions="FillAndExpand" Orientation="Horizontal"></controls:WrapLayout>
+                        <!--<StackLayout Grid.Row="3" HeightRequest="0.5" BackgroundColor="#01062d" Margin="0,0,0,10"></StackLayout>-->                        
+                       
+                    </Grid>
+                </ScrollView>
+            </StackLayout>
+            <tools:NoInternetPage x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething"></tools:NoInternetPage>
+            <tools:NoDataPage x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
+
+            <tools:Loader x:Name="Loader" IsVisible="False"></tools:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

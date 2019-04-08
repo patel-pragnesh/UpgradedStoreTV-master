@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaazaTV.View.Tools.Loader">
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="Black" Opacity="0.3">
+ 
+        </StackLayout>
+        <Grid Padding="10" BackgroundColor="White" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="150" HeightRequest="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <ActivityIndicator x:Name="indicator" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                               IsRunning="True" IsVisible="True"/>
+            <Label Grid.Column="1" Text="Loading.." VerticalOptions="Center"></Label>
+        </Grid>
+    </Grid>
+</StackLayout>

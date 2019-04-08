@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaazaTV.View.Tools.NoInternetPage">
+
+    <Grid BackgroundColor="White" VerticalOptions="Fill">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid VerticalOptions="Center">
+            <Grid.RowDefinitions >
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Source="NoInternet.png" Margin="0,0,0,20" WidthRequest="200"></Image>
+            <Label x:Name="HeadingText" Grid.Row="1" VerticalOptions="Start" Text="Opps! No internet Connection" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="Center"></Label>
+            <Label x:Name="LabelText" Grid.Row="2" VerticalOptions="Start" Text="Search More To Find More" HorizontalOptions="Center"></Label>
+            <Button Text="Retry" Grid.Row="3" x:Name="buttonItem" Clicked="buttonItem_Clicked" WidthRequest="100" HorizontalOptions="Center" TextColor="White" BackgroundColor="#42aaf4"></Button>
+            <!--<Button Text="Back" Grid.Row="4" x:Name="BackbuttonItem" Clicked="BackbuttonItem_Clicked" WidthRequest="100" HorizontalOptions="Center" TextColor="White" BackgroundColor="#42aaf4" IsVisible="False"></Button>-->
+        </Grid>
+    </Grid>
+</StackLayout>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "949232771857",
+    "firebase_url": "https://taazatvlive.firebaseio.com",
+    "project_id": "taazatvlive",
+    "storage_bucket": "taazatvlive.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949232771857:android:c50d31d4999f5a24",
+        "android_client_info": {
+          "package_name": "com.maxmobility.taazatv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949232771857-qmcp26v1d5q04th9rvnhldigs01iapv7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdtpHWKCXEoKHSOpcp-2VB3v8gsqFttpc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

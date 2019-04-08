@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:usercontrol="clr-namespace:TaazaTV.Controls"
+             x:Class="TaazaTV.View.TaazaCash.BookingDetailsPage">
+
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Image Grid.RowSpan="2" HeightRequest="220" Source="noevent.png" Aspect="AspectFill"/>
+            <Image x:Name="TopImage" Grid.RowSpan="2" HeightRequest="220" Aspect="AspectFill"/>
+            <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
+                <Label x:Name="TopText" TextColor="White" FontAttributes="Bold" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                <Label x:Name="TopSubText" TextColor="White" FontSize="12" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+        </Grid>
+
+        <StackLayout Margin="10"  Grid.Row="2" HeightRequest="40" Orientation="Horizontal">
+            
+            <StackLayout Orientation="Horizontal">
+                <Image Source="rightarrow.png" VerticalOptions="CenterAndExpand" HeightRequest="25" WidthRequest="25"/>
+                <Label TextColor="Green" FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" x:Name="TransactionDate"/>
+            </StackLayout>
+
+            <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Gray" Text="{Binding TicketNumber, StringFormat=' {0}  ticket(s) booked '}" FontSize="13" x:Name="TicketNumber"/>
+            
+            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                <Image Source="rupeesblack.png" VerticalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="22"/>
+                <Label FontSize="13" FontAttributes="Bold" VerticalOptions="CenterAndExpand" TextColor="Green" x:Name="TranscationAmount"/>
+            </StackLayout>
+            
+        </StackLayout>
+
+        <StackLayout Grid.Row="3" HeightRequest="1" BackgroundColor="Black"/>
+
+        <StackLayout Grid.Row="4"  HorizontalOptions="StartAndExpand" Orientation="Horizontal" Margin="10">
+            <Image Source="counter.png" VerticalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20"/>
+            <Label Text="Transaction Details" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Start"/>
+        </StackLayout>
+
+        <StackLayout Grid.Row="5" HeightRequest="1" BackgroundColor="Black"/>
+
+        <StackLayout HeightRequest="110" Grid.Row="6">
+            <Grid Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                    <Image HeightRequest="30" WidthRequest="30" VerticalOptions="CenterAndExpand" Source="calendar_event.png"/>
+                    <Label x:Name="DateBookedeFor" FontSize="13" VerticalOptions="CenterAndExpand" TextColor="Black"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                    <Image HeightRequest="30" VerticalOptions="CenterAndExpand" WidthRequest="30" Source="clock.png"/>
+                    <Label x:Name="BookedTimeFor" VerticalOptions="CenterAndExpand" FontSize="13" TextColor="Black"/>
+                </StackLayout>
+                <StackLayout Grid.ColumnSpan="2" Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                    <Image HeightRequest="30" VerticalOptions="CenterAndExpand" WidthRequest="30" Source="map.png"/>
+                    <Label x:Name="Location" VerticalOptions="CenterAndExpand" FontSize="13" TextColor="Black"/>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+
+        <usercontrol:ExtendedWebView Grid.Row="7" x:Name="BookingLocDesc" VerticalOptions="FillAndExpand" HorizontalOptions="Fill"/>
+
+    </Grid>
+</ContentPage>

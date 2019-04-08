@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaazaTV.View.Social.SocialFeedDetailsPage"
+              xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             xmlns:forms="clr-namespace:InTheHand.Forms;assembly=InTheHand.Forms"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+              xmlns:tools="clr-namespace:TaazaTV.View.Tools">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ScrollView BackgroundColor="White">
+                <Grid x:Name="MainFrame" Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Orientation="Horizontal" HeightRequest="30" x:Name="FeedDetailslbl">
+                        <Image Source="socialnews.png"></Image>
+                        <Label Text="Feed Details" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" HeightRequest="0.5" BackgroundColor="#01062d" ></StackLayout>
+                    <Image Source="nosocial.png" Grid.Row="2" Aspect="AspectFit"></Image>
+                    <Image Source="{Binding feed_image}" Grid.Row="2" Aspect="AspectFit"></Image>
+                    <Label x:Name="TitleText" Grid.Row="3" Text="{Binding title}" FontSize="Small" FontAttributes="Bold" TextColor="Black"></Label>
+                    <Label x:Name="shortDesc" Grid.Row="4" Text="{Binding content}" VerticalOptions="Center" FontSize="Small" TextColor="Gray"></Label>
+
+                </Grid>
+            </ScrollView>
+            <tools:NoInternetPage x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething" Margin="0,70,0,0"></tools:NoInternetPage>
+            <tools:NoDataPage x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ></tools:NoDataPage>
+            <tools:Loader x:Name="Loader" IsVisible="False"></tools:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

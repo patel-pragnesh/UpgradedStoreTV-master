@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaazaTV.View.Tools.NewVideoViewPage"
+               xmlns:tools="clr-namespace:TaazaTV.View.Tools">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ScrollView BackgroundColor="White">
+                <Grid x:Name="MainFrame">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="250"/>
+                    </Grid.RowDefinitions>
+                    <!--<Frame Padding="0">
+                        <Grid Padding="5,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="logosgray.png" Aspect="AspectFill"/>
+                            <Image Source="bannergray.png" Aspect="AspectFill"/>
+                            <Image Source="play.png" HeightRequest="100" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Frame.GestureRecognizers>
+                    </Frame>-->
+                    <WebView x:Name="LiveTVWebView"  Navigated="LiveTVWebView_Navigated"></WebView>
+
+
+                    <Grid Grid.Row="0" x:Name="WebViewLoader" BackgroundColor="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout BackgroundColor="#00FFFFFF">
+
+                        </StackLayout>
+                        <Grid Padding="10" BackgroundColor="White" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="150" HeightRequest="50">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <ActivityIndicator x:Name="indicator" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                               IsRunning="True" IsVisible="True"/>
+                            <Label Grid.Column="1" Text="Loading.." VerticalOptions="Center"></Label>
+                        </Grid>
+                    </Grid>
+
+                    <StackLayout Grid.Row="1" Padding="10,5" HorizontalOptions="CenterAndExpand">
+                        <Label Text="About TAAZA TV" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="80*"/>
+                                <ColumnDefinition Width="20*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="1" Padding="2" BackgroundColor="#42aaf4"></StackLayout>
+                        </Grid>
+                    </StackLayout>
+                    <Label  Margin="10,10" Grid.Row="2" Text="Taaza TV is the leading channel of Eastern India. Based in Kolkata this channel offers News of Kolkata, West Bengal, Jharkhand, Bihar and all news of National Importance. Uplinked on American satellite it offers crisp clean images and all important and relevant News, Views, discussions, Entertainment, Events, Ladies programs etc. This 24x7 channel is now streamed LIVE through the Taaza TV App to your mobile phones anywhere in the world. You can share the link with your family, friends and all. Happy viewing"/>
+                </Grid>
+            </ScrollView>
+            <tools:NoInternetPage x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="NoInternet_ClickedButton" Margin="0,70,0,0"></tools:NoInternetPage>
+            <tools:NoDataPage x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataPage_BackClickedButton"></tools:NoDataPage>
+            <tools:Loader x:Name="Loader" IsVisible="False"></tools:Loader>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

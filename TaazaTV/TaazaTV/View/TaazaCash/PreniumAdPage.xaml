@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Taaza TV"
+             x:Class="TaazaTV.View.TaazaCash.PreniumAdPage">
+
+     <StackLayout>
+        <Image Grid.Row="0" HeightRequest="30" Margin="0,7,7,0" HorizontalOptions="EndAndExpand" WidthRequest="30" Source="cross.png" VerticalOptions="Center">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="CloseBannerTapped"/>
+            </Image.GestureRecognizers>
+        </Image>
+        <Image x:Name="AdBannerWebView" Source="{Binding PreniumAdBannerSource}" Margin="10"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  WidthRequest="250">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="NavToAdContent"/>
+            </Image.GestureRecognizers>
+        </Image>
+    </StackLayout>
+    
+</ContentPage>

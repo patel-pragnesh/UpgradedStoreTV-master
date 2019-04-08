@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>7b8b1c17-ffe4-4da8-a621-6c4347ecc667</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>TaazaTV</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ExtendedWebView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\StoreHeaderView.xaml.cs">
+      <DependentUpon>StoreHeaderView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\AppData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\Constant.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\Grouping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\HttpRequestWrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\IMediaPicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\INativeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\Logging.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\PageNameToPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\Tools.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Model\AllTransactions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\BreakingEventsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\BreakingNewsModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\CategoryListModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DashboardModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DashboardUnreadCounterModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\EventDetailsResponseModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\EventListModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\EventRestCityListModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\FacebookProfile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\FilterModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ImageListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ImageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\CameraViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Category.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\CityModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ForgotPasswordJsonResponseClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\jsonResponseClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\logInModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\MerchantLoginModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\MonkeysViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\NewLoginCheckResponseModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\NewsDetailsResponseClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\NewsListModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\OTPCheckResponseModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\OTPModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\OTPSentResponseModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\PinchToZoomContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\PollContestModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\PreniumAdModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ProfileModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\RegistrationModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ResponseClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ResponseModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\RestaurantDetailModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\RestaurantListModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ShareMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ShowsModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ShowsVideoList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\SocialDetailsModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\SocialNewsModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\AddressStateModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\EventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\MainCategoryListModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\ProductDetailsModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\ProductFilterModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\ProductListModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Component\RangeSliderView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\SellerDetailsModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\SellerListModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\StoreGeneralModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\StoreUserAddressModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\UserAddressListModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaTransactionsModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\UserWiseSubmitNewsModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\CommonFunc.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\FacebookServices.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\FacebookViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Accounts\ChangePasswordPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Accounts\CityListPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Accounts\FacebookProfilePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Accounts\MyProfilePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Accounts\NewLoginPage.xaml.cs">
+      <DependentUpon>NewLoginPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Accounts\OTPValidationPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Accounts\RegistrationPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Eventpoll\PollContestDetailsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Eventpoll\PollContestListPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Navigation\MasterDetailsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Navigation\MasterDetailsPageDetail.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Navigation\MasterDetailsPageMaster.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Navigation\MasterDetailsPageMenuItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Accounts\ProfilePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\News\BreakingNewsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\News\CategoryListPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\News\EventDetailsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\News\EventListPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\News\NewsCategoryPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\News\NewsDetailsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\News\NewsListPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\News\NewsSubmitPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\News\ShowListPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\News\ShowsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\News\SubmitedNewsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\SamplePage.xaml.cs">
+      <DependentUpon>SamplePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Social\SocialDetailsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Social\SocialFeedDetailsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Social\SocialNewsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaCash\BookingDetailsPage.xaml.cs">
+      <DependentUpon>BookingDetailsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaCash\MerchantLogin.xaml.cs">
+      <DependentUpon>MerchantLogin.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaCash\MerchantVerification.xaml.cs">
+      <DependentUpon>MerchantVerification.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaCash\PayConfirmPage.xaml.cs">
+      <DependentUpon>PayConfirmPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaCash\PaymentGatewayNav.xaml.cs">
+      <DependentUpon>PaymentGatewayNav.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaCash\PreniumAdPage.xaml.cs">
+      <DependentUpon>PreniumAdPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaCash\RestaurantDetailPage.xaml.cs">
+      <DependentUpon>RestaurantDetailPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaCash\RestaurantListPage.xaml.cs">
+      <DependentUpon>RestaurantListPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaCash\TaazaDekhoPage.xaml.cs">
+      <DependentUpon>TaazaDekhoPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaCash\TaazaTransactionPage.xaml.cs">
+      <DependentUpon>TaazaTransactionPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaStore\AddressListPage.xaml.cs">
+      <DependentUpon>AddressListPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaStore\CartPage.xaml.cs">
+      <DependentUpon>CartPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaStore\Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaStore\FilterPage.xaml.cs">
+      <DependentUpon>FilterPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaStore\NewAddressPage.xaml.cs">
+      <DependentUpon>NewAddressPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaStore\NotificationPage.xaml.cs">
+      <DependentUpon>NotificationPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaStore\OrdersPage.xaml.cs">
+      <DependentUpon>OrdersPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaStore\PayModeSelctionPage.xaml.cs">
+      <DependentUpon>PayModeSelctionPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaStore\PopUpTaskView.xaml.cs">
+      <DependentUpon>PopUpTaskView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaStore\ProductDetailsPage.xaml.cs">
+      <DependentUpon>ProductDetailsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaStore\ProductListPage.xaml.cs">
+      <DependentUpon>ProductListPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaStore\SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaStore\SellerDetailsPage.xaml.cs">
+      <DependentUpon>SellerDetailsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaStore\SellerListPage.xaml.cs">
+      <DependentUpon>SellerListPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\TaazaStore\SubCategoryPage.xaml.cs">
+      <DependentUpon>SubCategoryPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Tools\Loader.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Tools\NewVideoViewPage.xaml.cs">
+      <DependentUpon>NewVideoViewPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Tools\NoDataPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Tools\NoInternetPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Tools\PrivacyPolicyPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Tools\TaazaCashTerms.xaml.cs">
+      <DependentUpon>TaazaCashTerms.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Tools\TermsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Tools\VideoViewPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Tools\ZoomImagePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Navigation\MasterDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Navigation\MasterDetailsPageMaster.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Navigation\MasterDetailsPageDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Accounts\RegistrationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Accounts\ProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Accounts\OTPValidationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Accounts\CityListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\News\NewsDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Accounts\MyProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\News\NewsListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\News\SubmitedNewsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\News\NewsSubmitPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\News\CategoryListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Accounts\ChangePasswordPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Tools\NoInternetPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\News\NewsCategoryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Tools\NoDataPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\News\ShowsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\News\ShowListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Eventpoll\PollContestListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Eventpoll\PollContestDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\News\BreakingNewsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\News\EventListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\News\EventDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Social\SocialNewsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Social\SocialDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Tools\VideoViewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Tools\PrivacyPolicyPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Tools\TermsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)View\Accounts\ChangePasswordPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\Accounts\CityListPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Accounts\FacebookProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <None Include="$(MSBuildThisFileDirectory)View\Accounts\MyProfilePage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\Accounts\OTPValidationPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\Accounts\ProfilePage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\Accounts\RegistrationPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\Eventpoll\PollContestDetailsPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\Eventpoll\PollContestListPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\Navigation\MasterDetailsPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\Navigation\MasterDetailsPageDetail.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\Navigation\MasterDetailsPageMaster.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\News\BreakingNewsPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\News\CategoryListPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\News\EventDetailsPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\News\EventListPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\News\NewsCategoryPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\News\NewsDetailsPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\News\NewsListPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\News\NewsSubmitPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\News\ShowListPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\News\ShowsPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\News\SubmitedNewsPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\Social\SocialDetailsPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Social\SocialFeedDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <None Include="$(MSBuildThisFileDirectory)View\Social\SocialNewsPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Tools\Loader.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <None Include="$(MSBuildThisFileDirectory)View\Tools\NoDataPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\Tools\NoInternetPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\Tools\PrivacyPolicyPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\Tools\TermsPage.xaml" />
+    <None Include="$(MSBuildThisFileDirectory)View\Tools\VideoViewPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Tools\ZoomImagePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Accounts\NewLoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Tools\NewVideoViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaCash\TaazaDekhoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaCash\PreniumAdPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\SamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaCash\PayConfirmPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaCash\RestaurantListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaCash\RestaurantDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaCash\TaazaTransactionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaCash\PaymentGatewayNav.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaCash\MerchantLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaCash\BookingDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaCash\MerchantVerification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\Tools\TaazaCashTerms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaStore\Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaStore\SubCategoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaStore\ProductListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaStore\ProductDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaStore\SearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaStore\FilterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaStore\AddressListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaStore\NewAddressPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaStore\CartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaStore\OrdersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaStore\PayModeSelctionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaStore\NotificationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaStore\PopUpTaskView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Component\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\StoreHeaderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaStore\SellerListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\TaazaStore\SellerDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaazaTV.View.Accounts.FacebookProfilePage"            
+             xmlns:tools="clr-namespace:TaazaTV.View.Tools"
+             BackgroundColor="White">
+    <!--xmlns:tools="clr-namespace:TaazaTV.ViewModel"-->
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout HeightRequest="20" BackgroundColor="White">
+                    <StackLayout.IsVisible>
+                        <OnPlatform x:TypeArguments="x:Boolean"
+                      iOS="True"
+                      Android="False" />
+                    </StackLayout.IsVisible>
+                </StackLayout>
+                <StackLayout Grid.Row="1"  HeightRequest="50" BackgroundColor="#2196F3">
+                    <Label Text="Back" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="End" Margin="0,0,10,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BackButton"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <StackLayout.IsVisible>
+                        <OnPlatform x:TypeArguments="x:Boolean"
+                      iOS="True"
+                      Android="False" />
+                    </StackLayout.IsVisible>
+                </StackLayout>
+                <WebView Grid.Row="2" x:Name="webView" 
+                        AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Source="{Binding ContentUrl}"
+                        Navigating="WebViewOnNavigating"
+                        Navigated="WebViewOnNavigated"
+                        IsVisible="False"/>
+            </Grid>
+            <tools:Loader x:Name="activityIndicator" IsVisible="False"></tools:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

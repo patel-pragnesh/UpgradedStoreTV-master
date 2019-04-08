@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:tools="clr-namespace:TaazaTV.View.Tools"
+             x:Class="TaazaTV.View.Eventpoll.PollContestDetailsPage">
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ScrollView>
+                <StackLayout x:Name="MainFrames">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout x:Name="header" Orientation="Horizontal" Padding="5" VerticalOptions="Center">
+                        <Image Source="newsdetails.png" x:Name="TitleImage" HeightRequest="30" VerticalOptions="Center"></Image>
+                        <Label x:Name="TitleText" Text="News" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                    </StackLayout>
+                    <StackLayout x:Name="bar" Grid.Row="1" HeightRequest="0.5" BackgroundColor="#01062d" Margin="0"></StackLayout>
+                    <StackLayout Grid.Row="2" Orientation="Horizontal">
+                        <Label Text="Q:" FontSize="Medium" Margin="10,0,0,0" TextColor="#42aaf4" x:Name="qlbl"></Label>
+                        <Label x:Name="Question"  Text="{Binding question}" FontSize="Medium" Margin="10,0"></Label>
+                    </StackLayout>
+                    <!--<Grid Grid.Row="4" Margin="5" x:Name="share_time">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="1" Orientation="Horizontal">
+                            <Image Source="calendar.png" HeightRequest="15"/>
+                            <Label x:Name="date" Text="{Binding date}" FontSize="Micro" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" Orientation="Horizontal">
+                            <Image Source="time.png" HeightRequest="15"/>
+                            <Label  x:Name="time" Text="{Binding time}" FontSize="Micro" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                    </Grid>-->
+                    <StackLayout Grid.Row="3" BackgroundColor="Black" HeightRequest="1" x:Name="LineBar"></StackLayout>
+                    <StackLayout Grid.Row="4" x:Name="Anslbl">
+                        <Label x:Name="IsAnswer" Text="Your Answer is" Margin="5,0"></Label>
+                    </StackLayout>
+                    <StackLayout Grid.Row="5" Margin="5">
+                        <controls:BindableRadioGroup x:Name="PollOptions" CheckedChanged="PollOptions_CheckedChanged"></controls:BindableRadioGroup>
+                    </StackLayout>
+                    <StackLayout Grid.Row="6" Margin="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <!--<ColumnDefinition Width="50*"/>-->
+                            </Grid.ColumnDefinitions>
+                            <!--<Button Text="Back" TextColor="White" BackgroundColor="#42aaf4"  HeightRequest="60" Clicked="BackButtonClicked" />-->
+                            <Button x:Name="Submit" Grid.Column="0" Text="Submit" TextColor="White" BackgroundColor="#42aaf4"  HeightRequest="60" Clicked="SubmitButtonClicked" IsEnabled="{Binding is_Enabled}"/>
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                </StackLayout>
+            </ScrollView>
+            <tools:NoInternetPage x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething" Margin="0,70,0,0"></tools:NoInternetPage>
+            <tools:Loader x:Name="Loader" IsVisible="False"></tools:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

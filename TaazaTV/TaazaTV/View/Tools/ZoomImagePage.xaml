@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pinch="clr-namespace:PinchGesture"
+             x:Class="TaazaTV.View.Tools.ZoomImagePage">
+    <ContentPage.Content>
+        <Grid Padding="10">
+            <pinch:PinchToZoomContainer>
+                <pinch:PinchToZoomContainer.Content>
+                    <Image x:Name="Images" Source="logo.png" />
+                </pinch:PinchToZoomContainer.Content>
+            </pinch:PinchToZoomContainer>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

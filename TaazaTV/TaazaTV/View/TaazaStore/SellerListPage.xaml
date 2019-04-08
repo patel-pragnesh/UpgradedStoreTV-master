@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customContentView="clr-namespace:TaazaTV.Controls"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#2196F3"
+             x:Class="TaazaTV.View.TaazaStore.SellerListPage">
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.Padding>
+                <OnPlatform iOS="0,20,0,0"/>
+            </Grid.Padding>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
+            <BoxView HeightRequest="2" Grid.Row="1" BackgroundColor="Red"/>
+            <StackLayout Grid.Row="2" BackgroundColor="#a2d6fe" Padding="10">
+                <SearchBar TextChanged="SearchBar_TextChanged" HeightRequest="40" Placeholder="search here" PlaceholderColor="Gray" BackgroundColor="White" ></SearchBar>
+            </StackLayout>
+            <BoxView HeightRequest="2" Grid.Row="3" BackgroundColor="#2296f2"/>
+
+            <ListView Grid.Row="1" Footer="" x:Name="SellerListView"  RowHeight="100" SeparatorColor="Black" ItemTapped="SellerListView_ItemTapped" ItemsSource="{Binding event_data}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="7" RowSpacing="3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.RowSpan="4" Grid.Column="0" Source="noevent.png" Aspect="AspectFill"/>
+                                    <Image Grid.RowSpan="4" Grid.Column="0" Source="{Binding banner_image}" Aspect="AspectFill"/>
+                                    <Label  Grid.Column="1" Grid.Row="0"  Text = "{Binding event_name}" FontSize="Small" LineBreakMode="TailTruncation" Font="Bold" TextColor="Black" />
+                                    <Label Grid.Column="1" Grid.Row="1" Text = "{Binding overview}" FontSize="12" LineBreakMode="TailTruncation" />
+                                    <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Image Source="locationblue.png" HeightRequest="10"></Image>
+                                        <Label x:Name="address" Text="{Binding event_vanue.location}" FontSize="12" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#2196F3"/>
+                                    </StackLayout>
+                                    <StackLayout  Padding="5,0" Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+                                        <Label Text="{Binding show_data}" FontSize="12" TextColor="Green"/>
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
