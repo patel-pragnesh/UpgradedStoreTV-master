@@ -2,13 +2,114 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="False"
+             xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             xmlns:customContentView="clr-namespace:TaazaTV.Controls"
+             xmlns:controls="clr-namespace:TaazaTV.Component"    
              x:Class="TaazaTV.View.TaazaStore.Dashboard">
-    <ContentPage.Resources>
-        
-    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <Grid>
-            
+
+        <Grid RowSpacing="0">
+            <Grid.Padding>
+                <OnPlatform iOS="0,20,0,0"/>
+            </Grid.Padding>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <ContentView Grid.Row="0" HeightRequest="50" x:Name="HeaderView"/>
+            <ScrollView Grid.Row="1">
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <cv:CarouselView HeightRequest="160" Grid.Row="0" Margin="0" x:Name="StoreFeaturedCarousel">
+                        <cv:CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.RowSpan="2" Source="bannergray.png" />
+                                    <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding }"/>
+                                    <Label Grid.Row="1" BackgroundColor="#80000000" Margin="12" TextColor="White" Text="{Binding Name}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap"/>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="StoreFeatured_Tapped"/>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </DataTemplate>
+                        </cv:CarouselView.ItemTemplate>
+                    </cv:CarouselView>
+
+                    <controls:HorizontalList Grid.Row="1" 
+                    ListOrientation="Horizontal" 
+                    Padding="5"
+                    x:Name="CategoryListView"
+                    HeightRequest="80">
+                        <controls:HorizontalList.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="5">
+                                    <Image HeightRequest="35" WidthRequest="35" Source="{Binding category_image.category_image_thumb}"/>
+                                    <Label FontAttributes="Bold" FontSize="Micro" Text="{Binding category_name}"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:HorizontalList.ItemTemplate>
+                    </controls:HorizontalList>
+
+                    <BoxView Grid.Row="2" HeightRequest="2" BackgroundColor="Gray"/>
+
+                    <controls:HorizontalList Grid.Row="3" 
+                    ListOrientation="Horizontal" 
+                    Padding="15"
+                    x:Name="OffersListView"
+                    HeightRequest="140">
+                        <controls:HorizontalList.ItemTemplate>
+                            <DataTemplate>
+                                <Grid HeightRequest="140">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.ColumnSpan="2" Source="{Binding }" Aspect="AspectFit" HeightRequest="140"/>
+                                    <Label HorizontalOptions="Center" Grid.Column="0" VerticalOptions="Center" Text="{Binding}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </controls:HorizontalList.ItemTemplate>
+                    </controls:HorizontalList>
+
+                    <BoxView Grid.Row="4" HeightRequest="2" BackgroundColor="Gray"/>
+
+                    <StackLayout Padding="10" Grid.Row="5" Orientation="Horizontal">
+                        <Label FontSize="Small" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="TOP SELLERS"/>
+                        <Button CornerRadius="15" FontSize="Micro" Padding="15,5" BackgroundColor="#2196F3" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Text="View More" Clicked="NavToSellerList"/>
+                    </StackLayout>
+
+                    <ListView Grid.Row="6" x:Name="TopSellersListView">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="7" Orientation="Horizontal">
+                                    <Image Source="{Binding}" HeightRequest="30" WidthRequest="30" HorizontalOptions="Start"/>
+                                    <Label Text="{Binding}" FontAttributes="Bold"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </Grid>
+            </ScrollView>
         </Grid>
+
     </ContentPage.Content>
 </ContentPage>
+
+
+

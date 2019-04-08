@@ -2,11 +2,68 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TaazaTV.View.TaazaStore.NewAddressPage">
+    <ContentPage.Resources>
+
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="BackgroundColor" Value="#2196f3"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="CornerRadius" Value="15"/>
+        </Style>
+
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="25" Margin="25">
+
+                <Label Text="Pincode*"/>
+                <Entry Placeholder="743145"/>
+
+                <Label Text="House No., Building name*"/>
+                <Entry Placeholder="House No. 30/51, RR Flats"/>
+
+                <Label Text="Road Name, Area, Colony*"/>
+                <Entry Placeholder="R.K Puram, Kaviraj Nagar"/>
+
+                <StackLayout Spacing="140" Orientation="Horizontal">
+                    <Label Text="City*"/>
+                    <Label Text="State ^"/>
+                </StackLayout>
+
+                <StackLayout Spacing="20" Orientation="Horizontal">
+                    <Entry WidthRequest="150" Placeholder="Kolkata"/>
+                    <Entry WidthRequest="150" Placeholder="West Bengal"/>
+                </StackLayout>
+
+                <Label Text="Landmark (optional)"/>
+                <Entry Placeholder="Palli Vara Club"/>
+
+                <BoxView HeightRequest="2" BackgroundColor="Black"/>
+
+                <Label Text="Name*"/>
+                <Entry Placeholder="Sumit Kumar Singh"/>
+
+                <Label Text="10 digit mobile number*"/>
+                <Entry Placeholder="9636985632"/>
+
+                <Label Text="Alternate phone number(optional)"/>
+                <Entry Placeholder="9636985632"/>
+
+                <Label Text="Address Type"/>
+
+                <Button Text="Save"/>
+
+            </StackLayout>
+        </ScrollView>
+
     </ContentPage.Content>
 </ContentPage>

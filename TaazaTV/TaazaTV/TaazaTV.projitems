@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Component\HorizontalList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ExtendedWebView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\StoreHeaderView.xaml.cs">
       <DependentUpon>StoreHeaderView.xaml</DependentUpon>
@@ -665,9 +666,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Component\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\StoreHeaderView.xaml">

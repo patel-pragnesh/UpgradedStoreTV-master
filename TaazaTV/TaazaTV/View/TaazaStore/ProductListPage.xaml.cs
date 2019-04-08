@@ -11,14 +11,14 @@ using Xamarin.Forms.Xaml;
 
 namespace TaazaTV.View.TaazaStore
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ProductListPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ProductListPage : ContentPage
+    {
 
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
-        public ProductListPage ()
-		{
-			InitializeComponent ();
+        public ProductListPage()
+        {
+            InitializeComponent();
             InitialLoading();
 
         }
@@ -31,7 +31,7 @@ namespace TaazaTV.View.TaazaStore
                 {
                     new KeyValuePair<string, string>("device_type", "ANDROID"),
                     new KeyValuePair<string, string>("app_version", "2.0"),
-                   
+
                 };
 
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GeneralProductListAPI], parameters);

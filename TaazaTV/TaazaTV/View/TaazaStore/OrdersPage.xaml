@@ -3,10 +3,67 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TaazaTV.View.TaazaStore.OrdersPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="25">
+
+            <Frame Padding="15,15,15,0">
+
+                <Grid RowSpacing="5">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="80"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Image Margin="10,0,0,30" Grid.Row="0" Grid.RowSpan="5" Grid.Column="1" Source="call.png" Aspect="AspectFit"/>
+
+                    <Label Grid.Column="0" Grid.Row="0" MaxLines="2" LineBreakMode="NoWrap" Text="Product Name" Font="Bold" TextColor="Black" />
+
+                    <Label Grid.Column="0" Grid.Row="1" Text="Product Description" TextColor="Gray" />
+
+                    <Label Grid.Column="0" Grid.Row="2" FontAttributes="Bold" Text="Seller Information" VerticalOptions="Center" TextColor="Green"/>
+
+                    <StackLayout Padding="0,2,0,23" Orientation="Horizontal" Grid.Column="0" Grid.Row="3">
+                        <Image HeightRequest="20" Source="call.png"/>
+                        <Label VerticalOptions="Center" Text="599" FontAttributes="Bold" TextColor="Black"/>
+                    </StackLayout>
+
+                    <Image Margin="20,0,24,0" Grid.Row="4" Grid.ColumnSpan="2" Source="one.png"/>
+
+                    <StackLayout Padding="13,0" Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2">
+                        <Label FontSize="Micro" HorizontalOptions="Start" Text="ORDERED"/>
+                        <Label Margin="13,0,0,0" FontSize="Micro" HorizontalOptions="CenterAndExpand" Text="DISPATCHED"/>
+                        <Label FontSize="Micro" HorizontalOptions="End" Text="DELIVERED"/>
+                    </StackLayout>
+
+                    <StackLayout Padding="11,0,18,10" Orientation="Horizontal" Grid.Row="7" Grid.ColumnSpan="2">
+                        <Label TextColor="Gray" FontSize="Micro" HorizontalOptions="Start" Text="25.01.2019"/>
+                        <Label TextColor="Gray" FontSize="Micro" HorizontalOptions="CenterAndExpand" Text="02.02.2019"/>
+                        <Label TextColor="Gray" FontSize="Micro" HorizontalOptions="End" Text="7.01.2019"/>
+                    </StackLayout>
+
+                    <BoxView Margin="-15,0" Grid.ColumnSpan="2" BackgroundColor="Gray" HeightRequest="1" Grid.Row="8" />
+
+                    <StackLayout Padding="15,0,15,7" Grid.ColumnSpan="2" Grid.Row="9" Orientation="Horizontal">
+                        <Label Margin="0,5" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Micro" TextColor="Gray" FontAttributes="Bold" Text="CANCEL"/>
+                        <BoxView HorizontalOptions="CenterAndExpand" BackgroundColor="Black" WidthRequest="3" HeightRequest="23"/>
+                        <Label Margin="0,5" FontSize="Micro" FontAttributes="Bold" HorizontalOptions="End" Text="SUPPORT"/>
+                    </StackLayout>
+
+                </Grid>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -2,11 +2,67 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TaazaTV.View.TaazaStore.AddressListPage">
+    <ContentPage.Resources>
+
+        <Style x:Key="DescLbl" TargetType="Label">
+            <Setter Property="TextColor" Value="#77bb77"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="Small"/>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="HeaderLbl" TargetType="Label">
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <Style TargetType="Image">
+            <Setter Property="HeightRequest" Value="25"/>
+            <Setter Property="WidthRequest" Value="25"/>
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+
+        <StackLayout Padding="15" Spacing="20">
+
+            <StackLayout Spacing="20" Orientation="Horizontal">
+
+                <Image Source="user.png"/>
+
+                <Label Style="{StaticResource HeaderLbl}" Text="Tanya Jha"/>
+
+                <StackLayout Padding="5" BackgroundColor="#e1fee1">
+                    <Label Style="{StaticResource DescLbl}" Text="Home" />
+                </StackLayout>
+
+                <Image HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Source="edit.png"/>
+
+            </StackLayout>
+
+            <StackLayout Spacing="20" Orientation="Horizontal">
+                <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="location.png"/>
+                <Label FontSize="Small" FontAttributes="Bold"  Text="Rly. Plot No. 147/M, Dangapara, Kanchrapara, 24 PGS(N), West Bengal" />
+            </StackLayout>
+
+            <StackLayout Spacing="20" Orientation="Horizontal">
+                <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="call.png"/>
+                <Label  FontSize="Small" FontAttributes="Bold" Text="9790797100" />
+            </StackLayout>
+
+            <StackLayout>
+                <Button Text="Add New Address" Clicked="AddressNewClicked"/>
+            </StackLayout>
+
+
         </StackLayout>
+
     </ContentPage.Content>
+
 </ContentPage>

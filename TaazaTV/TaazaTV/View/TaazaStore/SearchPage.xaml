@@ -1,12 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:customContentView="clr-namespace:TaazaTV.Controls"
+             NavigationPage.HasNavigationBar="False"
              x:Class="TaazaTV.View.TaazaStore.SearchPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid RowSpacing="0">
+            <Grid.Padding>
+                <OnPlatform iOS="0,20,0,0"/>
+            </Grid.Padding>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
+            <BoxView HeightRequest="2" Grid.Row="1" BackgroundColor="Red"/>
+            <StackLayout Grid.Row="2" BackgroundColor="#a2d6fe" Padding="10">
+                <SearchBar HeightRequest="40" Placeholder="search here" PlaceholderColor="Gray" BackgroundColor="White" ></SearchBar>
+            </StackLayout>
+            <BoxView HeightRequest="2" Grid.Row="3" BackgroundColor="#2296f2"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

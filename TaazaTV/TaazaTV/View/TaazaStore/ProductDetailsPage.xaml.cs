@@ -11,13 +11,13 @@ using Xamarin.Forms.Xaml;
 
 namespace TaazaTV.View.TaazaStore
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ProductDetailsPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ProductDetailsPage : ContentPage
+    {
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
-        public ProductDetailsPage ()
-		{
-			InitializeComponent ();
+        public ProductDetailsPage()
+        {
+            InitializeComponent();
             InitialLoading();
         }
 

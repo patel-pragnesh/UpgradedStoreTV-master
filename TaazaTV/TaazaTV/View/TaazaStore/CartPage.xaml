@@ -3,10 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TaazaTV.View.TaazaStore.CartPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid Padding="15,11,0,0" RowSpacing="3">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout BackgroundColor="Green" Margin="-14,-10,15,0" Grid.Row="0" Grid.Column="0">
+                <Label HorizontalOptions="Center" FontAttributes="Bold" TextColor="White" FontSize="Small" VerticalOptions="CenterAndExpand" Text="In Stock"/>
+            </StackLayout >
+
+            <Image Margin="5" Grid.RowSpan="4" Grid.Row="1" Grid.Column="0" Source="call.png" Aspect="AspectFit"/>
+
+            <StackLayout Padding="0,0,10,0" Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+                <Label MaxLines="2" LineBreakMode="NoWrap" Text="Product Name" FontSize="Small" Font="Bold" TextColor="Black" />
+                <Image HorizontalOptions="EndAndExpand" Source="call.png"  HeightRequest="15"/>
+                <Label HorizontalOptions="End" VerticalOptions="Center" Text="1" FontSize="Small" LineBreakMode="TailTruncation" Font="Bold" TextColor="Black" />
+                <Image HorizontalOptions="End"  Source="call.png"  HeightRequest="15"/>
+            </StackLayout>
+
+            <Label Grid.Column="1" Grid.Row="2" Text="Product Description" TextColor="Gray" FontSize="12" LineBreakMode="TailTruncation" />
+
+            <Label Grid.Column="1" Grid.Row="3" x:Name="address" Text="Seller Information" FontSize="12" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#2196F3"/>
+
+            <StackLayout Padding="0,0,20,0" Grid.Column="1" Grid.Row="4" Orientation="Horizontal">
+                <Image Source="call.png"  HeightRequest="15"/>
+                <Label VerticalOptions="Center" Text="120" FontAttributes="Bold" FontSize="12" TextColor="Green"/>
+                <Image VerticalOptions="Center" HorizontalOptions="EndAndExpand" HeightRequest="20" Source="call.png" />
+            </StackLayout>
+
+            <Button VerticalOptions="EndAndExpand" Clicked="Button_Clicked" HorizontalOptions="Center" Text="CheckOut"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

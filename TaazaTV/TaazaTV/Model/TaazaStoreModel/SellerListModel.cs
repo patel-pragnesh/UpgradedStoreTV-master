@@ -24,7 +24,7 @@ public class Seller_List_Data
 
     public int total_pages { get; set; }
 
-    public Seller_Data[] Sellers { get; set; }
+    public Seller_Data[] sellers { get; set; }
 }
 
 public class Seller_Data
@@ -44,4 +44,12 @@ public class Seller_Data
     public string state { get; set; }
 
     public string city { get; set; }
+
+    public string StateCity
+    {
+        get
+        {
+            return city + ", " + state;
+        }
+    }
 }

@@ -9,12 +9,17 @@ using Xamarin.Forms.Xaml;
 
 namespace TaazaTV.View.TaazaStore
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SearchPage : ContentPage
-	{
-		public SearchPage ()
-		{
-			InitializeComponent ();
-		}
-	}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SearchPage : ContentPage
+    {
+        public SearchPage()
+        {
+            InitializeComponent();
+        }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+    }
 }

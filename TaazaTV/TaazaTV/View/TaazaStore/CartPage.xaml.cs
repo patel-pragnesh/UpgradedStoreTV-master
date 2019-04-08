@@ -9,12 +9,17 @@ using Xamarin.Forms.Xaml;
 
 namespace TaazaTV.View.TaazaStore
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CartPage : ContentPage
-	{
-		public CartPage ()
-		{
-			InitializeComponent ();
-		}
-	}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CartPage : ContentPage
+    {
+        public CartPage()
+        {
+            InitializeComponent();
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddressListPage());
+        }
+    }
 }

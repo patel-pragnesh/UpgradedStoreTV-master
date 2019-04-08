@@ -11,20 +11,20 @@ using Xamarin.Forms.Xaml;
 
 namespace TaazaTV.View.TaazaStore
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewAddressPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class NewAddressPage : ContentPage
+    {
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
-		public NewAddressPage ()
-		{
-			InitializeComponent ();
-            AddNewAddressView();  
+        public NewAddressPage()
+        {
+            InitializeComponent();
+            AddNewAddressView();
             UserAddressDetailsView(); //Set Something to distinguish as upadte
         }
 
         private void AddNewAddressView()
         {
-           GetStatesList();
+            GetStatesList();
         }
 
         private async void UserAddressDetailsView()

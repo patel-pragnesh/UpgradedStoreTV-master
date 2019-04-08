@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaazaTV.Controls;
 using TaazaTV.Helper;
 using TaazaTV.Model.TaazaStoreModel;
 using Xamarin.Forms;
@@ -12,15 +13,16 @@ using Xamarin.Forms.Xaml;
 
 namespace TaazaTV.View.TaazaStore
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Dashboard : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Dashboard : ContentPage
+    {
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
-		public Dashboard ()
-		{
-			InitializeComponent ();
+        public Dashboard()
+        {
+            InitializeComponent();
+            HeaderView.Content = new StoreHeaderView();
             InitialLoading();
-		}
+        }
 
         private async void InitialLoading()
         {
@@ -38,13 +40,25 @@ namespace TaazaTV.View.TaazaStore
                 }
                 else
                 {
-                  var Items = JsonConvert.DeserializeObject<MainCategoryListModel>(jsonstr);
+                    var Items = JsonConvert.DeserializeObject<MainCategoryListModel>(jsonstr);
+
+                    CategoryListView.ItemsSource = Items.data.categorys;
                 }
             }
             catch (Exception ex)
             {
 
             }
+        }
+
+        private void StoreFeatured_Tapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void NavToSellerList(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SellerListPage());
         }
     }
 }

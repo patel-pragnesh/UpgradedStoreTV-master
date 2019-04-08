@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaazaTV.View;
+using TaazaTV.View.TaazaStore;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,29 +18,24 @@ namespace TaazaTV.Controls
             InitializeComponent();
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void Search_Btn_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SamplePage());
+            await Navigation.PushAsync(new SearchPage());
         }
 
-        private void Search_Btn_Tapped(object sender, EventArgs e)
+        private async void BackBtn_Tapped(object sender, EventArgs e)
         {
-
+            await Navigation.PopAsync();
         }
 
-        private void BackBtn_Tapped(object sender, EventArgs e)
+        private async void Bell_Btn_Tapped(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new OrdersPage());
         }
 
-        private void Bell_Btn_Tapped(object sender, EventArgs e)
+        private async void Cart_Btn_Tapped(object sender, EventArgs e)
         {
-
-        }
-
-        private void Cart_Btn_Tapped(object sender, EventArgs e)
-        {
-
+            await Navigation.PushAsync(new CartPage());
         }
     }
 }

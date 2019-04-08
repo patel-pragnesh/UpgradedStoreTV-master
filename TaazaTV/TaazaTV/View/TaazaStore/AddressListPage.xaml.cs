@@ -11,13 +11,13 @@ using TaazaTV.Model.TaazaStoreModel;
 
 namespace TaazaTV.View.TaazaStore
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AddressListPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AddressListPage : ContentPage
+    {
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
-        public AddressListPage ()
-		{
-			InitializeComponent ();
+        public AddressListPage()
+        {
+            InitializeComponent();
             LoadAddressList();
         }
 
@@ -63,7 +63,7 @@ namespace TaazaTV.View.TaazaStore
                 }
                 else
                 {
-                   // Change the color of selcected item in the list
+                    // Change the color of selcected item in the list
                 }
             }
             catch (Exception ex)
@@ -94,6 +94,11 @@ namespace TaazaTV.View.TaazaStore
             {
                 var x = ex.Message;
             }
+        }
+
+        private async void AddressNewClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewAddressPage());
         }
     }
 }

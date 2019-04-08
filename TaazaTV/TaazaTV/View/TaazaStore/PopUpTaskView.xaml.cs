@@ -12,14 +12,14 @@ using Xamarin.Forms.Xaml;
 
 namespace TaazaTV.View.TaazaStore
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class PopUpTaskView 
-	{
-        HttpRequestWrapper wrapper = new HttpRequestWrapper(); 
-		public PopUpTaskView ()
-		{
-			InitializeComponent ();
-		}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class PopUpTaskView
+    {
+        HttpRequestWrapper wrapper = new HttpRequestWrapper();
+        public PopUpTaskView()
+        {
+            InitializeComponent();
+        }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {

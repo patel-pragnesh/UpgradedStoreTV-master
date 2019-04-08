@@ -8,6 +8,7 @@ using TaazaTV.View.Social;
 using Xamarin.Forms;
 using TaazaTV.View.Tools;
 using TaazaTV.View.TaazaCash;
+using TaazaTV.View.TaazaStore;
 
 namespace TaazaTV.Helper
 {
@@ -81,6 +82,20 @@ namespace TaazaTV.Helper
                 case "restaurant":
 
                     return new RestaurantListPage();
+
+
+                case "":
+
+                    if (AppData.UserId == "")
+                    {
+                        return new RegistrationPage();
+                    }
+                    else
+                    {
+                        return new Dashboard();
+                    }
+
+
 
                 case "taazadekho":
 

@@ -12,19 +12,18 @@ using Xamarin.Forms.Xaml;
 
 namespace TaazaTV.View.TaazaStore
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SellerListPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SellerListPage : ContentPage
+    {
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
-        ObservableCollection<Seller_Data> SellersList { get; set; }
 
-        public SellerListPage ()
-		{
-			InitializeComponent ();
-            InitialLoading();
-		}
+        public SellerListPage()
+        {
+            InitializeComponent();
+            InitialLoading("");
+        }
 
-        private async void InitialLoading()
+        private async void InitialLoading(string seachText)
         {
             try
             {
@@ -32,6 +31,7 @@ namespace TaazaTV.View.TaazaStore
                 {
                     new KeyValuePair<string, string>("device_type", "ANDROID"),
                     new KeyValuePair<string, string>("app_version", "2.0"),
+                    new KeyValuePair<string, string>("search", seachText),
                 };
 
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GetSellerListAPI], parameters);
@@ -41,7 +41,7 @@ namespace TaazaTV.View.TaazaStore
                 else
                 {
                     var Items = JsonConvert.DeserializeObject<SellerListModel>(jsonstr);
-                    SellersList = new ObservableCollection<Seller_Data>(Items.data.Sellers);
+                    SellersListView.ItemsSource = Items.data.sellers;
                 }
             }
             catch (Exception ex)
@@ -50,11 +50,16 @@ namespace TaazaTV.View.TaazaStore
             }
         }
 
-        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e) { }
-
-        private void SellerListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void SellerListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            var model = e.Item as Seller_Data;
+            await Navigation.PushAsync(new SellerDetailsPage(model.seller_id.ToString()));
+        }
 
+        private void Seller_Search_Clicked(object sender, EventArgs e)
+        {
+            InitialLoading((sender as SearchBar).Text);
+            (sender as SearchBar).Text = "";
         }
 
         //private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
