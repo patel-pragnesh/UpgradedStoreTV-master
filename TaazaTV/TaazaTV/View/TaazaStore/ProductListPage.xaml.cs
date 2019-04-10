@@ -30,7 +30,7 @@ namespace TaazaTV.View.TaazaStore
                 {
                     new KeyValuePair<string, string>("device_type", "ANDROID"),
                     new KeyValuePair<string, string>("app_version", "2.0"),
-                    new KeyValuePair<string, string>("category_slug", slug),
+                  //  new KeyValuePair<string, string>("category_slug", slug),
                 };
 
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GeneralProductListAPI], parameters);
@@ -40,6 +40,7 @@ namespace TaazaTV.View.TaazaStore
                 else
                 {
                     var Items = JsonConvert.DeserializeObject<ProductListModel>(jsonstr);
+                    ProductListView.ItemsSource = Items.data.product_list.ToList();
                 }
             }
             catch (Exception ex)

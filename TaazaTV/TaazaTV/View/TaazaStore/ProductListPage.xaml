@@ -12,55 +12,70 @@
             </Grid.Padding>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
-                <RowDefinition Height="2"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="2"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
-            
+
             <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
-            
-            <BoxView HeightRequest="2" Grid.Row="1" BackgroundColor="Red"/>
-            <StackLayout Grid.Row="2" BackgroundColor="#a2d6fe" Padding="10">
-                <SearchBar HeightRequest="40" Placeholder="search here" PlaceholderColor="Gray" BackgroundColor="White" ></SearchBar>
+
+            <ListView Grid.Row="1" x:Name="ProductListView" RowHeight="135">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid RowSpacing="5">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Image Margin="10,0,17,0" Grid.RowSpan="5" Grid.Column="0" Source="{Binding image.normal.image_path}" Aspect="AspectFill"/>
+
+                                <Label Grid.Column="1" Grid.Row="0" MaxLines="2" LineBreakMode="NoWrap" Text="{Binding product_name}" Font="Bold" TextColor="Black" />
+
+                                <Label Grid.Column="1" Grid.Row="1" Text="{Binding product_description}" TextColor="Gray" />
+
+                                <Label Grid.Column="1" Grid.Row="2" FontAttributes="Bold" Text="Seller Information" VerticalOptions="Center" TextColor="Green"/>
+
+                                <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
+                                    <Image HeightRequest="20" Source="rupeesblack.png"/>
+                                    <Label VerticalOptions="Center" Text="{Binding price_range}" FontAttributes="Bold" TextColor="Black"/>
+                                </StackLayout>
+
+                                <StackLayout Padding="5,3" HorizontalOptions="Start" BackgroundColor="#2196F3" Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
+                                    <Image HeightRequest="20" Source="taazaicon.png"/>
+                                    <Label VerticalOptions="Center" Text="50 Cashback" FontAttributes="Bold" TextColor="White"/>
+                                </StackLayout>
+                                
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout Padding="50,0" Grid.Row="2" BackgroundColor="#2196f3" Orientation="Horizontal">
+                <Image HeightRequest="23" WidthRequest="23" Source="sortIcon.png"/>
+                <Label Margin="0,5" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small" TextColor="White" FontAttributes="Bold" Text="Sort">
+                    <!--<Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Button_Clicked"/>
+                    </Label.GestureRecognizers>-->
+                </Label>
+
+                <BoxView Margin="30,10,0,10" HorizontalOptions="CenterAndExpand" BackgroundColor="White" WidthRequest="2" HeightRequest="23"/>
+                <Image HeightRequest="23" WidthRequest="23" Source="filterIcon.png"/>
+                <Label Margin="0,5" VerticalOptions="Center" FontSize="Small" FontAttributes="Bold" TextColor="White" HorizontalOptions="End" Text="Filter"/>
             </StackLayout>
-            <BoxView HeightRequest="2" Grid.Row="3" BackgroundColor="#2296f2"/>
 
-            <Grid Grid.Row="5" Padding="15,11,0,0" RowSpacing="5">
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <Image Margin="10" Grid.RowSpan="5" Grid.Column="0" Source="call.png" Aspect="AspectFit"/>
-
-                <Label Grid.Column="1" Grid.Row="0" MaxLines="2" LineBreakMode="NoWrap" Text="Product Name" Font="Bold" TextColor="Black" />
-
-                <Label Grid.Column="1" Grid.Row="1" Text="Product Description" TextColor="Gray" />
-
-                <Label Grid.Column="1" Grid.Row="2" FontAttributes="Bold" Text="Seller Information" VerticalOptions="Center" TextColor="Green"/>
-
-                <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
-                    <Image HeightRequest="20" Source="call.png"/>
-                    <Label VerticalOptions="Center" Text="599" FontAttributes="Bold" TextColor="Black"/>
-                </StackLayout>
-
-                <StackLayout Padding="10,3" HorizontalOptions="Start" BackgroundColor="#2196F3" Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
-                    <Image HeightRequest="20" Source="call.png"/>
-                    <Label VerticalOptions="Center" Text="50 Cashback" FontAttributes="Bold" TextColor="White"/>
-                </StackLayout>
-
-            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

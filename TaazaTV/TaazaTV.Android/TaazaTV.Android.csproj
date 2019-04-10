@@ -633,6 +633,12 @@
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\magnifier.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\filterIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\sortIcon.png" />
+  </ItemGroup>
   <Import Project="..\TaazaTV\TaazaTV.projitems" Label="Shared" Condition="Exists('..\TaazaTV\TaazaTV.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
