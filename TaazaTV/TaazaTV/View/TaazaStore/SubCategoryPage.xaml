@@ -1,12 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:TaazaTV.Component"
+             xmlns:customContentView="clr-namespace:TaazaTV.Controls"
+             NavigationPage.HasNavigationBar="False"
              x:Class="TaazaTV.View.TaazaStore.SubCategoryPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <Grid>
+            <Grid.Padding>
+                <OnPlatform iOS="0,20,0,0"/>
+            </Grid.Padding>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
+            <StackLayout Grid.Row="1">
+            <ListView RowHeight="210" x:Name="SubCatDetailListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label FontAttributes="Bold" FontSize="Medium" TextColor="Black" Text="{Binding category_name}"/>
+                                <BoxView HeightRequest="3" HorizontalOptions="StartAndExpand" BackgroundColor="#0bac08" WidthRequest="20"/>
+                                <controls:HorizontalList Padding="0,12,0,0" ItemsSource="{Binding subcategory}" ListOrientation="Horizontal" HeightRequest="170">
+                                    <controls:HorizontalList.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="140"/>
+                                                    <ColumnDefinition Width="70"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Text="{Binding category_slug}" IsVisible="False"/>
+                                                <Image InputTransparent="True" Grid.ColumnSpan="2" HeightRequest="170" Aspect="Fill" Source="{Binding category_image.category_image_normal}"/>
+                                                <StackLayout InputTransparent="True" Padding="20,0,0,0" Spacing="35" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Grid.Column="0">
+                                                    <Label TextColor="White" FontSize="Medium" FontAttributes="Bold" Text="{Binding category_name}"/>
+                                                    <Button Text="Shop Now" HeightRequest="40" TextColor="White" Padding="10,0" CornerRadius="20" BackgroundColor="#0bac08"/>
+                                                </StackLayout>
+                                                <Grid.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="SubCategoryTapped"/>
+                                                </Grid.GestureRecognizers>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </controls:HorizontalList.ItemTemplate>
+                                </controls:HorizontalList>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

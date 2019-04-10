@@ -31,6 +31,16 @@ namespace TaazaTV.Model.TaazaStoreModel
         public string category_name { get; set; }
         public string category_slug { get; set; }
         public Store_Category_Image category_image { get; set; }
+        public Store_Sub_Category[] subcategory { get; set; }
+    }
+
+    public class Store_Sub_Category
+    {
+        public int category_id { get; set; }
+        public string category_name { get; set; }
+        public string category_slug { get; set; }
+        public Store_Category_Image category_image { get; set; }
+
     }
 
     public class Store_Category_Image

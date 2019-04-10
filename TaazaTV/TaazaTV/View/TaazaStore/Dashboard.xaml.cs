@@ -2,9 +2,11 @@
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TaazaTV.Controls;
 using TaazaTV.Helper;
 using TaazaTV.Model.TaazaStoreModel;
@@ -17,11 +19,25 @@ namespace TaazaTV.View.TaazaStore
     public partial class Dashboard : ContentPage
     {
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
+
         public Dashboard()
         {
             InitializeComponent();
             HeaderView.Content = new StoreHeaderView();
             InitialLoading();
+            PartialLoading();
+        }
+
+        private async void PartialLoading()
+        {
+            try
+            {
+
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         private async void InitialLoading()
@@ -59,6 +75,11 @@ namespace TaazaTV.View.TaazaStore
         private async void NavToSellerList(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SellerListPage());
+        }
+
+        private async void CategoryListTapped(object sender, EventArgs e)
+        {
+           await Navigation.PushAsync(new SubCategoryPage(((sender as StackLayout).Children[0] as Label).Text));
         }
     }
 }

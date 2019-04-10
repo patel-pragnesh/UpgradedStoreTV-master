@@ -64,8 +64,12 @@
                         <TapGestureRecognizer Tapped="Bell_Btn_Tapped"/>
                     </Image.GestureRecognizers>
                 </Image>
+                
                 <Frame Style="{StaticResource barFrameStyle}">
                     <Label Style="{StaticResource barLabelStyle}" Text="2"/>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Bell_Btn_Tapped"/>
+                    </Frame.GestureRecognizers>
                 </Frame>
 
                 <Image Style="{StaticResource barImgStyle}" Source="cart.png">
@@ -75,6 +79,9 @@
                 </Image>
                 <Frame Style="{StaticResource barFrameStyle}">
                     <Label Style="{StaticResource barLabelStyle}" Text="25"/>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Cart_Btn_Tapped"/>
+                    </Frame.GestureRecognizers>
                 </Frame>
 
             </StackLayout>

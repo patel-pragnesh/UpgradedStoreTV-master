@@ -16,14 +16,13 @@ namespace TaazaTV.View.TaazaStore
     {
 
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
-        public ProductListPage()
+        public ProductListPage(string slugVal)
         {
             InitializeComponent();
-            InitialLoading();
-
+            InitialLoading(slugVal);
         }
 
-        private async void InitialLoading()
+        private async void InitialLoading(string slug)
         {
             try
             {
@@ -31,7 +30,7 @@ namespace TaazaTV.View.TaazaStore
                 {
                     new KeyValuePair<string, string>("device_type", "ANDROID"),
                     new KeyValuePair<string, string>("app_version", "2.0"),
-
+                    new KeyValuePair<string, string>("category_slug", slug),
                 };
 
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GeneralProductListAPI], parameters);

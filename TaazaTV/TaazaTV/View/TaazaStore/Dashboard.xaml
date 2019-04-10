@@ -57,10 +57,14 @@
                     HeightRequest="80">
                         <controls:HorizontalList.ItemTemplate>
                             <DataTemplate>
-                                <StackLayout Padding="5">
-                                    <Image HeightRequest="35" WidthRequest="35" Source="{Binding category_image.category_image_thumb}"/>
-                                    <Label FontAttributes="Bold" FontSize="Micro" Text="{Binding category_name}"/>
-                                </StackLayout>
+                                    <StackLayout Padding="5">
+                                    <Label InputTransparent="True" IsVisible="False" Text="{Binding category_slug}"/>
+                                    <Image InputTransparent="True" HeightRequest="35" WidthRequest="35" Source="{Binding category_image.category_image_thumb}"/>
+                                        <Label InputTransparent="True" FontAttributes="Bold" FontSize="Micro" Text="{Binding category_name}"/>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="CategoryListTapped"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
                             </DataTemplate>
                         </controls:HorizontalList.ItemTemplate>
                     </controls:HorizontalList>
@@ -89,7 +93,7 @@
                     <BoxView Grid.Row="4" HeightRequest="2" BackgroundColor="Gray"/>
 
                     <StackLayout Padding="10" Grid.Row="5" Orientation="Horizontal">
-                        <Label FontSize="Small" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="TOP SELLERS"/>
+                        <Label FontSize="Small" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="BEST SELLERS"/>
                         <Button CornerRadius="15" FontSize="Micro" Padding="15,5" BackgroundColor="#2196F3" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Text="View More" Clicked="NavToSellerList"/>
                     </StackLayout>
 
