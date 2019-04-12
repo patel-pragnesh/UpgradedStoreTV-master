@@ -8,7 +8,7 @@ namespace TaazaTV.Model.TaazaStoreModel
     {
         public BrandList[] brand_list { get; set; }
         public double min_price { get; set; }
-        public long max_price { get; set; }
+        public double max_price { get; set; }
     }
 
     public partial class BrandList

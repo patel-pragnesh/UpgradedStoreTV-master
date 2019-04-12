@@ -80,6 +80,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Component\RangeSliderView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\SellerDetailsModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\SellerListModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\StoreCartModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\StoreGeneralModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\StoreUserAddressModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\UserAddressListModel.cs" />

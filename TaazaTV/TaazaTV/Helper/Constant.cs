@@ -93,7 +93,10 @@ namespace TaazaTV.Helper
              HostName + "/info/get-seller-list",
              HostName + "/info/get-seller-details",
              HostName + "/restaurant-transaction/otp-generate",
+             HostName + "/cart/history",
+
         };
+
 
         public enum APIName : int
         {
@@ -165,6 +168,7 @@ namespace TaazaTV.Helper
             GetSellerListAPI,
             GetSellerDetailsAPI,
             GetOfflinePayOTPAPI,
+            GetCartHistoryAPI,
         }
     }
 }

@@ -38,7 +38,7 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Image Margin="10,0,17,0" Grid.RowSpan="5" Grid.Column="0" Source="{Binding image.normal.image_path}" Aspect="AspectFill"/>
+                                <Image Margin="10,0" Source="{Binding image.thumb.image_path}" Grid.RowSpan="5" Grid.Column="0" Aspect="AspectFill"/>
 
                                 <Label Grid.Column="1" Grid.Row="0" MaxLines="2" LineBreakMode="NoWrap" Text="{Binding product_name}" Font="Bold" TextColor="Black" />
 
@@ -72,7 +72,11 @@
 
                 <BoxView Margin="30,10,0,10" HorizontalOptions="CenterAndExpand" BackgroundColor="White" WidthRequest="2" HeightRequest="23"/>
                 <Image HeightRequest="23" WidthRequest="23" Source="filterIcon.png"/>
-                <Label Margin="0,5" VerticalOptions="Center" FontSize="Small" FontAttributes="Bold" TextColor="White" HorizontalOptions="End" Text="Filter"/>
+                <Label Margin="0,5" VerticalOptions="Center" FontSize="Small" FontAttributes="Bold" TextColor="White" HorizontalOptions="End" Text="Filter">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="FilterBtn_Clicked"/>
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
 
 

@@ -20,6 +20,31 @@ namespace TaazaTV.View.TaazaStore
         {
             InitializeComponent();
             InitialLoading(slugVal);
+            LoadFilterOptions();
+        }
+
+        private async void LoadFilterOptions()
+        {
+            try
+            {
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                {
+                  //  new KeyValuePair<string, string>("category_slug", slug),
+                };
+
+                var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.FilterOptionsAPI], parameters);
+                if (jsonstr.ToString() == "NoInternet")
+                {
+                }
+                else
+                {
+                    var Items = JsonConvert.DeserializeObject<ProductFilterModel>(jsonstr);
+                }
+            }
+            catch (Exception ex)
+            {
+                var x = ex.Message;
+            }
         }
 
         private async void InitialLoading(string slug)
@@ -47,6 +72,11 @@ namespace TaazaTV.View.TaazaStore
             {
                 var x = ex.Message;
             }
+        }
+
+        private async void FilterBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new FilterPage());
         }
     }
 }
