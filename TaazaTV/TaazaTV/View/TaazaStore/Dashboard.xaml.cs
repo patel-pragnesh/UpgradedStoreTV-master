@@ -32,7 +32,24 @@ namespace TaazaTV.View.TaazaStore
         {
             try
             {
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+                //{
+                //    new KeyValuePair<string, string>("category_slug", Constant.CompanyID),
+                //    new KeyValuePair<string, string>("user_id", AppData.UserId)
+                //};
 
+                var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GetStoreDashboardDataAPI], parameters);
+                if (jsonstr.ToString() == "NoInternet")
+                {
+                }
+                else
+                {
+                    var Items = JsonConvert.DeserializeObject<StoreDashModel>(jsonstr);
+                    StoreFeaturedCarousel.ItemsSource = Items.data.features;
+                    OffersListView.ItemsSource = Items.data.offers;
+                    TopSellersListView.ItemsSource = Items.data.top_sellers;
+                    TopSellersListView.HeightRequest = Items.data.top_sellers.Count() * 40;
+                }
             }
             catch(Exception ex)
             {

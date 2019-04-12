@@ -37,7 +37,9 @@ namespace TaazaTV.View.TaazaStore
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GetSellerListAPI], parameters);
                 if (jsonstr.ToString() == "NoInternet")
                 {
+
                 }
+
                 else
                 {
                     var Items = JsonConvert.DeserializeObject<SellerListModel>(jsonstr);
@@ -59,7 +61,6 @@ namespace TaazaTV.View.TaazaStore
         private void Seller_Search_Clicked(object sender, EventArgs e)
         {
             InitialLoading((sender as SearchBar).Text);
-            (sender as SearchBar).Text = "";
         }
 
         //private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)

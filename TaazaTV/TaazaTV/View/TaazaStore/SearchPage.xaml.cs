@@ -17,9 +17,9 @@ namespace TaazaTV.View.TaazaStore
             InitializeComponent();
         }
 
-        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        private async void SearchBar_SearchButtonPressed(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new ProductListPage("",(sender as SearchBar).Text));
         }
     }
 }

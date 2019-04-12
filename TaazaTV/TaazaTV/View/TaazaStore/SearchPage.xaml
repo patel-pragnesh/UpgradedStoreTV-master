@@ -19,7 +19,7 @@
             <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
             <BoxView HeightRequest="2" Grid.Row="1" BackgroundColor="Red"/>
             <StackLayout Grid.Row="2" BackgroundColor="#a2d6fe" Padding="10">
-                <SearchBar HeightRequest="40" Placeholder="search here" PlaceholderColor="Gray" BackgroundColor="White" ></SearchBar>
+                <SearchBar HeightRequest="40" SearchButtonPressed="SearchBar_SearchButtonPressed" Placeholder="search here" PlaceholderColor="Gray" BackgroundColor="White" ></SearchBar>
             </StackLayout>
             <BoxView HeightRequest="2" Grid.Row="3" BackgroundColor="#2296f2"/>
         </Grid>

@@ -37,7 +37,30 @@ public class Seller_Data
 
     public string email_id { get; set; }
 
-    public string avatar { get; set; }
+    public string seller_details { get; set; }
+
+    public long seller_type { get; set; }
+
+    public string[] avater { get; set; }
+
+    public string avatar
+    {
+        get
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(avater[0]))
+                    return "";
+                else
+                    return avater[0];
+            }
+           catch(Exception ex)
+            {
+                return "";
+            }
+        }
+        set { }
+    }
 
     public string address { get; set; }
 

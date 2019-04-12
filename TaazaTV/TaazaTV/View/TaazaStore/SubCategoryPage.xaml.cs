@@ -53,7 +53,7 @@ namespace TaazaTV.View.TaazaStore
 
         private async void SubCategoryTapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ProductListPage(((sender as Grid).Children[0] as Label).Text));
+            await Navigation.PushAsync(new ProductListPage(((sender as Grid).Children[0] as Label).Text, ""));
         }
     }
 }
