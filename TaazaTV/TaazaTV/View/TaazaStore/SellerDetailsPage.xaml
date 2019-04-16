@@ -60,16 +60,18 @@
 
                 </Grid>
                 <StackLayout Padding="30,0" Grid.Row="2" BackgroundColor="#2196f3" Orientation="Horizontal">
-                    <Image Source="pay_now_seller.png"/>
-                    <Label Margin="0,5" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Micro" TextColor="White" FontAttributes="Bold" Text="Pay Now">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Button_Clicked"/>
-                        </Label.GestureRecognizers>
-                    </Label>
+                    <StackLayout Padding="0,7" Orientation="Horizontal">
+                        <Image Source="pay_now_seller.png"/>
+                        <Label VerticalOptions="Center" HorizontalOptions="Start" FontSize="Micro" TextColor="White" FontAttributes="Bold" Text="Pay Now"/>
+                    </StackLayout>
 
                     <BoxView Margin="35,0,0,0" HorizontalOptions="CenterAndExpand" BackgroundColor="White" WidthRequest="3" HeightRequest="23"/>
-                    <Image Source="products_seller.png"/>
-                    <Label Margin="0,5" VerticalOptions="Center" FontSize="Micro" FontAttributes="Bold" TextColor="White" HorizontalOptions="End" Text="View Products"/>
+
+                    <StackLayout Padding="0,7" Orientation="Horizontal">
+                        <Image Source="products_seller.png"/>
+                        <Label VerticalOptions="Center" FontSize="Micro" FontAttributes="Bold" TextColor="White" HorizontalOptions="End" Text="View Products"/>
+                    </StackLayout>
+
                 </StackLayout>
             </Grid>
         </Grid>

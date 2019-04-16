@@ -96,7 +96,7 @@
                         <Button CornerRadius="15" FontSize="Micro" Padding="15,5" BackgroundColor="#2196F3" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Text="View More" Clicked="NavToSellerList"/>
                     </StackLayout>
 
-                    <ListView Grid.Row="6" RowHeight="40" x:Name="TopSellersListView">
+                    <ListView Grid.Row="6" RowHeight="40" ItemTapped="NavSellerDeatils" x:Name="TopSellersListView">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -108,7 +108,6 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-
                 </Grid>
             </ScrollView>
         </Grid>

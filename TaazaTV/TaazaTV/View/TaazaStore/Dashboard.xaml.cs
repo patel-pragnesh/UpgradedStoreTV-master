@@ -98,5 +98,21 @@ namespace TaazaTV.View.TaazaStore
         {
            await Navigation.PushAsync(new SubCategoryPage(((sender as StackLayout).Children[0] as Label).Text));
         }
+
+        private  void SellerDeatilsNav(object sender, SelectedItemChangedEventArgs e)
+        {
+            
+            //(sender as ListView). = -1;
+
+            //var model = ;
+            //BookingsList.SelectedItem = null;
+            //await Navigation.PushAsync(new BookingDetailsPage(model));
+        }
+
+        private async void NavSellerDeatils(object sender, ItemTappedEventArgs e)
+        {
+            (sender as ListView).SelectedItem = null;
+            await Navigation.PushAsync(new SellerDetailsPage((e.Item as TopSeller).seller_id.ToString()));
+        }
     }
 }

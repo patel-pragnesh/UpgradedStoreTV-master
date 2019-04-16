@@ -53,5 +53,10 @@ namespace TaazaTV.View.TaazaStore
         {
             await PopupNavigation.PushAsync(new PopUpTaskView(), true);
         }
+
+        //private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        //{
+        //    await PopupNavigation.PushAsync(new PopUpTaskView(), true);
+        //}
     }
 }

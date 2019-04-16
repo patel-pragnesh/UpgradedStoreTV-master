@@ -721,6 +721,12 @@
   <ItemGroup>
     <BundleResource Include="Resources\tazzawIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pay_now_seller.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\products_seller.png" />
+  </ItemGroup>
   <Import Project="..\TaazaTV\TaazaTV.projitems" Label="Shared" Condition="Exists('..\TaazaTV\TaazaTV.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

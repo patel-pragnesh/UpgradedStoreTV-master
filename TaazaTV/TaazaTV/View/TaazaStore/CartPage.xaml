@@ -10,7 +10,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
 
             <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
