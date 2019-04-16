@@ -16,10 +16,10 @@ namespace TaazaTV.View.TaazaStore
     {
 
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
-        public ProductListPage(string slugVal, string searchText)
+        public ProductListPage(string slugVal, string searchText, string sellerID)
         {
             InitializeComponent();
-            InitialLoading(slugVal, searchText);
+            InitialLoading(slugVal, searchText, sellerID);
             LoadFilterOptions();
         }
 
@@ -48,7 +48,7 @@ namespace TaazaTV.View.TaazaStore
             }
         }
 
-        private async void InitialLoading(string slug, string search)
+        private async void InitialLoading(string slug, string search, string sellerid)
         {
             try
             {
@@ -58,6 +58,7 @@ namespace TaazaTV.View.TaazaStore
                     new KeyValuePair<string, string>("app_version", "2.0"),
                     new KeyValuePair<string, string>("category_slug", slug),
                     new KeyValuePair<string, string>("search_text", search),
+                    new KeyValuePair<string, string>("seller_id", sellerid),
                 };
 
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GeneralProductListAPI], parameters);

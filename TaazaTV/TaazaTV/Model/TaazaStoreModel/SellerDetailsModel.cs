@@ -25,7 +25,9 @@ namespace TaazaTV.Model.TaazaStoreModel
 
         public string email_id { get; set; }
 
-        public string avatar { get; set; }
+        public string[] avater { get; set; }
+
+        //public SellerImageList[] avater { get; set; }
 
         public string address { get; set; }
 
@@ -36,5 +38,10 @@ namespace TaazaTV.Model.TaazaStoreModel
         public string latitude { get; set; }
 
         public string longitude { get; set; }
+    }
+
+    public class SellerImageList
+    {
+        public string image { get; set; }
     }
 }

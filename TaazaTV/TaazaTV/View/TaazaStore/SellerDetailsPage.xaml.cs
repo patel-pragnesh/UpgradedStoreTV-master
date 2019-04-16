@@ -16,13 +16,15 @@ namespace TaazaTV.View.TaazaStore
     public partial class SellerDetailsPage : ContentPage
     {
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
+        string SellerID;
         public SellerDetailsPage(string ID)
         {
             InitializeComponent();
-            InitialLoading(ID);
+            SellerID = ID;
+            InitialLoading();
         }
 
-        private async void InitialLoading(string SellerID)
+        private async void InitialLoading()
         {
             try
             {
@@ -41,6 +43,13 @@ namespace TaazaTV.View.TaazaStore
                 {
                     var Items = JsonConvert.DeserializeObject<SellerDetailsModel>(jsonstr);
                     this.BindingContext = Items.data;
+
+                    var html = new HtmlWebViewSource
+                    {
+                        Html = "<iframe width=\"100%\" height=\"232\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\" src = \"https://maps.google.com/maps?q=" + Items.data.latitude + "," + Items.data.latitude + "&hl=es;z=14&amp;output=embed\" ></ iframe > "
+                    };
+                    WebMap.Source = html;
+
                 }
             }
             catch (Exception ex)
@@ -49,14 +58,14 @@ namespace TaazaTV.View.TaazaStore
             }
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void OpenPopUpPay(object sender, EventArgs e)
         {
             await PopupNavigation.PushAsync(new PopUpTaskView(), true);
         }
 
-        //private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        //{
-        //    await PopupNavigation.PushAsync(new PopUpTaskView(), true);
-        //}
+        private async void ViewSellerProducts(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProductListPage("", "", SellerID));
+        }
     }
 }

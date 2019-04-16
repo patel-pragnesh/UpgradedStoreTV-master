@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="False"
+              xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
               xmlns:customContentView="clr-namespace:TaazaTV.Controls"
              x:Class="TaazaTV.View.TaazaStore.SellerDetailsPage">
     <ContentPage.Content>
@@ -16,12 +17,12 @@
             <Grid Grid.Row="1" RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
-                <Grid RowSpacing="10" Grid.Row="1">
+                <Grid RowSpacing="5" Grid.Row="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -31,38 +32,48 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Image HeightRequest="130" Grid.Row="0" Grid.RowSpan="2" Source="call.png" />
+                    <cv:CarouselView HeightRequest="125" Grid.Row="0" Margin="0" ItemsSource="{Binding avater}">
+                        <cv:CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="bannergray.png" />
+                                    <Image Aspect="AspectFill" Source="{Binding avater[0]}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </cv:CarouselView.ItemTemplate>
+                    </cv:CarouselView>
 
-                    <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
-                        <Label TextColor="White" Text="{Binding full_name}" FontSize="16" LineBreakMode="WordWrap"/>
-                    </StackLayout>
-
-                    <Label FontSize="Medium" FontAttributes="Bold" TextColor="Green" Grid.Row="2" Text="{Binding full_name}"/>
+                    <Label Margin="7,0" FontSize="Medium" FontAttributes="Bold" TextColor="Green" Grid.Row="2" Text="{Binding full_name}"/>
 
                     <BoxView Grid.Row="3" HeightRequest="2" BackgroundColor="Gray"/>
 
-                    <StackLayout Padding="10,5" Spacing="25" Orientation="Horizontal" Grid.Row="4">
-                        <Image Source="call.png"/>
+                    <StackLayout Padding="10,5" Spacing="20" Orientation="Horizontal" Grid.Row="4">
+                        <Image HeightRequest="25" WidthRequest="25" Source="organizer.png"/>
                         <Label  FontSize="Small" Text="{Binding seller_details}"/>
                     </StackLayout>
 
-                    <StackLayout Padding="10,5" Spacing="25" Orientation="Horizontal" Grid.Row="5">
-                        <Image Source="call.png"/>
+                    <StackLayout Padding="10,5" Spacing="18" Orientation="Horizontal" Grid.Row="5">
+                        <Image HeightRequest="25" WidthRequest="25" Source="map.png"/>
                         <Label FontSize="Small" Text="{Binding address}"/>
                     </StackLayout>
 
                     <StackLayout Padding="5" Grid.Row="6" BackgroundColor="#bfe2fe" Orientation="Horizontal">
-                        <Image  Margin="10,0" Source="call.png"/>
-                        <Label Text="Locate Us" TextColor="#2196f3" VerticalOptions="Center"/>
+                        <Image HeightRequest="40" Aspect="AspectFill" Margin="10,0,5,0" Source="seller_locator.png"/>
+                        <Label Text="Locate Us" FontSize="Medium"  FontAttributes="Bold,Italic" TextColor="#2196f3" VerticalOptions="Center"/>
                     </StackLayout>
 
-                    <BoxView Grid.Row="7" HeightRequest="235" BackgroundColor="Blue" />
-
                 </Grid>
-                <StackLayout Padding="30,0" Grid.Row="2" BackgroundColor="#2196f3" Orientation="Horizontal">
+
+
+                <WebView Grid.Row="2" x:Name="WebMap" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" HeightRequest="232"></WebView>
+
+                <StackLayout Padding="30,0" Grid.Row="3" BackgroundColor="#2196f3" Orientation="Horizontal">
                     <StackLayout Padding="0,7" Orientation="Horizontal">
                         <Image Source="pay_now_seller.png"/>
                         <Label VerticalOptions="Center" HorizontalOptions="Start" FontSize="Micro" TextColor="White" FontAttributes="Bold" Text="Pay Now"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OpenPopUpPay"/>
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
 
                     <BoxView Margin="35,0,0,0" HorizontalOptions="CenterAndExpand" BackgroundColor="White" WidthRequest="3" HeightRequest="23"/>
@@ -70,6 +81,9 @@
                     <StackLayout Padding="0,7" Orientation="Horizontal">
                         <Image Source="products_seller.png"/>
                         <Label VerticalOptions="Center" FontSize="Micro" FontAttributes="Bold" TextColor="White" HorizontalOptions="End" Text="View Products"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ViewSellerProducts"/>
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
 
                 </StackLayout>
