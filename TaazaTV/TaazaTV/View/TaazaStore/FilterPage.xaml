@@ -1,38 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:component1="clr-namespace:TaazaTV.Component"
+             xmlns:component1="clr-namespace:TaazaTV.Component"
+             BackgroundColor="#00bbfe"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:customContentView="clr-namespace:TaazaTV.Controls"
              x:Class="TaazaTV.View.TaazaStore.FilterPage">
     <ContentPage.Content>
-        <StackLayout Padding="20,40,20,20" Spacing="50">
-            <component1:RangeSliderView x:Name="something"
-                                         LeftValueChanged="xyz" RightValueChanged="xyz1"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+
+            <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
+
+            <StackLayout Padding="20,10" Grid.Row="1">
+
+                <Label FontAttributes="Bold" TextColor="Cyan" FontSize="Medium" Text="Price Range"/>
+                <BoxView HeightRequest="3" HorizontalOptions="Start" WidthRequest="30" BackgroundColor="White"/>
+
+                <component1:RangeSliderView x:Name="something"
 				BackgroundColor="Transparent"
 				ActiveBarColor="#e1000e"
 				InactiveBarColor="#4b4b4d"
 				HandleImageSource="handle.png"
-	    		MinValue="10" 
-	    		MaxValue="35" 
-	    		Step="1" 
+	    		MinValue="{Binding min_price}" 
+	    		MaxValue="{Binding max_price}" 
+                LeftValue="{Binding  min_price}"
+                RightValue="{Binding max_price}"
+	    		Step="50" 
 	    		ShowBubbles="true" 
 	    		FontSize="16"
-	    		BubbleImageSource="bubble.png"
-	    		LeftValue="10" 
-	    		RightValue="20" />
+	    		BubbleImageSource="bubble.png"/>
 
-            <component1:RangeSliderView 
-				BackgroundColor="Transparent"
-				ActiveBarColor="#e1000e"
-				InactiveBarColor="#4b4b4d"
-				HandleImageSource="handle.png"
-    			MinValue="0" 
-    			MaxValue="20000" 
-    			Step="100" 
-    			ShowBubbles="true"
-	    		FontSize="16"
-    			BubbleImageSource="bubble.png"
-    			LeftValue="500" 
-    			RightValue="15000" />
-        </StackLayout>
+                <Label Margin="0,60,0,0" FontAttributes="Bold" TextColor="Cyan" FontSize="Medium" Text="Brand List"/>
+                <BoxView HeightRequest="3" HorizontalOptions="StartAndExpand" WidthRequest="30" BackgroundColor="White"/>
+                
+                <ListView Footer="" ItemsSource="{Binding brand_list}" x:Name="BrandListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="{Binding image}" HeightRequest="30"></Image>
+                                        <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand">
+                                            <controls:CheckBox DefaultText="{Binding brand_title}"  HorizontalOptions="Fill"  />
+                                        </StackLayout>
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+
+            <StackLayout Grid.Row="2" Margin="50,0" Orientation="Horizontal">
+                <Button TextColor="Black" BackgroundColor="White" CornerRadius="5" Text="Reset" HorizontalOptions="StartAndExpand"/>
+                <Button TextColor="Black" BackgroundColor="White" CornerRadius="5" Text="Apply" HorizontalOptions="EndAndExpand"/>
+                
+            </StackLayout>
+            
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
+<!--Checked="{Binding IsSelected}"-->

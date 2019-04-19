@@ -19,7 +19,44 @@
     </pages:PopupPage.Animation>
     <StackLayout VerticalOptions="Center"  Padding="20,0" HorizontalOptions="FillAndExpand" >
 
-        <Frame HeightRequest="250">
+        <StackLayout BackgroundColor="White" HeightRequest="450">
+            
+            <Image Source="popup_banner" HeightRequest="150"/>
+            
+            <StackLayout Padding="15,5" Orientation="Horizontal">
+                <Image VerticalOptions="CenterAndExpand" Source="pop_icon.png"/>
+                <Label VerticalOptions="CenterAndExpand" TextColor="#299af3" Text="Invoice No."/>
+                <Frame HorizontalOptions="EndAndExpand" Padding="5,0" BackgroundColor="#05b9f6" CornerRadius="8">
+                    <Entry FontSize="Small" Keyboard="Numeric"  PlaceholderColor="White" TextColor="White" Placeholder="356546998745"/>
+                </Frame>
+            </StackLayout>
+
+            <StackLayout Padding="15,5" Orientation="Horizontal">
+                <Image HeightRequest="25" WidthRequest="25" Source="rupeesgreen.png"/>
+                <Label VerticalOptions="CenterAndExpand" TextColor="#299af3" Text="Billing Amount"/>
+                <Frame HorizontalOptions="EndAndExpand" Padding="5,0" BackgroundColor="#05b9f6" CornerRadius="8">
+                    <Entry FontSize="Small" Keyboard="Numeric"  PlaceholderColor="White" TextColor="White" Placeholder="35655"/>
+                </Frame>
+            </StackLayout>
+
+            <StackLayout Padding="15,5" Orientation="Horizontal">
+                <Image HeightRequest="25" WidthRequest="25" Source="taazaicon.png"/>
+                <Label  VerticalOptions="CenterAndExpand" TextColor="#299af3" Text="Taaza Redeemed"/>
+                <Frame HorizontalOptions="EndAndExpand" Padding="5,0" BackgroundColor="#05b9f6" CornerRadius="8">
+                    <Entry FontSize="Small" Keyboard="Numeric"  PlaceholderColor="White" TextColor="White" Placeholder="745"/>
+                </Frame>
+            </StackLayout>
+
+            <StackLayout Margin="0,15" BackgroundColor="#2f72f7" HorizontalOptions="CenterAndExpand" Padding="20,5" Orientation="Horizontal">
+                <Label TextColor="White" Text="Net Pay"/>
+                <Image Margin="40,0,0,0" Source="rupeesblack.png" HeightRequest="15" HorizontalOptions="EndAndExpand" WidthRequest="20"/>
+                <Label TextColor="White" Text="52326542"/>
+            </StackLayout>
+
+            <Button Margin="0,0,0,15" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="White" BackgroundColor="#2196f3" Padding="10" CornerRadius="5" Text="GET OTP"/>
+        </StackLayout>
+        
+        <!--<Frame HeightRequest="300">
 
             <StackLayout Padding="20" Spacing="0">
 
@@ -47,11 +84,11 @@
                 </StackLayout>
 
                 <StackLayout Padding="30" Spacing="30" HorizontalOptions="End" Orientation="Horizontal">
-                    <Button Padding="20,0" FontAttributes="Bold" TextColor="White" BackgroundColor="Blue" Text="Get OTP"/>
-                    <Button Padding="20,0" FontAttributes="Bold" TextColor="White" BackgroundColor="Red" Text="Close"/>
+                    <Button Padding="20,0" FontAttributes="Bold" TextColor="White" Clicked="GetOtpClicked" BackgroundColor="Blue" Text="Get OTP"/>
+                    <Button Padding="20,0" FontAttributes="Bold" TextColor="White" Clicked="Button_Clicked" BackgroundColor="Red" Text="Close"/>
                 </StackLayout>
             </StackLayout>
-        </Frame>
+        </Frame>-->
         <!--<Frame CornerRadius="10" Padding="0" BackgroundColor="CadetBlue" >
             <StackLayout Padding="10">
                 <Label Text="First Popup Page" TextColor="Black" FontSize="20" HorizontalOptions="Center"></Label>

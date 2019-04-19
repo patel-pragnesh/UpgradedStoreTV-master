@@ -60,7 +60,7 @@ namespace TaazaTV.View.TaazaStore
 
         private async void OpenPopUpPay(object sender, EventArgs e)
         {
-            await PopupNavigation.PushAsync(new PopUpTaskView(), true);
+            await PopupNavigation.PushAsync(new PopUpTaskView(SellerID), true);
         }
 
         private async void ViewSellerProducts(object sender, EventArgs e)

@@ -453,9 +453,9 @@ namespace TaazaTV.Component
 				adjustedValue = this.MinValue;
 			}
 
-			if(leftValue > this.RightValue)
+			if(leftValue > (this.RightValue - this.Step))
 			{
-				adjustedValue = this.RightValue;
+				adjustedValue = this.RightValue - this.Step;
 			}
 
 			return Math.Round(adjustedValue / this.Step) * this.Step;
@@ -470,9 +470,9 @@ namespace TaazaTV.Component
 				adjustedValue = this.MaxValue;
 			}
 
-			if(rightValue < this.LeftValue)
+			if(rightValue < this.LeftValue + this.Step)
 			{
-				adjustedValue = this.LeftValue;
+				adjustedValue = this.LeftValue + this.Step;
 			}
 
 			return Math.Round(adjustedValue / this.Step) * this.Step;

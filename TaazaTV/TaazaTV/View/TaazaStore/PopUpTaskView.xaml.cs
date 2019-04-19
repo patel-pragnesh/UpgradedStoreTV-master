@@ -16,9 +16,11 @@ namespace TaazaTV.View.TaazaStore
     public partial class PopUpTaskView
     {
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
-        public PopUpTaskView()
+        string RestSellId;
+        public PopUpTaskView(string ID)
         {
             InitializeComponent();
+            RestSellId = ID;
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
@@ -26,18 +28,18 @@ namespace TaazaTV.View.TaazaStore
             await PopupNavigation.PopAsync(true);
         }
 
-        private async void Get_OTP_Clicked()
+        private async void GetOtpClicked(object sender, EventArgs e)
         {
             try
             {
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
-                    new KeyValuePair<string, string>("seller_id", "ANDROID"),
-                    new KeyValuePair<string, string>("user_id", "2.0"),
+                    new KeyValuePair<string, string>("seller_id", RestSellId),
+                    new KeyValuePair<string, string>("user_id", AppData.UserId),
                     new KeyValuePair<string, string>("seller_bill_no", "43"),
                     new KeyValuePair<string, string>("seller_bill_amount", "43"),
                     new KeyValuePair<string, string>("reedem_taaza_cash_amount", "43"),
-                    new KeyValuePair<string, string>("type", "43"),
+                    new KeyValuePair<string, string>("type", "1"),
                 };
 
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GetOfflinePayOTPAPI], parameters);
@@ -55,5 +57,6 @@ namespace TaazaTV.View.TaazaStore
                 var x = ex.Message;
             }
         }
+
     }
 }

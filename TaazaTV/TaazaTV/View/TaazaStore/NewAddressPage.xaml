@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              x:Class="TaazaTV.View.TaazaStore.NewAddressPage">
     <ContentPage.Resources>
 
@@ -23,7 +24,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Spacing="25" Margin="25">
+            <StackLayout Spacing="17" Margin="25">
 
                 <Label Text="Pincode*"/>
                 <Entry Placeholder="743145"/>
@@ -59,6 +60,16 @@
                 <Entry Placeholder="9636985632"/>
 
                 <Label Text="Address Type"/>
+
+                <controls:BindableRadioGroup x:Name="AddressType">
+                    <controls:BindableRadioGroup.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Home</x:String>
+                                <x:String>Work</x:String>
+                                <x:String>Other</x:String>
+                            </x:Array>
+                    </controls:BindableRadioGroup.ItemsSource>
+                </controls:BindableRadioGroup>
 
                 <Button Text="Save"/>
 

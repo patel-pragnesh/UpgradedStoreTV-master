@@ -713,9 +713,6 @@
     <BundleResource Include="Resources\pop_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\popupBanner.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\seller_locator.png" />
   </ItemGroup>
   <ItemGroup>
@@ -726,6 +723,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\products_seller.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\popup_banner.png" />
   </ItemGroup>
   <Import Project="..\TaazaTV\TaazaTV.projitems" Label="Shared" Condition="Exists('..\TaazaTV\TaazaTV.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

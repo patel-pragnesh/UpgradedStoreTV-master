@@ -7358,7 +7358,7 @@ namespace TaazaTV.Droid
 			public const int pop_icon = 2130837905;
 			
 			// aapt resource value: 0x7f020192
-			public const int popupBanner = 2130837906;
+			public const int popup_banner = 2130837906;
 			
 			// aapt resource value: 0x7f020193
 			public const int privacypolicy = 2130837907;
