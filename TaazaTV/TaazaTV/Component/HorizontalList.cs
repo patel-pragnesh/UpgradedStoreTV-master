@@ -89,6 +89,7 @@ namespace TaazaTV.Component
             _scrollView.Orientation = ListOrientation == StackOrientation.Horizontal
                 ? ScrollOrientation.Horizontal
                 : ScrollOrientation.Vertical;
+            _scrollView.HorizontalScrollBarVisibility = ScrollBarVisibility.Never;
 
             if (ItemsSource == null)
             {

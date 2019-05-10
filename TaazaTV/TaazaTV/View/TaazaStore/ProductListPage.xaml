@@ -18,7 +18,7 @@
 
             <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
 
-            <ListView Grid.Row="1" x:Name="ProductListView" RowHeight="140">
+            <ListView ItemTapped="NavToProductDetails" Grid.Row="1" x:Name="ProductListView" RowHeight="140">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

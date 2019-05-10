@@ -90,6 +90,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\CommonFunc.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\FacebookServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\FacebookViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ProductDetailsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\Accounts\ChangePasswordPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

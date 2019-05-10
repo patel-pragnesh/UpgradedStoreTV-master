@@ -70,7 +70,11 @@ namespace TaazaTV.Helper
                 }
 
             }
-            catch (Exception ex) { return "NoInternet"; }
+            catch (Exception ex)
+            {
+                var x = ex.Message;
+                return "NoInternet";
+            }
         }
 
         public async Task<string> PostFormDataAsync(string URL, MultipartFormDataContent postData)

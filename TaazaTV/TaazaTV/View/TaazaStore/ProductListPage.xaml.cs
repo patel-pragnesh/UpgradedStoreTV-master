@@ -23,7 +23,6 @@ namespace TaazaTV.View.TaazaStore
             LoadFilterOptions();
         }
 
-
         private async void LoadFilterOptions()
         {
             try
@@ -80,6 +79,11 @@ namespace TaazaTV.View.TaazaStore
         private async void FilterBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new FilterPage());
+        }
+
+        private async void NavToProductDetails(object sender, ItemTappedEventArgs e)
+        {
+            await Navigation.PushAsync(new ProductDetailsPage((e.Item as Store_Product_List).product_slug));
         }
     }
 }

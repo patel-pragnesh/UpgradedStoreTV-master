@@ -18,12 +18,12 @@ namespace TaazaTV
         {
             InitializeComponent();
 
-            //MainPage = new NavigationPage(new SellerListPage());
-
             //AppData.IsLogin = true;
             //AppData.UserId = "4";
             //IDevice device = Resolver.Resolve<IDevice>();
             //Constant.DeviceToken = device.Id;
+
+            // MainPage = new ProductDetailsPage();
 
             #region MyRegion
             if (AppData.IsMerchantLogin)
@@ -34,7 +34,6 @@ namespace TaazaTV
             else
             {
                 if (AppData.IsLogin || AppData.IsSkip)
-
                 {
                     MainPage = new MasterDetailsPage();
                 }
@@ -43,8 +42,8 @@ namespace TaazaTV
                 {
                     MainPage = new RegistrationPage();
                 }
-
             }
+
             #endregion
 
             //Background color

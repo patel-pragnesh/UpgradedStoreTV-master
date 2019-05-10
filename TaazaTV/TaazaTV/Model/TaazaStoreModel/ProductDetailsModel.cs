@@ -26,7 +26,7 @@ namespace TaazaTV.Model.TaazaStoreModel
         public string product_description { get; set; }
         public string total_skus { get; set; }
         public string price_range { get; set; }
-        public Store_Product_Images[] images { get; set; }
+        public List<Store_Product_Images> images { get; set; }
         public Product_Sku_Variants[] sku_variants { get; set; }
         
     }
