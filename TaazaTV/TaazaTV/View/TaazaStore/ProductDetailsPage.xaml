@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="False"
              xmlns:customContentView="clr-namespace:TaazaTV.Controls"
-              xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
              xmlns:controls="clr-namespace:TaazaTV.Component"
              BackgroundColor="White"
              x:Class="TaazaTV.View.TaazaStore.ProductDetailsPage">
@@ -75,7 +75,7 @@
                                     <controls:HorizontalList Grid.Column="1" Spacing="10" Padding="10,7" SelectedItemChanged="VariantsSelectionChanged" ItemsSource="{Binding variant_options}" ListOrientation="Horizontal" HeightRequest="45">
                                         <controls:HorizontalList.ItemTemplate>
                                             <DataTemplate>
-                                                <Frame BackgroundColor="White" BorderColor="Black" Padding="20,8" CornerRadius="20" HasShadow="False">
+                                                <Frame BackgroundColor="{Binding background_color}" BorderColor="Black" Padding="20,8" CornerRadius="20" HasShadow="False">
                                                     <Label VerticalOptions="Center" FontSize="Small" TextColor="Black" HorizontalOptions="Center" Text="{Binding attribute_value_name}"/>
                                                     <!--<Frame.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnVariantSelected"/>
@@ -90,7 +90,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <Button Grid.Row="5" Text="Add To Cart" Clicked="AddCartClicked"/>
+                <Button Grid.Row="5" Clicked="AddToCartClicked" Text="Add To Cart"/>
 
             </Grid>
         </ScrollView>

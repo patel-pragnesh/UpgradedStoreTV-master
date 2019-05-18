@@ -53,7 +53,7 @@ namespace TaazaTV.Model.TaazaStoreModel
 
         public long total_price { get; set; }
 
-        public Uri product_image_url { get; set; }
+        public string product_image_url { get; set; }
     }
 }
 

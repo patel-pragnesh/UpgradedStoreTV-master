@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaazaTV.Component;
 using TaazaTV.Helper;
 using TaazaTV.Model.TaazaStoreModel;
 using TaazaTV.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static TaazaTV.ViewModel.ProductDetailsViewModel;
 
 namespace TaazaTV.View.TaazaStore
 {
@@ -19,9 +21,12 @@ namespace TaazaTV.View.TaazaStore
         List<int> SelectedVariants = new List<int>();
         ProductDetailsModel Items = new ProductDetailsModel();
         ProductDetailsViewModel vm = new ProductDetailsViewModel();
+        int remAttr;
+        string slug;
         public ProductDetailsPage(string pro_slug)
         {
             InitializeComponent();
+            slug = pro_slug;
             InitialLoading(pro_slug);
             this.BindingContext = vm;
         }
@@ -45,6 +50,7 @@ namespace TaazaTV.View.TaazaStore
                 else
                 {
                     Items = JsonConvert.DeserializeObject<ProductDetailsModel>(jsonstr);
+                    vm.ProductID = Items.data.product_details.product_id;
                     vm.Name = Items.data.product_details.product_name;
                     vm.Description = Items.data.product_details.product_description;
                     vm.Seller = Items.data.product_details.product_name;
@@ -52,11 +58,14 @@ namespace TaazaTV.View.TaazaStore
                     vm.PriceRange = Items.data.product_details.price_range;
                     vm.CarImages = new List<Store_Product_Images>(Items.data.product_details.images);
 
-                    if(Items.data.product_options.Count() != 0)
+                    
+                    if (Items.data.product_options.Count() != 0)
                     {
-                        VariantsListView.ItemsSource = Items.data.product_options;
+                        vm.ProductOptions = new List<Product_Sku_Options>(Items.data.product_options);
+                        VariantsListView.ItemsSource = vm.ProductOptions;
                         VariantsListView.HeightRequest = (Items.data.product_options.Count()*60) + 5;
                     }
+
                 }
             }
             catch (Exception ex)
@@ -65,35 +74,85 @@ namespace TaazaTV.View.TaazaStore
             }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            if(SelectedVariants.Count() == Items.data.product_options.Count())
-            {
-                var NewBindingContext = Items.data.product_details.sku_variants.Where(z => z.variant_option_ids.Intersect(SelectedVariants).Count() == Items.data.product_options.Count()).FirstOrDefault();
-
-                vm.CarImages = NewBindingContext.images.ToList();
-                vm.Description = NewBindingContext.description;
-                vm.OfferPrice = NewBindingContext.sale_price;
-                vm.Price = NewBindingContext.regular_price;
-                vm.ProductID = NewBindingContext.product_id;
-                vm.SkuID = NewBindingContext.sku_id;
-            }
-           
-        }
-
-        private void AddCartClicked(object sender, EventArgs e)
-        {
-
-        }
-
-        //private void OnVariantSelected(object sender, EventArgs e)
-        //{
-        //    (sender as Frame).BackgroundColor = Color.Purple;
-        //}
-
         private void VariantsSelectionChanged(object sender, EventArgs e)
         {
+            if((sender as HorizontalList).SelectedItem!= null)
+            {
+                List<Product_Variant_Options> itemList = new List<Product_Variant_Options>((sender as HorizontalList).ItemsSource as List<Product_Variant_Options>);
 
+               foreach(var x in itemList)
+               {
+                    if (x.IsSelected == true)
+                    {
+                        remAttr = x.variant_option_id;
+                        SelectedVariants.Remove(remAttr);
+                    }
+                }
+
+                vm.ProductOptions.SelectMany(a => a.variant_options.Where(b => b.variant_option_id == remAttr)
+                         .Select(d => { d.background_color = "White"; d.IsSelected = false; return d; })).ToList();
+
+                Product_Variant_Options item = (sender as HorizontalList).SelectedItem as Product_Variant_Options;
+                             
+                vm.ProductOptions.SelectMany(a => a.variant_options.Where(b => b.variant_option_id == item.variant_option_id)
+                         .Select(d => { d.background_color = "Purple"; d.IsSelected = true; return d; })).ToList();
+
+                SelectedVariants.Add(item.variant_option_id);
+
+                if (SelectedVariants.Count() == Items.data.product_options.Count())
+                {
+                    PriceStack.IsVisible = false;
+                    OfferStack.IsVisible = true;
+
+                    var NewBindingContext = Items.data.product_details.sku_variants.Where(z => z.variant_option_ids.Intersect(SelectedVariants).Count() == Items.data.product_options.Count()).FirstOrDefault();
+                    vm.CarImages = NewBindingContext.images.ToList();
+                    vm.Description = NewBindingContext.description;
+                    vm.OfferPrice = NewBindingContext.sale_price;
+                    vm.Price = NewBindingContext.regular_price;
+                    vm.SkuID = NewBindingContext.sku_id;
+                    vm.ProductID = NewBindingContext.product_id;
+                    vm.SkuID = NewBindingContext.sku_id;
+                }
+            }
+        }
+
+        private async void AddToCartClicked(object sender, EventArgs e)
+        {
+            if (vm.SkuID != null)
+            {
+                try
+                {
+                    List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                    {
+                     new KeyValuePair<string, string>("user_id", AppData.UserId),
+                     new KeyValuePair<string, string>("mode", "add"),
+                     new KeyValuePair<string, string>("product_id", vm.ProductID),
+                     new KeyValuePair<string, string>("product_sku_id", vm.SkuID),
+                     new KeyValuePair<string, string>("quantity", "1"),
+                    };
+
+                    var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.AddRemoveCartAPI], parameters);
+                    if (jsonstr.ToString() == "NoInternet")
+                    {
+
+                    }
+
+                    else
+                    {
+                        var Items = JsonConvert.DeserializeObject<SuccessResponseModel>(jsonstr);
+                        if(Items.responseText == "Success")
+                        await DisplayAlert("Alert", "Product Added To Cart!!", "OK");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Alert", "Some Error Occured!!", "OK");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Alert", "Please select one option!!", "OK");
+            }
         }
     }
 }

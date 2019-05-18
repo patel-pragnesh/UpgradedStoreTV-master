@@ -23,7 +23,7 @@ namespace TaazaTV
             //IDevice device = Resolver.Resolve<IDevice>();
             //Constant.DeviceToken = device.Id;
 
-            // MainPage = new ProductDetailsPage();
+            //   MainPage = new ProductDetailsPage("ppp");
 
             #region MyRegion
             if (AppData.IsMerchantLogin)

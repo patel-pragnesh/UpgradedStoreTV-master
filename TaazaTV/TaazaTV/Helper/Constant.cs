@@ -95,6 +95,7 @@ namespace TaazaTV.Helper
              HostName + "/restaurant-transaction/otp-generate",
              HostName + "/cart/history",
              HostName + "/dashboard/customer-dashboard",
+             HostName + "/cart/add-remove",
         };
 
 
@@ -170,6 +171,7 @@ namespace TaazaTV.Helper
             GetOfflinePayOTPAPI,
             GetCartHistoryAPI,
             GetStoreDashboardDataAPI,
+            AddRemoveCartAPI,
         }
     }
 }

@@ -114,6 +114,7 @@
     <IpaIncludeArtwork>false</IpaIncludeArtwork>
     <CodesignExtraArgs />
     <CodesignResourceRules />
+    <MtouchDebug>true</MtouchDebug>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>

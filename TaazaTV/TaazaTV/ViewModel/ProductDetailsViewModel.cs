@@ -9,9 +9,11 @@ namespace TaazaTV.ViewModel
 {
     class ProductDetailsViewModel : INotifyPropertyChanged
     {
-        public string _name, _description, _seller, _sellerdesc, _price, _offerPrice, _pricerange, _productID, _skuID;
+        private string _name, _description, _seller, _sellerdesc, _price, _offerPrice, _pricerange, _productID, _skuID;
 
-        public List<Store_Product_Images> _carImages;
+        private List<Store_Product_Images> _carImages;
+
+        private List<Product_Sku_Options> _productOptions;
 
         public string Name
         {
@@ -144,6 +146,36 @@ namespace TaazaTV.ViewModel
             }
         }
 
+        public List<Product_Sku_Options> ProductOptions
+        {
+            get
+
+            {
+                return _productOptions;
+            }
+            set
+            {
+                _productOptions = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+
+
+
+
+
+
+       
+       
+
+
+
+
+
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -151,4 +183,6 @@ namespace TaazaTV.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+
+   
 }

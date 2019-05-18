@@ -84,6 +84,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\StoreDashModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\StoreGeneralModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\StoreUserAddressModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\SuccessResponseModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\UserAddressListModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaTransactionsModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\UserWiseSubmitNewsModel.cs" />

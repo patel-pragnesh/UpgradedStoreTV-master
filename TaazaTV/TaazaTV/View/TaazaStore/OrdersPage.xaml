@@ -40,7 +40,7 @@
                         <Label VerticalOptions="Center" Text="599" FontAttributes="Bold" TextColor="Black"/>
                     </StackLayout>
 
-                    <Image Margin="20,0,24,0" Grid.Row="4" Grid.ColumnSpan="2" Source="one.png"/>
+                    <Image Margin="20,0,24,0" Grid.Row="4" Grid.ColumnSpan="2" Source="deliveredIcon.png"/>
 
                     <StackLayout Padding="13,0" Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2">
                         <Label FontSize="Micro" HorizontalOptions="Start" Text="ORDERED"/>

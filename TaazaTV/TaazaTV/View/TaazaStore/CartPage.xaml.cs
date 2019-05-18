@@ -39,6 +39,7 @@ namespace TaazaTV.View.TaazaStore
                 else
                 {
                     var Items = JsonConvert.DeserializeObject<StoreCartModel>(jsonstr);
+                    CartListView.ItemsSource = Items.data.cart_data.history_data;
                 }
             }
             catch (Exception ex)
@@ -58,6 +59,16 @@ namespace TaazaTV.View.TaazaStore
         }
 
         private void IncreaseCountTapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListViewTapped(object sender, ItemTappedEventArgs e)
+        {
+            (sender as ListView).SelectedItem = null;
+        }
+
+        private void RemoveItemClicked(object sender, EventArgs e)
         {
 
         }
