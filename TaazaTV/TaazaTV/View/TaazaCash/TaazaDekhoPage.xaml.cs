@@ -91,8 +91,9 @@ namespace TaazaTV.View.TaazaCash
                    
             }
 
-            catch
+            catch(Exception ex)
             {
+                var a = ex.Message;
                 Loader.IsVisible = false;
                 NodataPage.IsVisible = true;
             }

@@ -62,12 +62,12 @@
                         <StackLayout Margin="7" Grid.Column="0" Orientation="Vertical">
                             <Label Text="{Binding restaurant_name}" FontSize="25" FontAttributes="Bold" TextColor="Green"></Label>
                         </StackLayout>
-                        <StackLayout Margin="7" HorizontalOptions="Center" HeightRequest="50" WidthRequest="120"  VerticalOptions="CenterAndExpand" BackgroundColor="#fea500" Grid.Column="1">
+                        <!--<StackLayout Margin="7" HorizontalOptions="Center" HeightRequest="50" WidthRequest="120"  VerticalOptions="CenterAndExpand" BackgroundColor="#fea500" Grid.Column="1">
                             <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Book Now" TextColor="White"/>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="NavToPayment"/>
                             </StackLayout.GestureRecognizers>
-                        </StackLayout>
+                        </StackLayout>-->
                     </Grid>
                     <StackLayout Grid.Row="2" Spacing="10" Orientation="Vertical">
                         <StackLayout Orientation="Horizontal">
@@ -84,14 +84,14 @@
                             <Label Text="{Binding contact_details}" FontSize="15" LineBreakMode="TailTruncation" VerticalOptions="Center"></Label>
                             <!--<Label Text="{Binding event_duration_type_text}" FontSize="15" LineBreakMode="TailTruncation" VerticalOptions="Center"></Label>-->
                         </StackLayout>
-                        <StackLayout Orientation="Horizontal">
+                        <!--<StackLayout Orientation="Horizontal">
                             <Image Source="tickets.png" WidthRequest="30"></Image>
                             <Label Text="{Binding seat_price, StringFormat='Rs. {0}'} " FontSize="15" LineBreakMode="TailTruncation" VerticalOptions="Center"></Label>
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
                                 <Image Source="taazaicon.png" WidthRequest="30"/>
                                 <Label Text="{Binding cash_back, StringFormat=' {0} Cashback'} " TextColor="Green" FontSize="15" LineBreakMode="TailTruncation" VerticalOptions="Center"></Label>
                             </StackLayout>
-                        </StackLayout>
+                        </StackLayout>-->
                         <StackLayout Orientation="Horizontal">
                             <Image Source="map.png" WidthRequest="25"></Image>
                             <Label Text="{Binding restaurant_vanue.picklocation}" FontSize="15" VerticalOptions="Center"></Label>
@@ -103,7 +103,8 @@
                 </Grid>
             </StackLayout>
         </ScrollView>
-        <Grid Grid.Row="2" BackgroundColor="LightGray">
+        <Button Grid.Row="2" Text="Redeem Taaza Cash" BackgroundColor="#fea500" TextColor="White" Clicked="PopUpPaymentRestaurant"/>
+        <!--<Grid Grid.Row="2" BackgroundColor="LightGray">
             <cv:CarouselView Margin="0"  x:Name="CarouselAd" ItemSelected="CarouselAd_ItemSelected" HeightRequest="60">
                 <cv:CarouselView.ItemTemplate>
                     <DataTemplate>
@@ -121,7 +122,7 @@
                     </DataTemplate>
                 </cv:CarouselView.ItemTemplate>
             </cv:CarouselView>
-        </Grid>
+        </Grid>-->
         <tools:NoInternetPage Grid.Row="1" x:Name="NoInternet" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething"></tools:NoInternetPage>
         <tools:NoDataPage Grid.Row="1" x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
         <tools:Loader Grid.Row="1" x:Name="Loader" IsVisible="False"></tools:Loader>

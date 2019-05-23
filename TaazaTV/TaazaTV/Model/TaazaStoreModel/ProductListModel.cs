@@ -33,10 +33,14 @@ namespace TaazaTV.Model.TaazaStoreModel
         public string product_name { get; set; }
         public string product_slug { get; set; }
         public string product_description { get; set; }
+        public string cashback { get; set; }
+        public string max_taazacash_can_use { get; set; }
         public string total_skus { get; set; }
         public string price_range { get; set; }
         public Store_Product_Images image { get; set; }
         public Product_Sku_Details_Data sku_details { get; set; }
+        public string seller_name { get; set; }
+        public string seller_details { get; set; }
     }
 
     public class Product_Sku_Details_Data

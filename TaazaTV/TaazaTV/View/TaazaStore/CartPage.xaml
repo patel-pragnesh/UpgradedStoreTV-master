@@ -6,11 +6,11 @@
              x:Class="TaazaTV.View.TaazaStore.CartPage">
     <ContentPage.Content>
 
-        <Grid>
+        <Grid RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
             <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
@@ -46,26 +46,30 @@
                                     <StackLayout Padding="0,0,10,0" Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
                                         <Label MaxLines="2" LineBreakMode="NoWrap" Text="{Binding product_name}" FontSize="Small" Font="Bold" TextColor="Black" />
 
-                                        <Image HorizontalOptions="EndAndExpand" Source="increase.png"  HeightRequest="15">
-                                            <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="Decrease_CountTapped"/>
-                                            </Image.GestureRecognizers>
-                                        </Image>
-                                        <Label HorizontalOptions="End" VerticalOptions="Center" Text="{Binding quantity}" FontSize="Small" LineBreakMode="TailTruncation" Font="Bold" TextColor="Black" />
-                                        <Image HorizontalOptions="End"  Source="decrease.png"  HeightRequest="15">
+                                        <Image HorizontalOptions="EndAndExpand" Source="decrease.png"  HeightRequest="15">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="IncreaseCountTapped"/>
                                             </Image.GestureRecognizers>
                                         </Image>
+                                        <Label HorizontalOptions="End" VerticalOptions="Center" Text="{Binding quantity}" FontSize="Small" LineBreakMode="TailTruncation" Font="Bold" TextColor="Black" />
+                                        <Image HorizontalOptions="End"  Source="increase.png"   HeightRequest="15">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="Decrease_CountTapped"/> 
+                                            </Image.GestureRecognizers>
+                                        </Image>
                                     </StackLayout>
 
-                                    <Label Grid.Column="1" Grid.Row="2" Text="Product Description Lorme Ipsu Text Hi hna" TextColor="Gray" FontSize="12" LineBreakMode="TailTruncation" />
+                                    <Label Grid.Column="1" Grid.Row="2" Text="{Binding product_sku_description}" TextColor="Gray" FontSize="12" LineBreakMode="TailTruncation" />
 
-                                    <Label Grid.Column="1" Grid.Row="3" x:Name="address" Text="Seller Information" FontSize="12" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#2196F3"/>
+                                    <Label Grid.Column="1" Grid.Row="3" Text="{Binding seller_name}" FontSize="12" VerticalOptions="Center" LineBreakMode="TailTruncation" TextColor="#2196F3"/>
 
                                     <StackLayout Padding="0,0,20,0" Grid.Column="1" Grid.Row="4" Orientation="Horizontal">
                                         <Image Source="rupeesgreen.png"  HeightRequest="15"/>
-                                        <Label VerticalOptions="Center" Text="120" FontAttributes="Bold" FontSize="12" TextColor="Green"/>
+                                        <Label VerticalOptions="Center" Text="{Binding total_price}" FontAttributes="Bold" FontSize="12" TextColor="Green"/>
+
+                                        <Image Margin="20,0,0,0" Source="taazaicon.png"  HeightRequest="15"/>
+                                        <Label VerticalOptions="Center" Text="{Binding max_cashback_total, StringFormat=' {0}  Cashback '}" FontAttributes="Bold" FontSize="12" TextColor="#007acc"/>
+                                       
                                         <Image VerticalOptions="Center" HorizontalOptions="EndAndExpand" HeightRequest="20" Source="dustbin.png" >
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="RemoveItemClicked"/>
@@ -79,7 +83,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button Margin="0,20" BackgroundColor="#007acc" TextColor="White" VerticalOptions="EndAndExpand" Grid.Row="2" Clicked="Button_Clicked" HorizontalOptions="Center" Text="CheckOut"/>
+            <Button BackgroundColor="#007acc" TextColor="White" Grid.Row="2" Clicked="Button_Clicked" Text="CheckOut"/>
 
         </Grid>
 

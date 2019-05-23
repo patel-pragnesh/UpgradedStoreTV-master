@@ -38,13 +38,13 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Image Source="{Binding image.thumb.image_path}" Grid.RowSpan="5" Grid.Column="0" Aspect="AspectFill"/>
+                                <Image Source="{Binding image.thumb.image_path}" Margin="5,0" Grid.RowSpan="5" Grid.Column="0" Aspect="AspectFill"/>
 
                                 <Label Grid.Column="1" Grid.Row="0" MaxLines="2" LineBreakMode="NoWrap" Text="{Binding product_name}" Font="Bold" TextColor="Black" />
 
                                 <Label Grid.Column="1" Grid.Row="1" MaxLines="1" LineBreakMode="TailTruncation" Text="{Binding product_description}" TextColor="Gray" />
 
-                                <Label Grid.Column="1" Grid.Row="2" FontAttributes="Bold" Text="Seller Information" VerticalOptions="Center" TextColor="Green"/>
+                                <Label Grid.Column="1" Grid.Row="2" FontAttributes="Bold" Text="{Binding seller_name}" VerticalOptions="Center" TextColor="Green"/>
 
                                 <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
                                     <Image HeightRequest="20" Source="rupeesblack.png"/>

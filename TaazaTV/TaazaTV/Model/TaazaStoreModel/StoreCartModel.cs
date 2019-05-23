@@ -26,7 +26,9 @@ namespace TaazaTV.Model.TaazaStoreModel
 
         public Cart_History_Data[] history_data { get; set; }
 
-        public long total_price { get; set; }
+        public int total_price { get; set; }
+
+        public int total_taazacash_can_use { get; set; }
 
         public long user_id { get; set; }
 
@@ -38,6 +40,14 @@ namespace TaazaTV.Model.TaazaStoreModel
         public long cart_history_id { get; set; }
 
         public long product_id { get; set; }
+
+        public int max_taaza_cash_use_each { get; set; }
+
+        public int max_taaza_cash_use_total { get; set; }
+
+        public int max_cashback_each { get; set; }
+
+        public int max_cashback_total { get; set; }
 
         public string product_name { get; set; }
 
@@ -54,6 +64,8 @@ namespace TaazaTV.Model.TaazaStoreModel
         public long total_price { get; set; }
 
         public string product_image_url { get; set; }
+
+        public string seller_name { get; set; }
     }
 }
 

@@ -54,6 +54,7 @@ namespace TaazaTV.View.TaazaStore
 
         private async void SellerListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            SellersListView.SelectedItem = null;
             var model = e.Item as Seller_Data;
             await Navigation.PushAsync(new SellerDetailsPage(model.seller_id.ToString()));
         }

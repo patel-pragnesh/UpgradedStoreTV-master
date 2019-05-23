@@ -140,7 +140,7 @@
                                 </StackLayout>
                                 <StackLayout  Padding="15,0" Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
                                     <Label Text="{Binding seat_price, StringFormat='Rs. {0:F2}'} " FontSize="12" TextColor="Green"/>
-                                    <Label HorizontalOptions="EndAndExpand" FontSize="12" TextColor="Green"  Text="{Binding cash_back, StringFormat='Cashback {0:F2}'} "/>
+                                    <!--<Label HorizontalOptions="EndAndExpand" FontSize="12" TextColor="Green"  Text="{Binding cash_back, StringFormat='Cashback {0:F2}'} "/>-->
                                 </StackLayout>
                             </Grid>
                         </ViewCell.View>

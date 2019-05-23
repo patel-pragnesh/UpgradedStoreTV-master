@@ -16,41 +16,59 @@ namespace TaazaTV.View.TaazaStore
     public partial class PopUpTaskView
     {
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
-        string RestSellId;
-        public PopUpTaskView(string ID)
+        string RestSellId, RestSellType;
+        public PopUpTaskView(string ID, string Type)
         {
             InitializeComponent();
             RestSellId = ID;
-        }
-
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
-            await PopupNavigation.PopAsync(true);
+            RestSellType = Type;
         }
 
         private async void GetOtpClicked(object sender, EventArgs e)
         {
             try
             {
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                if(Invoice.Text != null && Billing.Text != null && TaazaRedeemed.Text != null)
                 {
-                    new KeyValuePair<string, string>("seller_id", RestSellId),
-                    new KeyValuePair<string, string>("user_id", AppData.UserId),
-                    new KeyValuePair<string, string>("seller_bill_no", "43"),
-                    new KeyValuePair<string, string>("seller_bill_amount", "43"),
-                    new KeyValuePair<string, string>("reedem_taaza_cash_amount", "43"),
-                    new KeyValuePair<string, string>("type", "1"),
-                };
+                    string[] token = AppData.TaazaCash.Split('.');
+                    if (Convert.ToInt32(token[0]) >= Convert.ToInt32(TaazaRedeemed.Text))
+                    {
+                        List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                        {
+                          new KeyValuePair<string, string>("seller_id", RestSellId),
+                          new KeyValuePair<string, string>("user_id", AppData.UserId),
+                          new KeyValuePair<string, string>("seller_bill_no", Invoice.Text),
+                          new KeyValuePair<string, string>("seller_bill_amount", Billing.Text),
+                          new KeyValuePair<string, string>("reedem_taaza_cash_amount", TaazaRedeemed.Text),
+                          new KeyValuePair<string, string>("type", RestSellType),
+                        };
 
-                var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GetOfflinePayOTPAPI], parameters);
-                if (jsonstr.ToString() == "NoInternet")
-                {
+                        var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GetOfflinePayOTPAPI], parameters);
+                        if (jsonstr.ToString() == "NoInternet")
+                        {
+                        }
+                        else
+                        {
+                            var Model = JsonConvert.DeserializeObject<OtpResponseModel>(jsonstr);
+                            if (Model.responseText == "Success")
+                            {
+                                OtpLabel.Text = Model.otp;
+                                ReedemStack.IsVisible = false;
+                                OtpStack.IsVisible = true;
+                                GetOtpButton.IsVisible = false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        await DisplayAlert("Alert", "You don't have sufficient Taaza Cash", "OK");
+                    }
                 }
                 else
                 {
-                    // Toast to show that the otp is sent successfully
-                    // Close the pop up automatically. Save the data ihn cache
+                    await DisplayAlert("Alert", "Please fill the necessary fields!!", "OK");
                 }
+                
             }
             catch (Exception ex)
             {
@@ -58,5 +76,22 @@ namespace TaazaTV.View.TaazaStore
             }
         }
 
+        private async void CancelClicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.PopAsync(true);
+        }
+
+        private async void ChangeNetPay(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                NetPay.Text = (Convert.ToInt32(Billing.Text) - Convert.ToInt32(TaazaRedeemed.Text)).ToString();
+            }
+
+            catch
+            {
+                await DisplayAlert("Alert", "Please enter a valid amount", "OK");
+            }
+        }
     }
 }

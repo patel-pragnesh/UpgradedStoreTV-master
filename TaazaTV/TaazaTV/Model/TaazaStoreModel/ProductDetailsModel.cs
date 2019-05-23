@@ -30,7 +30,8 @@ namespace TaazaTV.Model.TaazaStoreModel
         public string price_range { get; set; }
         public List<Store_Product_Images> images { get; set; }
         public Product_Sku_Variants[] sku_variants { get; set; }
-        
+        public string seller_name { get; set; }
+        public string seller_details { get; set; }
     }
 
     public class Product_Sku_Variants

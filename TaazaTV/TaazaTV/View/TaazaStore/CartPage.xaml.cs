@@ -29,7 +29,7 @@ namespace TaazaTV.View.TaazaStore
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("user_id", AppData.UserId),
-                    new KeyValuePair<string, string>("group_id", "42"),
+                    new KeyValuePair<string, string>("group_id", ""),
                 };
 
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GetCartHistoryAPI], parameters);
@@ -71,6 +71,36 @@ namespace TaazaTV.View.TaazaStore
         private void RemoveItemClicked(object sender, EventArgs e)
         {
 
+        }
+
+        private async void ModifyItemCount(string productId, string skuId, string quantity)
+        {
+            try
+            {
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                {
+                     new KeyValuePair<string, string>("user_id", AppData.UserId),
+                     new KeyValuePair<string, string>("mode", "add"),
+                     new KeyValuePair<string, string>("product_id", productId),
+                     new KeyValuePair<string, string>("product_sku_id", skuId),
+                     new KeyValuePair<string, string>("quantity", quantity),
+                };
+
+                var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.AddRemoveCartAPI], parameters);
+                if (jsonstr.ToString() == "NoInternet")
+                {
+
+                }
+
+                else
+                {
+                    LoadInitialDetails();
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Alert", "Some Error Occured!!", "OK");
+            }
         }
     }
 }

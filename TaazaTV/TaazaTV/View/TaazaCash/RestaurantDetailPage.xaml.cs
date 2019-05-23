@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using TaazaTV.Helper;
 using TaazaTV.Model;
 using TaazaTV.Services;
 using TaazaTV.View.Accounts;
+using TaazaTV.View.TaazaStore;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,6 +28,7 @@ namespace TaazaTV.View.TaazaCash
         public RestaurantDetailPage (string RestaurantId)
 		{
 			InitializeComponent ();
+
 #if __IOS__
             //Set Padding For the top of the page
             this.Padding = new Thickness(0,20,0,0);
@@ -52,16 +55,16 @@ namespace TaazaTV.View.TaazaCash
 
         private async void LoadRestaurantDetails(string Id)
         {
-            var x = await CommonFunc.FooterAdFunc("restaurant-details");
-            if (x != null && x.Count() > 0)
-            {
-                CarouselAd.ItemsSource = x.ToList();
-                CarouselAd.IsVisible = true;
-            }
-            else
-            {
-                CarouselAd.IsVisible = false;
-            }
+            //var x = await CommonFunc.FooterAdFunc("restaurant-details");
+            //if (x != null && x.Count() > 0)
+            //{
+            //    CarouselAd.ItemsSource = x.ToList();
+            //    CarouselAd.IsVisible = true;
+            //}
+            //else
+            //{
+            //    CarouselAd.IsVisible = false;
+            //}
 
             try
             {
@@ -114,6 +117,7 @@ namespace TaazaTV.View.TaazaCash
                 NoDataPage.IsVisible = true;
             }
         }
+
         private void NavToPayment(object sender, EventArgs e)
         {
             if(AppData.UserId == "")
@@ -123,8 +127,6 @@ namespace TaazaTV.View.TaazaCash
             else
             Navigation.PushAsync(new PayConfirmPage(RestaurantID, BannerImage, RestaurantHeading));
         }
-
-        string AdURL;
 
         private void DoSomething(object sender, EventArgs e)
         {
@@ -136,30 +138,35 @@ namespace TaazaTV.View.TaazaCash
             await Navigation.PopAsync();
         }
 
-        private void CarouselAd_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void PopUpPaymentRestaurant(object sender, EventArgs e)
         {
-            try
-            {
-                PreniumAdModel model = (PreniumAdModel)e.SelectedItem;
-                AdURL = (model.data.Ad_list.Select(x => x.Add_image)).ToString();
-            }
-            catch (Exception ex)
-            {
-                Logging.Write(ex, "CarouselAd_ItemSelected");
-            }
+            await PopupNavigation.PushAsync(new PopUpTaskView(RestaurantID,"2"), true);
         }
 
-        private void CarouselAd_Tapped(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(AdURL))
-                    Device.OpenUri(new Uri(AdURL));
-            }
-            catch (Exception ex)
-            {
-                Logging.Write(ex, "CarouselAd_Tapped");
-            }
-        }
+        //private void CarouselAd_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        PreniumAdModel model = (PreniumAdModel)e.SelectedItem;
+        //        AdURL = (model.data.Ad_list.Select(x => x.Add_image)).ToString();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Logging.Write(ex, "CarouselAd_ItemSelected");
+        //    }
+        //}
+
+        //private void CarouselAd_Tapped(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (!string.IsNullOrEmpty(AdURL))
+        //            Device.OpenUri(new Uri(AdURL));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Logging.Write(ex, "CarouselAd_Tapped");
+        //    }
+        //}
     }
 }

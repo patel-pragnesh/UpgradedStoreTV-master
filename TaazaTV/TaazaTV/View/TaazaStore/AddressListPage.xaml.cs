@@ -29,7 +29,7 @@ namespace TaazaTV.View.TaazaStore
                 {
                     new KeyValuePair<string, string>("device_type", "ANDROID"),
                     new KeyValuePair<string, string>("app_version", "2.0"),
-                    new KeyValuePair<string, string>("user_id", "100"),
+                    new KeyValuePair<string, string>("user_id", AppData.UserId),
                 };
 
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.UserAddressListAPI], parameters);

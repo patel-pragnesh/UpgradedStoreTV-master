@@ -53,8 +53,8 @@ namespace TaazaTV.View.TaazaStore
                     vm.ProductID = Items.data.product_details.product_id;
                     vm.Name = Items.data.product_details.product_name;
                     vm.Description = Items.data.product_details.product_description;
-                    vm.Seller = Items.data.product_details.product_name;
-                    vm.SellerDesc = Items.data.product_details.product_name;
+                    vm.Seller = Items.data.product_details.seller_name;
+                    vm.SellerDesc = Items.data.product_details.seller_details;
                     vm.PriceRange = Items.data.product_details.price_range;
                     vm.CarImages = new List<Store_Product_Images>(Items.data.product_details.images);
 

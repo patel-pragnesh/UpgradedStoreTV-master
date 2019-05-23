@@ -84,7 +84,7 @@ namespace TaazaTV.Helper
                     return new RestaurantListPage();
 
 
-                case "":
+                case "store":
 
                     if (AppData.UserId == "")
                     {

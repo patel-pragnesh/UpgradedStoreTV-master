@@ -83,6 +83,7 @@ namespace TaazaTV.View.TaazaStore
 
         private async void NavToProductDetails(object sender, ItemTappedEventArgs e)
         {
+            ProductListView.SelectedItem = null;
             await Navigation.PushAsync(new ProductDetailsPage((e.Item as Store_Product_List).product_slug));
         }
     }

@@ -6,7 +6,7 @@
               xmlns:customContentView="clr-namespace:TaazaTV.Controls"
              x:Class="TaazaTV.View.TaazaStore.SellerDetailsPage">
     <ContentPage.Content>
-        <Grid Opacity="0.75">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>

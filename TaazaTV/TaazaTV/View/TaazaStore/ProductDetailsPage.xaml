@@ -45,21 +45,21 @@
                 </StackLayout>
 
                 <StackLayout Margin="0,20" x:Name="PriceStack" Grid.Row="2" Orientation="Horizontal">
-                    <Image Source="rupeesblack.png"/>
+                    <Image HeightRequest="30" WidthRequest="30" Source="rupeesblack.png"/>
                     <Label TextColor="Black" Text="{Binding PriceRange}"/>
                 </StackLayout>
 
                 <StackLayout Margin="0,20" IsVisible="False" x:Name="OfferStack" Grid.Row="2" Orientation="Horizontal">
-                    <Image Source="rupeesblack.png"/>
-                    <Label TextColor="Black" Text="{Binding Price}"/>
+                    <Image HeightRequest="30" WidthRequest="30" Source="rupeesblack.png"/>
+                    <Label TextDecorations="Strikethrough" TextColor="Black" Text="{Binding Price}"/>
 
-                    <Image Margin="20,0,0,0" Source="call.png"/>
+                    <Image HeightRequest="30" WidthRequest="30" Margin="20,0,0,0" Source="rupeesgreen.png"/>
                     <Label TextColor="Black" Text="{Binding OfferPrice}"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="3">
-                    <Label TextColor="#78b877" Text="Seller Name"/>
-                    <Label TextColor="Black" Text="Seller Description Text Dolor Sit  Lorem Ipsum Text Dolor Sit Amet Product Description Lorem Ipsum Text Dolor Sit Amet Product Description Lorem Ipsum Text Dolor Sit Amet "/>
+                    <Label TextColor="#78b877" Text="{Binding Seller}"/>
+                    <Label TextColor="Black" Text="{Binding SellerDesc}"/>
                 </StackLayout>
 
                 <ListView Grid.Row="4" RowHeight="60" x:Name="VariantsListView">
