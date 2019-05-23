@@ -51,7 +51,7 @@ namespace TaazaTV.Model.TaazaStoreModel
 
         public string product_name { get; set; }
 
-        public long SkuId { get; set; }
+        public long sku_id { get; set; }
 
         public string ProductSku { get; set; }
 

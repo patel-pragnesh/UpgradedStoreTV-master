@@ -76,43 +76,51 @@ namespace TaazaTV.View.TaazaStore
 
         private void VariantsSelectionChanged(object sender, EventArgs e)
         {
-            if((sender as HorizontalList).SelectedItem!= null)
+            try
             {
-                List<Product_Variant_Options> itemList = new List<Product_Variant_Options>((sender as HorizontalList).ItemsSource as List<Product_Variant_Options>);
+                if ((sender as HorizontalList).SelectedItem != null)
+                {
+                    List<Product_Variant_Options> itemList = new List<Product_Variant_Options>((sender as HorizontalList).ItemsSource as List<Product_Variant_Options>);
 
-               foreach(var x in itemList)
-               {
-                    if (x.IsSelected == true)
+                    foreach (var x in itemList)
                     {
-                        remAttr = x.variant_option_id;
-                        SelectedVariants.Remove(remAttr);
+                        if (x.IsSelected == true)
+                        {
+                            remAttr = x.variant_option_id;
+                            SelectedVariants.Remove(remAttr);
+                        }
+                    }
+
+                    vm.ProductOptions.SelectMany(a => a.variant_options.Where(b => b.variant_option_id == remAttr)
+                             .Select(d => { d.background_color = "White"; d.IsSelected = false; return d; })).ToList();
+
+                    Product_Variant_Options item = (sender as HorizontalList).SelectedItem as Product_Variant_Options;
+
+                    vm.ProductOptions.SelectMany(a => a.variant_options.Where(b => b.variant_option_id == item.variant_option_id)
+                             .Select(d => { d.background_color = "Purple"; d.IsSelected = true; return d; })).ToList();
+
+                    SelectedVariants.Add(item.variant_option_id);
+
+                    if (SelectedVariants.Count() == Items.data.product_options.Count())
+                    {
+                        PriceStack.IsVisible = false;
+                        OfferStack.IsVisible = true;
+
+                        var NewBindingContext = Items.data.product_details.sku_variants.Where(z => z.variant_option_ids.Intersect(SelectedVariants).Count() == Items.data.product_options.Count()).FirstOrDefault();
+                        vm.CarImages = NewBindingContext.images.ToList();
+                        vm.Description = NewBindingContext.description;
+                        vm.OfferPrice = NewBindingContext.sale_price;
+                        vm.Price = NewBindingContext.regular_price;
+                        vm.SkuID = NewBindingContext.sku_id;
+                        vm.ProductID = NewBindingContext.product_id;
+                        vm.SkuID = NewBindingContext.sku_id;
                     }
                 }
+            }
+         
+            catch
+            {
 
-                vm.ProductOptions.SelectMany(a => a.variant_options.Where(b => b.variant_option_id == remAttr)
-                         .Select(d => { d.background_color = "White"; d.IsSelected = false; return d; })).ToList();
-
-                Product_Variant_Options item = (sender as HorizontalList).SelectedItem as Product_Variant_Options;
-                             
-                vm.ProductOptions.SelectMany(a => a.variant_options.Where(b => b.variant_option_id == item.variant_option_id)
-                         .Select(d => { d.background_color = "Purple"; d.IsSelected = true; return d; })).ToList();
-
-                SelectedVariants.Add(item.variant_option_id);
-
-                if (SelectedVariants.Count() == Items.data.product_options.Count())
-                {
-                    PriceStack.IsVisible = false;
-                    OfferStack.IsVisible = true;
-
-                    var NewBindingContext = Items.data.product_details.sku_variants.Where(z => z.variant_option_ids.Intersect(SelectedVariants).Count() == Items.data.product_options.Count()).FirstOrDefault();
-                    vm.CarImages = NewBindingContext.images.ToList();
-                    vm.Description = NewBindingContext.description;
-                    vm.OfferPrice = NewBindingContext.sale_price;
-                    vm.Price = NewBindingContext.regular_price;
-                    vm.SkuID = NewBindingContext.sku_id;
-                    vm.ProductID = NewBindingContext.product_id;
-                    vm.SkuID = NewBindingContext.sku_id;
-                }
             }
         }
 
@@ -153,6 +161,11 @@ namespace TaazaTV.View.TaazaStore
             {
                 await DisplayAlert("Alert", "Please select one option!!", "OK");
             }
+        }
+
+        private void ListViewTapped(object sender, ItemTappedEventArgs e)
+        {
+            VariantsListView.SelectedItem = null;
         }
     }
 }

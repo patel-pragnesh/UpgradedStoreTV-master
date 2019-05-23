@@ -15,6 +15,7 @@ namespace TaazaTV.View.TaazaStore
     public partial class CartPage : ContentPage
     {
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
+        string pid, sid, quan;
 
         public CartPage()
         {
@@ -48,19 +49,27 @@ namespace TaazaTV.View.TaazaStore
             }
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void CheckOut_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddressListPage());
         }
 
         private void Decrease_CountTapped(object sender, EventArgs e)
         {
-
+            pid = (((((sender as Image).Parent as StackLayout).Parent as Grid).Children[0] as StackLayout).Children[0] as Label).Text;
+            sid = (((((sender as Image).Parent as StackLayout).Parent as Grid).Children[0] as StackLayout).Children[1] as Label).Text;
+            quan = (((((sender as Image).Parent as StackLayout).Parent as Grid).Children[0] as StackLayout).Children[2] as Label).Text;
+            quan = (Convert.ToInt32(quan) - 1).ToString();
+            ModifyItemCount(pid, sid, quan, "add");
         }
 
         private void IncreaseCountTapped(object sender, EventArgs e)
         {
-
+            pid = (((((sender as Image).Parent as StackLayout).Parent as Grid).Children[0] as StackLayout).Children[0] as Label).Text;
+            sid = (((((sender as Image).Parent as StackLayout).Parent as Grid).Children[0] as StackLayout).Children[1] as Label).Text;
+            quan = (((((sender as Image).Parent as StackLayout).Parent as Grid).Children[0] as StackLayout).Children[2] as Label).Text;
+            quan = (Convert.ToInt32(quan) + 1).ToString();
+            ModifyItemCount(pid, sid, quan, "add");
         }
 
         private void ListViewTapped(object sender, ItemTappedEventArgs e)
@@ -68,19 +77,26 @@ namespace TaazaTV.View.TaazaStore
             (sender as ListView).SelectedItem = null;
         }
 
-        private void RemoveItemClicked(object sender, EventArgs e)
+        private async void RemoveItemClicked(object sender, EventArgs e)
         {
-
+            var action = await DisplayActionSheet("Do you want to delete this item", "Yes", "No");
+            if(action == "Yes")
+            {
+                pid = (((((sender as Image).Parent as StackLayout).Parent as Grid).Children[0] as StackLayout).Children[0] as Label).Text;
+                sid = (((((sender as Image).Parent as StackLayout).Parent as Grid).Children[0] as StackLayout).Children[1] as Label).Text;
+                quan = "0";
+                ModifyItemCount(pid, sid, quan, "remove");
+            }
         }
 
-        private async void ModifyItemCount(string productId, string skuId, string quantity)
+        private async void ModifyItemCount(string productId, string skuId, string quantity, string mode)
         {
             try
             {
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                      new KeyValuePair<string, string>("user_id", AppData.UserId),
-                     new KeyValuePair<string, string>("mode", "add"),
+                     new KeyValuePair<string, string>("mode", mode),
                      new KeyValuePair<string, string>("product_id", productId),
                      new KeyValuePair<string, string>("product_sku_id", skuId),
                      new KeyValuePair<string, string>("quantity", quantity),

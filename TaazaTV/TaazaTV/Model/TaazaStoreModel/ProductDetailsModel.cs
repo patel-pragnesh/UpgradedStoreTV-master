@@ -17,7 +17,7 @@ namespace TaazaTV.Model.TaazaStoreModel
     public class Product_Details_Data
     {
         public Store_Product_Details product_details { get; set; }
-        public List<Product_Sku_Options> product_options { get; set; }
+        public Product_Sku_Options[] product_options { get; set; }
     }
 
     public class Store_Product_Details
@@ -42,7 +42,7 @@ namespace TaazaTV.Model.TaazaStoreModel
         public string description { get; set; }
         public string regular_price { get; set; }
         public string sale_price { get; set; }
-        public List<Product_Sku_Options> options { get; set; }
+        public Product_Sku_Options[] options { get; set; }
         public int[] variant_option_ids { get; set; }
         public Store_Product_Images[] images { get; set; }
     }

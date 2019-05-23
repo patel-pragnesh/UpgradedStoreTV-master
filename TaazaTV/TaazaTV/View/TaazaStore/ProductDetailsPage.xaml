@@ -62,7 +62,7 @@
                     <Label TextColor="Black" Text="{Binding SellerDesc}"/>
                 </StackLayout>
 
-                <ListView Grid.Row="4" RowHeight="60" x:Name="VariantsListView">
+                <ListView Grid.Row="4" RowHeight="60" ItemTapped="ListViewTapped" x:Name="VariantsListView">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
