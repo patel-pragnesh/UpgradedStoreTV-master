@@ -12,7 +12,7 @@ namespace TaazaTV.Model.TaazaStoreModel
 
         public object[] resourceList { get; set; }
 
-        public User_Address_Data Data { get; set; }
+        public User_Address_Data data { get; set; }
     }
 
     public class User_Address_Data
@@ -20,7 +20,7 @@ namespace TaazaTV.Model.TaazaStoreModel
         public Address address { get; set; }
     }
 
-    public partial class Address
+    public class Address
     {
         public int customer_address_id { get; set; }
 
@@ -45,5 +45,14 @@ namespace TaazaTV.Model.TaazaStoreModel
         public int type { get; set; }
 
         public int is_default { get; set; }
+
+        public int index_sel
+        {
+            get
+            {
+                return type--;
+            }
+            set { }
+        }
     }
 }

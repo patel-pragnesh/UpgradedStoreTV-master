@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              NavigationPage.HasNavigationBar="False"
+             xmlns:customContentView="clr-namespace:TaazaTV.Controls"
              x:Class="TaazaTV.View.TaazaStore.AddressListPage">
     <ContentPage.Resources>
 
@@ -19,7 +21,7 @@
             <Setter Property="FontAttributes" Value="Bold"/>
         </Style>
 
-        <Style TargetType="Image">
+        <Style x:Key="ListViewImg" TargetType="Image">
             <Setter Property="HeightRequest" Value="25"/>
             <Setter Property="WidthRequest" Value="25"/>
             <Setter Property="Opacity" Value="1"/>
@@ -28,40 +30,65 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
 
+            <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
+            <ListView x:Name="AddressList" ItemTapped="AddressListTapped" Grid.Row="1" RowHeight="160">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="15" Spacing="20">
 
-        <StackLayout Padding="15" Spacing="20">
+                                <Label IsVisible="False" Text="{Binding customer_address_id}"/>
 
-            <StackLayout Spacing="20" Orientation="Horizontal">
+                                <StackLayout Spacing="20" Orientation="Horizontal">
 
-                <Image Source="user.png"/>
+                                    <Image Style="{StaticResource ListViewImg}" Source="user.png"/>
 
-                <Label Style="{StaticResource HeaderLbl}" Text="Tanya Jha"/>
+                                    <Label Style="{StaticResource HeaderLbl}" TextColor="{Binding text_color}" Text="{Binding full_name}"/>
 
-                <StackLayout Padding="5" BackgroundColor="#e1fee1">
-                    <Label Style="{StaticResource DescLbl}" Text="Home" />
-                </StackLayout>
+                                    <StackLayout Padding="5" BackgroundColor="#e1fee1">
+                                        <Label Style="{StaticResource DescLbl}" Text="{Binding addr_type}" />
+                                    </StackLayout>
 
-                <Image HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Source="edit.png"/>
+                                    <Image Style="{StaticResource ListViewImg}" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Source="edit.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="EditButtonTapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
 
-            </StackLayout>
+                                </StackLayout>
 
-            <StackLayout Spacing="20" Orientation="Horizontal">
-                <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="location.png"/>
-                <Label FontSize="Small" FontAttributes="Bold"  Text="Rly. Plot No. 147/M, Dangapara, Kanchrapara, 24 PGS(N), West Bengal" />
-            </StackLayout>
+                                <StackLayout Spacing="20" Orientation="Horizontal">
+                                    <Image  Style="{StaticResource ListViewImg}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="locationblue.png"/>
+                                    <Label FontSize="Small" TextColor="{Binding text_color}" FontAttributes="Bold"  Text="{Binding full_addr}" />
+                                </StackLayout>
 
-            <StackLayout Spacing="20" Orientation="Horizontal">
-                <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="call.png"/>
-                <Label  FontSize="Small" FontAttributes="Bold" Text="9790797100" />
-            </StackLayout>
+                                <StackLayout Spacing="20" Orientation="Horizontal">
+                                    <Image  Style="{StaticResource ListViewImg}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="call.png"/>
+                                    <Label TextColor="{Binding text_color}" FontSize="Small" FontAttributes="Bold" Text="{Binding phone}" />
+                                    <Image  Style="{StaticResource ListViewImg}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="dustbin.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="DeleteButtonTapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
 
-            <StackLayout>
-                <Button Text="Add New Address" Clicked="AddressNewClicked"/>
-            </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+          
 
+            <Button BackgroundColor="#007acc" TextColor="White" Grid.Row="2" Clicked="AddressNewClicked" Text=" Add New Address"/>
 
-        </StackLayout>
+        </Grid>
 
     </ContentPage.Content>
 

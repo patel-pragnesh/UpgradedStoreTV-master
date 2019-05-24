@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+              NavigationPage.HasNavigationBar="False"
+             xmlns:customContentView="clr-namespace:TaazaTV.Controls"
              x:Class="TaazaTV.View.TaazaStore.NewAddressPage">
     <ContentPage.Resources>
 
@@ -13,68 +15,72 @@
             <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
         </Style>
 
-        <Style TargetType="Button">
-            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-            <Setter Property="BackgroundColor" Value="#2196f3"/>
-            <Setter Property="TextColor" Value="White"/>
-            <Setter Property="HeightRequest" Value="50"/>
-            <Setter Property="CornerRadius" Value="15"/>
-        </Style>
-
     </ContentPage.Resources>
+
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Spacing="17" Margin="25">
 
-                <Label Text="Pincode*"/>
-                <Entry Placeholder="743145"/>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
 
-                <Label Text="House No., Building name*"/>
-                <Entry Placeholder="House No. 30/51, RR Flats"/>
+            <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
 
-                <Label Text="Road Name, Area, Colony*"/>
-                <Entry Placeholder="R.K Puram, Kaviraj Nagar"/>
+            <ScrollView Grid.Row="1" >
+                <StackLayout Spacing="17" Margin="25">
 
-                <StackLayout Spacing="140" Orientation="Horizontal">
-                    <Label Text="City*"/>
-                    <Label Text="State ^"/>
-                </StackLayout>
+                    <Label Text="Pincode*"/>
+                    <Entry Text="{Binding pincode,Mode=TwoWay}" Placeholder="743145"/>
 
-                <StackLayout Spacing="20" Orientation="Horizontal">
-                    <Entry WidthRequest="150" Placeholder="Kolkata"/>
-                    <Entry WidthRequest="150" Placeholder="West Bengal"/>
-                </StackLayout>
+                    <Label Text="House No., Building name*"/>
+                    <Entry Text="{Binding address_1,Mode=TwoWay}" Placeholder="House No. 30/51, RR Flats"/>
 
-                <Label Text="Landmark (optional)"/>
-                <Entry Placeholder="Palli Vara Club"/>
+                    <Label Text="Road Name, Area, Colony*"/>
+                    <Entry Text="{Binding address_2,Mode=TwoWay}" Placeholder="R.K Puram, Kaviraj Nagar"/>
 
-                <BoxView HeightRequest="2" BackgroundColor="Black"/>
+                    <StackLayout Spacing="140" Orientation="Horizontal">
+                        <Label Text="City*"/>
+                        <Label Text="State ^"/>
+                    </StackLayout>
 
-                <Label Text="Name*"/>
-                <Entry Placeholder="Sumit Kumar Singh"/>
+                    <StackLayout Spacing="20" Orientation="Horizontal">
+                        <Entry Text="{Binding city_name,Mode=TwoWay}" WidthRequest="150" Placeholder="Kolkata"/>
+                        <Entry Text="{Binding state_name,Mode=TwoWay}" WidthRequest="150" Placeholder="West Bengal"/>
+                    </StackLayout>
 
-                <Label Text="10 digit mobile number*"/>
-                <Entry Placeholder="9636985632"/>
+                    <Label Text="Landmark (optional)"/>
+                    <Entry Text="{Binding address_3,Mode=TwoWay}" Placeholder="Palli Vara Club"/>
 
-                <Label Text="Alternate phone number(optional)"/>
-                <Entry Placeholder="9636985632"/>
+                    <BoxView HeightRequest="2" BackgroundColor="Black"/>
 
-                <Label Text="Address Type"/>
+                    <Label Text="Name*"/>
+                    <Entry Text="{Binding full_name,Mode=TwoWay}" Placeholder="Sumit Kumar Singh"/>
 
-                <controls:BindableRadioGroup x:Name="AddressType">
-                    <controls:BindableRadioGroup.ItemsSource>
+                    <Label Text="10 digit mobile number*"/>
+                    <Entry Text="{Binding phone,Mode=TwoWay}" Placeholder="9636985632"/>
+
+                    <Label Text="Address Type"/>
+
+                    <controls:BindableRadioGroup x:Name="AddressType">
+                        <controls:BindableRadioGroup.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
                                 <x:String>Home</x:String>
                                 <x:String>Work</x:String>
                                 <x:String>Other</x:String>
                             </x:Array>
-                    </controls:BindableRadioGroup.ItemsSource>
-                </controls:BindableRadioGroup>
+                        </controls:BindableRadioGroup.ItemsSource>
+                    </controls:BindableRadioGroup>
 
-                <Button Text="Save"/>
 
-            </StackLayout>
-        </ScrollView>
+
+                </StackLayout>
+            </ScrollView>
+
+            <Button BackgroundColor="#007acc" TextColor="White" Grid.Row="2" Clicked="SubmitNewAddress"  Text="Save"/>
+
+        </Grid>
 
     </ContentPage.Content>
 </ContentPage>

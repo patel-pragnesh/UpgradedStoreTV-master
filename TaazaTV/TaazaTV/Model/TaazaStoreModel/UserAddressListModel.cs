@@ -45,6 +45,53 @@ namespace TaazaTV.Model.TaazaStoreModel
         public int type { get; set; }
 
         public int is_default { get; set; }
+
+        public string text_color
+        {
+            get
+            {
+               if(is_default == 1)
+                {
+                    return "Black";
+                }
+                else
+                {
+                    return "Gray";
+                }
+            }
+            set { }
+        }
+
+        public string addr_type
+        {
+            get
+            {
+               switch(type)
+                {
+                    case 1:
+                        return "Home";
+
+                    case 2:
+                        return "Work";
+
+                    case 3:
+                        return "Other";
+
+                    default:
+                        return "";
+                }
+            }
+            set { }
+        }
+
+        public string full_addr
+        {
+            get
+            {
+                return address_1 + ", " + address_2 + ", " + city_name + ", " + state_name + " ";
+            }
+            set { }
+        }
     }
 
 }

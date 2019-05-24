@@ -18,6 +18,11 @@ namespace TaazaTV.View.TaazaStore
         public AddressListPage()
         {
             InitializeComponent();
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
             LoadAddressList();
         }
 
@@ -39,6 +44,7 @@ namespace TaazaTV.View.TaazaStore
                 else
                 {
                     var Items = JsonConvert.DeserializeObject<UserAddressListModel>(jsonstr);
+                    AddressList.ItemsSource = Items.data.address;
                 }
             }
             catch (Exception ex)
@@ -47,38 +53,47 @@ namespace TaazaTV.View.TaazaStore
             }
         }
 
-        private async void SetDefaultAddress()
+        private async void AddressListTapped(object sender, ItemTappedEventArgs e)
         {
+            var default_id = ((sender as ListView).SelectedItem as Address_List).customer_address_id;
+            AddressList.SelectedItem = null;
+
             try
             {
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
-                    new KeyValuePair<string, string>("customer_address_id", "ANDROID"),
-                    new KeyValuePair<string, string>("user_id", "100"),
+                    new KeyValuePair<string, string>("customer_address_id", default_id.ToString()),
+                    new KeyValuePair<string, string>("user_id", AppData.UserId),
                 };
 
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.SetDefaultAddressAPI], parameters);
                 if (jsonstr.ToString() == "NoInternet")
+
                 {
+
                 }
+
                 else
+
                 {
-                    // Change the color of selcected item in the list
+                    await Navigation.PushAsync(new PayModeSelctionPage());
                 }
             }
+
             catch (Exception ex)
             {
                 var x = ex.Message;
             }
         }
 
-        private async void DeleteUserAddress()
+        private async void DeleteButtonTapped(object sender, EventArgs e)
         {
+            var id = ((((sender as Image).Parent as StackLayout).Parent as StackLayout).Children[0] as Label).Text;
             try
             {
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
-                    new KeyValuePair<string, string>("customer_address_id", "1"),
+                    new KeyValuePair<string, string>("customer_address_id", id),
                 };
 
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.DeleteUserAddressAPI], parameters);
@@ -98,7 +113,15 @@ namespace TaazaTV.View.TaazaStore
 
         private async void AddressNewClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewAddressPage());
+            await Navigation.PushAsync(new NewAddressPage(""));
         }
+
+        private async void EditButtonTapped(object sender, EventArgs e)
+        {
+            var id = ((((sender as Image).Parent as StackLayout).Parent as StackLayout).Children[0] as Label).Text;
+
+            await Navigation.PushAsync(new NewAddressPage(id));
+        }
+
     }
 }

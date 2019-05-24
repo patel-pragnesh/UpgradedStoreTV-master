@@ -1,12 +1,112 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                NavigationPage.HasNavigationBar="False"
+              xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:customContentView="clr-namespace:TaazaTV.Controls"
              x:Class="TaazaTV.View.TaazaStore.PayModeSelctionPage">
+    <ContentPage.Resources>
+
+        <Style x:Key="DescLbl" TargetType="Label">
+            <Setter Property="TextColor" Value="#77bb77"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="Small"/>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="HeaderLbl" TargetType="Label">
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="ListViewImg" TargetType="Image">
+            <Setter Property="HeightRequest" Value="25"/>
+            <Setter Property="WidthRequest" Value="25"/>
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="190"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
+
+            <StackLayout Margin="10,20,0,0" Grid.Row="1"  Orientation="Horizontal">
+                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="Redeem Taaza Cash" TextColor="Black" FontSize="Medium" />
+                    <Label TextColor="Red" Text="Invalid Payment Value Error Message" FontSize="8"/>
+                </StackLayout>
+
+                <StackLayout Spacing="10"  VerticalOptions="Center" WidthRequest="90" HorizontalOptions="End" Orientation="Horizontal">
+                    <Image Source="taazaicon.png" VerticalOptions="Center" HeightRequest="22" WidthRequest="22"/>
+                    <Entry Keyboard="Numeric" x:Name="TaazaPayable" Unfocused="TaazaPaymentChanged" VerticalOptions="Center" Placeholder="000" TextColor="Black" FontAttributes="Bold"/>
+                </StackLayout>
+            </StackLayout>
+
+            <Label Margin="10,10" Text="Select Mode of Payment" TextColor="Black" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Grid.Row="2"/>
+
+            <controls:BindableRadioGroup Grid.Row="3" x:Name="AddressType">
+                <controls:BindableRadioGroup.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Pay Online</x:String>
+                        <x:String>Cash On Delivery</x:String>
+                    </x:Array>
+                </controls:BindableRadioGroup.ItemsSource>
+            </controls:BindableRadioGroup>
+
+            <Frame Grid.Row="4">
+                <StackLayout>
+                    <Label Text=" Dynamic Delivery Address goes here "/>
+
+                    <StackLayout Padding="15" Spacing="20">
+
+                        <StackLayout Spacing="20" Orientation="Horizontal">
+
+                            <Image Style="{StaticResource ListViewImg}" Source="user.png"/>
+
+                            <Label Style="{StaticResource HeaderLbl}" Text="full_name"/>
+
+                            <StackLayout Padding="5" BackgroundColor="#e1fee1">
+                                <Label Style="{StaticResource DescLbl}" Text="addr_type" />
+                            </StackLayout>
+
+                        </StackLayout>
+
+                        <StackLayout Spacing="20" Orientation="Horizontal">
+                            <Image  Style="{StaticResource ListViewImg}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="locationblue.png"/>
+                            <Label FontSize="Small" FontAttributes="Bold"  Text="full_addr" />
+                        </StackLayout>
+
+                        <StackLayout Spacing="20" Orientation="Horizontal">
+                            <Image  Style="{StaticResource ListViewImg}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="call.png"/>
+                            <Label FontSize="Small" FontAttributes="Bold" Text=" phone" />
+                        </StackLayout>
+
+
+                    </StackLayout>
+                </StackLayout>
+
+            </Frame>
+
+            <StackLayout BackgroundColor="#007acc"  Orientation="Horizontal" Grid.Row="6">
+                <Image Source="rupeesgreen.png" HeightRequest="15"></Image>
+                <Label x:Name="Amount" TextColor="White" VerticalOptions="CenterAndExpand" Text="483.00"/>
+                <Button BackgroundColor="#007acc" HorizontalOptions="EndAndExpand" TextColor="White" Clicked="CallPAymentApI" Text="Continue"/>
+            </StackLayout>
+            
+            
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
