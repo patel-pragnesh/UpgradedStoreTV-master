@@ -30,23 +30,40 @@
 
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
+        <Grid RowSpacing="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="2"/>
                 <RowDefinition Height="70"/>
+                <RowDefinition Height="2"/>
                 <RowDefinition Height="50"/>
-                <RowDefinition Height="120"/>
-                <RowDefinition Height="190"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="210"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
             <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
 
-            <StackLayout Margin="10,20,0,0" Grid.Row="1"  Orientation="Horizontal">
+            <StackLayout Margin="15,0" Orientation="Horizontal" Grid.Row="2">
+                <Label TextColor="Black" FontSize="Medium" FontAttributes="Bold" Text="No. of Items : "/>
+                <Label TextColor="Black" FontSize="Medium"  HorizontalOptions="EndAndExpand" FontAttributes="Bold" x:Name="ItemCount"/>
+            </StackLayout>
+
+            <BoxView Grid.Row="3" BackgroundColor="Gray" HeightRequest="2"/>
+
+            <StackLayout Margin="10,20,0,0" Grid.Row="4"  Orientation="Horizontal">
                 <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
                     <Label Text="Redeem Taaza Cash" TextColor="Black" FontSize="Medium" />
-                    <Label TextColor="Red" Text="Invalid Payment Value Error Message" FontSize="8"/>
+
+                    <StackLayout x:Name="TCashValidator" Orientation="Horizontal">
+                        <Label TextColor="Red" Text="Maximum Taaza Cash can be availed is  " FontSize="8"/>
+                        <Label TextColor="Red" x:Name="TLabel" FontSize="8"/>
+                    </StackLayout>
+                    
                 </StackLayout>
 
                 <StackLayout Spacing="10"  VerticalOptions="Center" WidthRequest="90" HorizontalOptions="End" Orientation="Horizontal">
@@ -55,9 +72,11 @@
                 </StackLayout>
             </StackLayout>
 
-            <Label Margin="10,10" Text="Select Mode of Payment" TextColor="Black" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Grid.Row="2"/>
+            <BoxView Grid.Row="5" BackgroundColor="Gray" HeightRequest="2"/>
 
-            <controls:BindableRadioGroup Grid.Row="3" x:Name="AddressType">
+            <Label  Grid.Row="6" Margin="10,10" Text="Select Mode of Payment" TextColor="#007acc" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+
+            <controls:BindableRadioGroup SelectedIndex="-1" Grid.Row="7" Margin="10,0" x:Name="AddressType">
                 <controls:BindableRadioGroup.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Pay Online</x:String>
@@ -66,44 +85,42 @@
                 </controls:BindableRadioGroup.ItemsSource>
             </controls:BindableRadioGroup>
 
-            <Frame Grid.Row="4">
-                <StackLayout>
-                    <Label Text=" Dynamic Delivery Address goes here "/>
+            <BoxView Grid.Row="8" BackgroundColor="Gray" HeightRequest="2"/>
 
-                    <StackLayout Padding="15" Spacing="20">
+            <Frame Grid.Row="9">
+                <StackLayout>
+                    <Label Text=" Your product will be delivered here "/>
+
+                    <StackLayout Padding="20,20,20,0" Spacing="20">
 
                         <StackLayout Spacing="20" Orientation="Horizontal">
 
                             <Image Style="{StaticResource ListViewImg}" Source="user.png"/>
 
-                            <Label Style="{StaticResource HeaderLbl}" Text="full_name"/>
-
-                            <StackLayout Padding="5" BackgroundColor="#e1fee1">
-                                <Label Style="{StaticResource DescLbl}" Text="addr_type" />
-                            </StackLayout>
+                            <Label Style="{StaticResource HeaderLbl}" x:Name="DName"/>
 
                         </StackLayout>
 
-                        <StackLayout Spacing="20" Orientation="Horizontal">
+                        <StackLayout HeightRequest="45" Spacing="20" Orientation="Horizontal">
                             <Image  Style="{StaticResource ListViewImg}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="locationblue.png"/>
-                            <Label FontSize="Small" FontAttributes="Bold"  Text="full_addr" />
+                            <Label FontSize="Small" FontAttributes="Bold"  x:Name="DAddr" />
                         </StackLayout>
 
                         <StackLayout Spacing="20" Orientation="Horizontal">
                             <Image  Style="{StaticResource ListViewImg}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="call.png"/>
-                            <Label FontSize="Small" FontAttributes="Bold" Text=" phone" />
+                            <Label FontSize="Small" FontAttributes="Bold" x:Name="DPhone" />
                         </StackLayout>
-
-
+                        
                     </StackLayout>
+                    
                 </StackLayout>
 
             </Frame>
 
-            <StackLayout BackgroundColor="#007acc"  Orientation="Horizontal" Grid.Row="6">
-                <Image Source="rupeesgreen.png" HeightRequest="15"></Image>
-                <Label x:Name="Amount" TextColor="White" VerticalOptions="CenterAndExpand" Text="483.00"/>
-                <Button BackgroundColor="#007acc" HorizontalOptions="EndAndExpand" TextColor="White" Clicked="CallPAymentApI" Text="Continue"/>
+            <StackLayout Padding="20,0" BackgroundColor="#007acc"  Orientation="Horizontal" Grid.Row="11">
+                <Image Source="rupeesblack.png" HeightRequest="20"></Image>
+                <Label x:Name="Amount" TextColor="White" FontAttributes="Bold" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                <Button BackgroundColor="#007acc" HorizontalOptions="EndAndExpand" TextColor="White" Clicked="CallPaymentApI" Text="Continue"/>
             </StackLayout>
             
             

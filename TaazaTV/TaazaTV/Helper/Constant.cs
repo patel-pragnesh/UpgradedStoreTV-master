@@ -96,6 +96,7 @@ namespace TaazaTV.Helper
              HostName + "/cart/history",
              HostName + "/dashboard/customer-dashboard",
              HostName + "/cart/add-remove",
+             HostName + "/order/place-submit",
         };
 
 
@@ -172,6 +173,7 @@ namespace TaazaTV.Helper
             GetCartHistoryAPI,
             GetStoreDashboardDataAPI,
             AddRemoveCartAPI,
+            CallStorePaymentGateway,
         }
     }
 }

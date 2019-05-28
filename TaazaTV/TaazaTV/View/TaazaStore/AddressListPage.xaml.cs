@@ -55,20 +55,19 @@ namespace TaazaTV.View.TaazaStore
 
         private async void AddressListTapped(object sender, ItemTappedEventArgs e)
         {
-            var default_id = ((sender as ListView).SelectedItem as Address_List).customer_address_id;
+            var default_addr = ((sender as ListView).SelectedItem as Address_List);
             AddressList.SelectedItem = null;
 
             try
             {
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
-                    new KeyValuePair<string, string>("customer_address_id", default_id.ToString()),
+                    new KeyValuePair<string, string>("customer_address_id", default_addr.customer_address_id.ToString()),
                     new KeyValuePair<string, string>("user_id", AppData.UserId),
                 };
 
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.SetDefaultAddressAPI], parameters);
                 if (jsonstr.ToString() == "NoInternet")
-
                 {
 
                 }
@@ -76,7 +75,7 @@ namespace TaazaTV.View.TaazaStore
                 else
 
                 {
-                    await Navigation.PushAsync(new PayModeSelctionPage());
+                    await Navigation.PushAsync(new PayModeSelctionPage(default_addr.customer_address_id.ToString(), default_addr.full_name, default_addr.full_addr, default_addr.phone));
                 }
             }
 
