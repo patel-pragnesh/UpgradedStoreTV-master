@@ -6,9 +6,11 @@
              x:Class="TaazaTV.View.TaazaStore.SearchPage">
     <ContentPage.Content>
         <Grid RowSpacing="0">
+            
             <Grid.Padding>
                 <OnPlatform iOS="0,20,0,0"/>
             </Grid.Padding>
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="2"/>
@@ -16,12 +18,17 @@
                 <RowDefinition Height="2"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
+            
+            <customContentView:StoreTCashHeader Grid.Row="0"/>
+            
             <BoxView HeightRequest="2" Grid.Row="1" BackgroundColor="Red"/>
+            
             <StackLayout Grid.Row="2" BackgroundColor="#a2d6fe" Padding="10">
                 <SearchBar HeightRequest="40" SearchButtonPressed="SearchBar_SearchButtonPressed" Placeholder="search here" PlaceholderColor="Gray" BackgroundColor="White" ></SearchBar>
             </StackLayout>
+            
             <BoxView HeightRequest="2" Grid.Row="3" BackgroundColor="#2296f2"/>
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>

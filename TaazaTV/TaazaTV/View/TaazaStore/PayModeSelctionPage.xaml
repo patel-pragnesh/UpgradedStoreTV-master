@@ -46,7 +46,7 @@
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
-            <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
+            <customContentView:StoreTCashHeader Grid.Row="0"/>
 
             <StackLayout Margin="15,0" Orientation="Horizontal" Grid.Row="2">
                 <Label TextColor="Black" FontSize="Medium" FontAttributes="Bold" Text="No. of Items : "/>

@@ -37,7 +37,7 @@
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
-            <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
+            <customContentView:StoreTCashHeader Grid.Row="0"/>
             <ListView x:Name="AddressList" ItemTapped="AddressListTapped" Grid.Row="1" RowHeight="160">
                 <ListView.ItemTemplate>
                     <DataTemplate>

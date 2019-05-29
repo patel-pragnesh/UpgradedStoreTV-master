@@ -39,21 +39,25 @@ namespace TaazaTV.Helper
             get => AppSettings.GetValueOrDefault(nameof(UserId), string.Empty);
             set => AppSettings.AddOrUpdateValue(nameof(UserId), value);
         }
+
         public static string MobileNo
         { 
             get => AppSettings.GetValueOrDefault(nameof(MobileNo), string.Empty);
             set => AppSettings.AddOrUpdateValue(nameof(MobileNo), value);
         }
+
         public static string UserCity
         {
             get => AppSettings.GetValueOrDefault(nameof(UserCity), string.Empty);
             set => AppSettings.AddOrUpdateValue(nameof(UserCity), value);
         }
+
         public static string UserCityId
         {
             get => AppSettings.GetValueOrDefault(nameof(UserCityId), string.Empty);
             set => AppSettings.AddOrUpdateValue(nameof(UserCityId), value);
         }
+
         public static bool IsLogin
         {
             get => AppSettings.GetValueOrDefault(nameof(IsLogin), false);
@@ -77,11 +81,13 @@ namespace TaazaTV.Helper
             get => AppSettings.GetValueOrDefault(nameof(Avatar), "logo.png");
             set => AppSettings.AddOrUpdateValue(nameof(Avatar), value);
         }
+
         public static string DeviceToken
         {
             get => AppSettings.GetValueOrDefault(nameof(DeviceToken), "1234567890");
             set => AppSettings.AddOrUpdateValue(nameof(DeviceToken), value);
         }
+
         public static bool IsSkip
         {
             get => AppSettings.GetValueOrDefault(nameof(IsSkip), false);
@@ -98,6 +104,12 @@ namespace TaazaTV.Helper
         {
             get => AppSettings.GetValueOrDefault(nameof(TaazaCash), string.Empty);
             set => AppSettings.AddOrUpdateValue(nameof(TaazaCash), value);
+        }
+
+        public static string CartCount
+        {
+            get => AppSettings.GetValueOrDefault(nameof(CartCount), string.Empty);
+            set => AppSettings.AddOrUpdateValue(nameof(CartCount), value);
         }
     }
 }

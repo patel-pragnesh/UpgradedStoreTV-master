@@ -15,7 +15,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
+            <customContentView:StoreTCashHeader Grid.Row="0"/>
             <StackLayout Grid.Row="1">
             <ListView RowHeight="210" x:Name="SubCatDetailListView">
                 <ListView.ItemTemplate>

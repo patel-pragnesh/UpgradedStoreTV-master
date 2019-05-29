@@ -40,6 +40,7 @@ namespace TaazaTV.View.News
             this.Padding = new Thickness(0, 20, 0, 0);
 #endif
         }
+
         private async void loadEventdata(string Id)
         {
             var x = await CommonFunc.FooterAdFunc("event-details");
@@ -133,10 +134,12 @@ namespace TaazaTV.View.News
             MainFrame.IsVisible = true;
             Loader.IsVisible = false;
         }
+
         private void DoSomething(object sender, EventArgs e)
         {
             loadEventdata(EventID);
         }
+
         private async void NoDataDoSomething(object sender, EventArgs e)
         {
             await Navigation.PopAsync();

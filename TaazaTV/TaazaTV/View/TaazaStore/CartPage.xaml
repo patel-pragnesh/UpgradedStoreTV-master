@@ -13,7 +13,7 @@
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
-            <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
+            <customContentView:StoreTCashHeader Grid.Row="0"/>
 
             <ListView ItemTapped="ListViewTapped" Grid.Row="1" RowHeight="120" x:Name="CartListView">
                 <ListView.ItemTemplate>

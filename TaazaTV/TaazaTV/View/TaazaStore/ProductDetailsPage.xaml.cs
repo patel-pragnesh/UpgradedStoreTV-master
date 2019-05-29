@@ -23,6 +23,7 @@ namespace TaazaTV.View.TaazaStore
         ProductDetailsViewModel vm = new ProductDetailsViewModel();
         int remAttr;
         string slug;
+        string ErrorMsg = "Please select one option!!";
         public ProductDetailsPage(string pro_slug)
         {
             InitializeComponent();
@@ -103,9 +104,6 @@ namespace TaazaTV.View.TaazaStore
 
                     if (SelectedVariants.Count() == Items.data.product_options.Count())
                     {
-                        PriceStack.IsVisible = false;
-                        OfferStack.IsVisible = true;
-
                         var NewBindingContext = Items.data.product_details.sku_variants.Where(z => z.variant_option_ids.Intersect(SelectedVariants).Count() == Items.data.product_options.Count()).FirstOrDefault();
                         vm.CarImages = NewBindingContext.images.ToList();
                         vm.Description = NewBindingContext.description;
@@ -114,13 +112,16 @@ namespace TaazaTV.View.TaazaStore
                         vm.SkuID = NewBindingContext.sku_id;
                         vm.ProductID = NewBindingContext.product_id;
                         vm.SkuID = NewBindingContext.sku_id;
+
+                        PriceStack.IsVisible = false;
+                        OfferStack.IsVisible = true;
                     }
                 }
             }
          
             catch
             {
-
+                ErrorMsg = "This product is  not availbale in stock!!!";
             }
         }
 
@@ -159,7 +160,7 @@ namespace TaazaTV.View.TaazaStore
             }
             else
             {
-                await DisplayAlert("Alert", "Please select one option!!", "OK");
+                await DisplayAlert("Alert", ErrorMsg, "OK");
             }
         }
 

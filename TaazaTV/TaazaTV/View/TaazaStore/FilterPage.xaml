@@ -15,7 +15,7 @@
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
 
-            <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
+            <customContentView:StoreHeaderView Grid.Row="0"/>
 
             <StackLayout Padding="20,10" Grid.Row="1">
 

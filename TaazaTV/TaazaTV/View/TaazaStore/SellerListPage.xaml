@@ -16,7 +16,8 @@
                 <RowDefinition Height="2"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
+            
+            <customContentView:StoreTCashHeader Grid.Row="0"/>
 
             <BoxView HeightRequest="2" Grid.Row="1" BackgroundColor="#2296f2"/>
             

@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <customContentView:StoreHeaderView Grid.Row="0" x:Name="NavigationBarView"/>
+        <customContentView:StoreHeaderView Grid.Row="0"/>
 
         <ScrollView Grid.Row="1" >
 

@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             HeightRequest="50"
-             x:Class="TaazaTV.Controls.StoreHeaderView">
+             x:Class="TaazaTV.Controls.StoreTCashHeader">
 
     <ContentView.Resources>
 
@@ -53,36 +52,11 @@
 
             <StackLayout Margin="0,0,10,0" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
 
-                <Image Source="magnifier.png" Style="{StaticResource barImgStyle}">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Search_Btn_Tapped"/>
-                    </Image.GestureRecognizers>
-                </Image>
-
-                <Image Style="{StaticResource barImgStyle}" Source="bell.png">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Bell_Btn_Tapped"/>
-                    </Image.GestureRecognizers>
-                </Image>
-                
-                <Frame Style="{StaticResource barFrameStyle}">
-                    <Label Style="{StaticResource barLabelStyle}" Text="2"/>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Bell_Btn_Tapped"/>
-                    </Frame.GestureRecognizers>
-                </Frame>
-
-                <Image Style="{StaticResource barImgStyle}" Source="cart.png">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Cart_Btn_Tapped"/>
-                    </Image.GestureRecognizers>
-                </Image>
-                <Frame x:Name="CartFrame" Style="{StaticResource barFrameStyle}">
-                    <Label Style="{StaticResource barLabelStyle}" x:Name="CartLabel"/>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Cart_Btn_Tapped"/>
-                    </Frame.GestureRecognizers>
-                </Frame>
+                <Image Source="taazaicon.png" Margin="12,12,0,12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                <Label x:Name="TaazaCashAmount" VerticalOptions="Center" Margin="0,0,10,0" TextColor="White" FontAttributes="Bold"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TaazaCashTapped"/>
+                </StackLayout.GestureRecognizers>
 
             </StackLayout>
 
