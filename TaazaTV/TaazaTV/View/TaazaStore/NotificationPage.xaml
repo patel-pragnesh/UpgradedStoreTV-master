@@ -1,12 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customContentView="clr-namespace:TaazaTV.Controls"
+             NavigationPage.HasNavigationBar="False"
              x:Class="TaazaTV.View.TaazaStore.NotificationPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <customContentView:StoreTCashHeader Grid.Row="0"/>
+        
+        <ListView Grid.Row="1" SeparatorVisibility="None" Footer="" HasUnevenRows="True" x:Name="NotificationListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell IsEnabled="False">
+                        <StackLayout>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <Image VerticalOptions="Center" HeightRequest="40" WidthRequest="63" Source="share.png"/>
+                                <StackLayout>
+                                    <Label TextColor="Black" Text="{Binding notification_title}" FontAttributes="Bold" FontSize="14"/>
+                                    <Label TextColor="Gray" FontSize="12" Text="{Binding notification_body}"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <!--<Label TextColor="Red" HorizontalOptions="Start" FontSize="12" Text="{Binding news_additional_information}"/>-->
+                                        <Label TextColor="Red" FontSize="12" Text="{Binding date}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                            <BoxView Margin="0,5" HeightRequest="5" BackgroundColor="Gray"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
 </ContentPage>

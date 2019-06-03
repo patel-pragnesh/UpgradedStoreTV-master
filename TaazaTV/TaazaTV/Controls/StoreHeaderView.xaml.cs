@@ -42,7 +42,7 @@ namespace TaazaTV.Controls
 
         private async void Bell_Btn_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new OrdersPage());
+            await Navigation.PushAsync(new NotificationPage());
         }
 
         private async void Cart_Btn_Tapped(object sender, EventArgs e)

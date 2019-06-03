@@ -52,6 +52,8 @@ namespace TaazaTV.View.TaazaCash
                     try
                     {
                         Items1 = JsonConvert.DeserializeObject<TaazaTransactionsModel>(jsonstr);
+                        AppData.TaazaCash = Items1.data.current_wallet_balance;
+                        TaazaCashAmount.Text = AppData.TaazaCash;
                     }
                     catch (Exception ex)
                     {

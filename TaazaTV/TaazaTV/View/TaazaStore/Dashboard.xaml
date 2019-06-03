@@ -92,7 +92,7 @@
                     <BoxView Grid.Row="4" HeightRequest="2" BackgroundColor="Gray"/>
 
                     <StackLayout Padding="10" Grid.Row="5" Orientation="Horizontal">
-                        <Label FontSize="Small" TextColor="ForestGreen" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="BEST SELLERS"/>
+                        <Label FontSize="Small" TextColor="ForestGreen" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="FEATURED SELLERS"/>
                         <Button CornerRadius="15" FontSize="Micro" Padding="15,5" BackgroundColor="#2196F3" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Text="View More" Clicked="NavToSellerList"/>
                     </StackLayout>
 

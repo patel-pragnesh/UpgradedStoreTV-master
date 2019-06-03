@@ -78,6 +78,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\AddressStateModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\EventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\MainCategoryListModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\NotificationModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\OrdersModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\ProductDetailsModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\ProductFilterModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\TaazaStoreModel\ProductListModel.cs" />

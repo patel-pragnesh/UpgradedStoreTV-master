@@ -10,19 +10,27 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
+                <RowDefinition Height="25"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
 
-            <customContentView:StoreHeaderView Grid.Row="0"/>
-
-            <StackLayout Padding="20,10" Grid.Row="1">
+            <StackLayout BackgroundColor="#2196f3" Padding="10" Spacing="15" Orientation="Horizontal">
+                <Image Source="back.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackBtnTapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="taazalogo.png"/>
+            </StackLayout>
+            
+            <StackLayout Padding="20,10" Grid.Row="2">
 
                 <Label FontAttributes="Bold" TextColor="Cyan" FontSize="Medium" Text="Price Range"/>
                 <BoxView HeightRequest="3" HorizontalOptions="Start" WidthRequest="30" BackgroundColor="White"/>
 
-                <component1:RangeSliderView x:Name="something"
+                <component1:RangeSliderView x:Name="RangePrice"
 				BackgroundColor="Transparent"
 				ActiveBarColor="#e1000e"
 				InactiveBarColor="#4b4b4d"
@@ -39,7 +47,7 @@
                 <Label Margin="0,60,0,0" FontAttributes="Bold" TextColor="Cyan" FontSize="Medium" Text="Brand List"/>
                 <BoxView HeightRequest="3" HorizontalOptions="StartAndExpand" WidthRequest="30" BackgroundColor="White"/>
                 
-                <ListView Footer="" ItemsSource="{Binding brand_list}" x:Name="BrandListView">
+                <ListView Footer="" ItemTapped="FilterListTapped" ItemsSource="{Binding brand_list}" x:Name="BrandListView">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -51,7 +59,8 @@
                                         </Grid.ColumnDefinitions>
                                         <Image Source="{Binding image}" HeightRequest="30"></Image>
                                         <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand">
-                                            <controls:CheckBox DefaultText="{Binding brand_title}"  HorizontalOptions="Fill"  />
+                                            <Label IsVisible="False" Text="{Binding brand_id}"/>
+                                            <controls:CheckBox DefaultText="{Binding brand_title}" CheckedChanged="CheckBox_CheckedChanged"  HorizontalOptions="Fill"  />
                                         </StackLayout>
                                     </Grid>
                                 </ViewCell.View>
@@ -61,11 +70,9 @@
                 </ListView>
             </StackLayout>
 
-
-            <StackLayout Grid.Row="2" Margin="50,0" Orientation="Horizontal">
-                <Button TextColor="Black" BackgroundColor="White" CornerRadius="5" Text="Reset" HorizontalOptions="StartAndExpand"/>
-                <Button TextColor="Black" BackgroundColor="White" CornerRadius="5" Text="Apply" HorizontalOptions="EndAndExpand"/>
-                
+            <StackLayout Grid.Row="3" Margin="50,0" Orientation="Horizontal">
+                <Button TextColor="Black" BackgroundColor="White" CornerRadius="5" Clicked="ResetClicked" Text="Reset" HorizontalOptions="StartAndExpand"/>
+                <Button TextColor="Black" BackgroundColor="White" CornerRadius="5" Clicked="ApplyClicked" Text="Apply" HorizontalOptions="EndAndExpand"/>
             </StackLayout>
             
         </Grid>

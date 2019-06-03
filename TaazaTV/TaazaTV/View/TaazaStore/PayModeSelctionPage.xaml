@@ -68,7 +68,7 @@
 
                 <StackLayout Spacing="10"  VerticalOptions="Center" WidthRequest="90" HorizontalOptions="End" Orientation="Horizontal">
                     <Image Source="taazaicon.png" VerticalOptions="Center" HeightRequest="22" WidthRequest="22"/>
-                    <Entry Keyboard="Numeric" x:Name="TaazaPayable" Unfocused="TaazaPaymentChanged" VerticalOptions="Center" Placeholder="000" TextColor="Black" FontAttributes="Bold"/>
+                    <Entry Keyboard="Numeric" x:Name="TaazaPayable" Text="0" Unfocused="TaazaPaymentChanged" VerticalOptions="Center" Placeholder="000" TextColor="Black" FontAttributes="Bold"/>
                 </StackLayout>
             </StackLayout>
 

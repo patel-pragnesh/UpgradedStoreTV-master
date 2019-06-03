@@ -10,6 +10,7 @@
             <Grid.Padding>
                 <OnPlatform iOS="0,20,0,0"/>
             </Grid.Padding>
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
@@ -62,16 +63,36 @@
                 </ListView.ItemTemplate>
             </ListView>
 
+            <Picker SelectedIndexChanged="ApplySorting" SelectedIndex="-1" IsVisible="False" x:Name="SortingPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Low to High</x:String>
+                        <x:String>High to Low</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
             <StackLayout Padding="50,0" Grid.Row="2" BackgroundColor="#2196f3" Orientation="Horizontal">
-                <Image HeightRequest="23" WidthRequest="23" Source="sortIcon.png"/>
+                <Image HeightRequest="23" WidthRequest="23" Source="sortIcon.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SortButtonClicked"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
                 <Label Margin="0,5" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small" TextColor="White" FontAttributes="Bold" Text="Sort">
-                    <!--<Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Button_Clicked"/>
-                    </Label.GestureRecognizers>-->
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SortButtonClicked"/>
+                    </Label.GestureRecognizers>
                 </Label>
 
                 <BoxView Margin="30,10,0,10" HorizontalOptions="CenterAndExpand" BackgroundColor="White" WidthRequest="2" HeightRequest="23"/>
-                <Image HeightRequest="23" WidthRequest="23" Source="filterIcon.png"/>
+
+                <Image HeightRequest="23" WidthRequest="23" Source="filterIcon.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="FilterBtn_Clicked"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
                 <Label Margin="0,5" VerticalOptions="Center" FontSize="Small" FontAttributes="Bold" TextColor="White" HorizontalOptions="End" Text="Filter">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="FilterBtn_Clicked"/>

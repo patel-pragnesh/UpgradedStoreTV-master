@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using TaazaTV.Helper;
 using TaazaTV.View.Accounts;
 using TaazaTV.View.News;
+using TaazaTV.View.TaazaStore;
 using TaazaTV.View.Tools;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -26,19 +27,19 @@ namespace TaazaTV.View.Navigation
             Icon = "menu.png";
             BindingContext = new MasterDetailsPageMasterViewModel();
             ListView = MenuItemsListView;
-            if(AppData.UserId=="")
+            if (AppData.UserId == "")
             {
                 ulogin.IsVisible = true;
 
             }
             UserName.Text = AppData.UserName;
-            if(AppData.UserName=="")
+            if (AppData.UserName == "")
             {
                 uRegister.IsVisible = true;
             }
             Avatar.Source = AppData.Avatar;
 
-            
+
         }
 
         class MasterDetailsPageMasterViewModel : INotifyPropertyChanged
@@ -65,8 +66,10 @@ namespace TaazaTV.View.Navigation
                     new MasterDetailsPageMenuItem { Id = 1, Icon="privacypolicy.png",  Title = "Privacy Policy", TargetType=typeof(PrivacyPolicyPage) },
                     new MasterDetailsPageMenuItem { Id = 3, Icon="terms.png",  Title = "Terms & Conditions", TargetType=typeof(TermsPage) },
                     new MasterDetailsPageMenuItem { Id = 2, Icon="submission.png",  Title = "My Submission", TargetType=typeof(SubmitedNewsPage) },
+                    new MasterDetailsPageMenuItem { Id = 4, Icon="share.png",  Title = "My Orders", TargetType=typeof(OrdersPage) },
                     new MasterDetailsPageMenuItem { Id = 4, Icon="terms.png",  Title = "TaazaCash Privacy Policy", TargetType=typeof(TaazaCashTerms) }
-                });
+
+                    });
                 }
             }
 
@@ -93,10 +96,10 @@ namespace TaazaTV.View.Navigation
 
         private void Logout_Tapped(object sender, EventArgs e)
         {
-           // AppData.IsLogin = false;
-           // App.Current.MainPage = new LoginPage();
+            // AppData.IsLogin = false;
+            // App.Current.MainPage = new LoginPage();
         }
-        
+
         private async void Login_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NewLoginPage());

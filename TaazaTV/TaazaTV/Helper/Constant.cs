@@ -9,8 +9,8 @@ namespace TaazaTV.Helper
         public static string ServerURL = "http://dev2.maxmobility.in/taazatv/public";
 
         //Live URL 
-   //     private static string HostName = "http://52.221.138.138/taazatv/public/api/V2";
-   //     public static string ServerURL = "http://52.221.138.138/taazatv/public";
+    //   private static string HostName = "http://52.221.138.138/taazatv/public/api/V2";
+    //   public static string ServerURL = "http://52.221.138.138/taazatv/public";
 
         //Live URL 
     //    private static string HostName = "http://api.taazatv.com/public/api/V2";
@@ -97,6 +97,8 @@ namespace TaazaTV.Helper
              HostName + "/dashboard/customer-dashboard",
              HostName + "/cart/add-remove",
              HostName + "/order/place-submit",
+             HostName + "/product/notification/list",
+             HostName + "/order/history",
         };
 
 
@@ -174,6 +176,8 @@ namespace TaazaTV.Helper
             GetStoreDashboardDataAPI,
             AddRemoveCartAPI,
             CallStorePaymentGateway,
+            NotificationListAPI,
+            OrdersHistoryAPI,
         }
     }
 }

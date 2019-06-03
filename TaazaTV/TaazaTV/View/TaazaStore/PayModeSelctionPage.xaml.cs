@@ -97,6 +97,7 @@ namespace TaazaTV.View.TaazaStore
             }
             catch
             {
+                TaazaPayable.Text = "0";
                 Amount.Text = Items.data.cart_data.total_price.ToString();
             }
         }
