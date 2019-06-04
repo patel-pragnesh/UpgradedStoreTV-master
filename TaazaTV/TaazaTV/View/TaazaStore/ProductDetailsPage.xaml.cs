@@ -28,7 +28,7 @@ namespace TaazaTV.View.TaazaStore
         {
             InitializeComponent();
             slug = pro_slug;
-            InitialLoading(pro_slug);
+            InitialLoading(slug);
             this.BindingContext = vm;
         }
 
@@ -36,6 +36,7 @@ namespace TaazaTV.View.TaazaStore
         {
             try
             {
+                Loader.IsVisible = true;
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("device_type", "ANDROID"),
@@ -46,7 +47,8 @@ namespace TaazaTV.View.TaazaStore
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.ProductDetailsAPI], parameters);
                 if (jsonstr.ToString() == "NoInternet")
                 {
-
+                    Loader.IsVisible = false;
+                    NoDataPage.IsVisible = true;
                 }
                 else
                 {
@@ -66,11 +68,13 @@ namespace TaazaTV.View.TaazaStore
                         VariantsListView.ItemsSource = vm.ProductOptions;
                         VariantsListView.HeightRequest = (Items.data.product_options.Count()*60) + 5;
                     }
-
+                    Loader.IsVisible = false;
                 }
             }
             catch (Exception ex)
             {
+                Loader.IsVisible = false;
+                NoDataPage.IsVisible = true;
                 var x = ex.Message;
             }
         }
@@ -104,6 +108,7 @@ namespace TaazaTV.View.TaazaStore
 
                     if (SelectedVariants.Count() == Items.data.product_options.Count())
                     {
+                        Loader.IsVisible = true;
                         var NewBindingContext = Items.data.product_details.sku_variants.Where(z => z.variant_option_ids.Intersect(SelectedVariants).Count() == Items.data.product_options.Count()).FirstOrDefault();
                         vm.CarImages = NewBindingContext.images.ToList();
                         vm.Description = NewBindingContext.description;
@@ -115,12 +120,14 @@ namespace TaazaTV.View.TaazaStore
 
                         PriceStack.IsVisible = false;
                         OfferStack.IsVisible = true;
+                        Loader.IsVisible = false;
                     }
                 }
             }
          
             catch
             {
+                Loader.IsVisible = false;
                 ErrorMsg = "This product is  not availbale in stock!!!";
             }
         }
@@ -131,6 +138,7 @@ namespace TaazaTV.View.TaazaStore
             {
                 try
                 {
+                    Loader.IsVisible = true;
                     List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                     {
                      new KeyValuePair<string, string>("user_id", AppData.UserId),
@@ -143,18 +151,24 @@ namespace TaazaTV.View.TaazaStore
                     var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.AddRemoveCartAPI], parameters);
                     if (jsonstr.ToString() == "NoInternet")
                     {
-
+                        Loader.IsVisible = false;
+                        await DisplayAlert("Alert", "Some Error Occured!!", "OK");
                     }
 
                     else
                     {
                         var Items = JsonConvert.DeserializeObject<SuccessResponseModel>(jsonstr);
                         if(Items.responseText == "Success")
-                        await DisplayAlert("Alert", "Product Added To Cart!!", "OK");
+                        {
+                            Loader.IsVisible = false;
+                            await DisplayAlert("Alert", "Product Added To Cart!!", "OK");
+                        }
+                        Loader.IsVisible = false;
                     }
                 }
                 catch (Exception ex)
                 {
+                    Loader.IsVisible = false;
                     await DisplayAlert("Alert", "Some Error Occured!!", "OK");
                 }
             }
@@ -169,9 +183,57 @@ namespace TaazaTV.View.TaazaStore
             VariantsListView.SelectedItem = null;
         }
 
-        private void BuyNowClicked(object sender, EventArgs e)
+        private async void BuyNowClicked(object sender, EventArgs e)
         {
+            if (vm.SkuID != null)
+            {
+                try
+                {
+                    Loader.IsVisible = true;
+                    List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                    {
+                     new KeyValuePair<string, string>("user_id", AppData.UserId),
+                     new KeyValuePair<string, string>("mode", "add"),
+                     new KeyValuePair<string, string>("product_id", vm.ProductID),
+                     new KeyValuePair<string, string>("product_sku_id", vm.SkuID),
+                     new KeyValuePair<string, string>("quantity", "1"),
+                    };
 
+                    var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.AddRemoveCartAPI], parameters);
+                    if (jsonstr.ToString() == "NoInternet")
+                    {
+                        Loader.IsVisible = false;
+                        await DisplayAlert("Alert", "Some Error Occured!!", "OK");
+                    }
+
+                    else
+                    {
+                        var Items = JsonConvert.DeserializeObject<SuccessResponseModel>(jsonstr);
+                        if (Items.responseText == "Success")
+                        {
+                            Loader.IsVisible = false;
+                            await Navigation.PushAsync(new CartPage());
+                        }
+                        Loader.IsVisible = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Loader.IsVisible = false;
+                    await DisplayAlert("Alert", "Some Error Occured!!", "OK");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Alert", ErrorMsg, "OK");
+            }
+           
+        }
+
+        private void NoDataDoSomething(object sender, EventArgs e)
+        {
+            NoDataPage.IsVisible = false;
+            InitialLoading(slug);
         }
     }
 }

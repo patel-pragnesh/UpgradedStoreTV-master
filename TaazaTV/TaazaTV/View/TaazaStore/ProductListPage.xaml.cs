@@ -25,6 +25,18 @@ namespace TaazaTV.View.TaazaStore
             SortingPicker.Focus();
         }
 
+        private void NoDataDoSomething(object sender, EventArgs e)
+        {
+            NoDataPage.IsVisible = false;
+            InitialLoading(slugVal, searchText, sellerId, "", "", "", "");
+        }
+
+        private void PullToRefreshListView(object sender, EventArgs e)
+        {
+            InitialLoading(slugVal, searchText, sellerId, priceFrom, priceTo, sb.ToString(), sorting);
+            ProductListView.IsRefreshing = false;
+        }
+
         public ProductListPage(string slug_val, string search_text, string seller_ID)
         {
             InitializeComponent();
@@ -55,6 +67,7 @@ namespace TaazaTV.View.TaazaStore
         {
             try
             {
+                Loader.IsVisible = true;
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("device_type", "ANDROID"),
@@ -72,15 +85,20 @@ namespace TaazaTV.View.TaazaStore
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GeneralProductListAPI], parameters);
                 if (jsonstr.ToString() == "NoInternet")
                 {
+                    Loader.IsVisible = false;
+                    NoDataPage.IsVisible = true;
                 }
                 else
                 {
                     var Items = JsonConvert.DeserializeObject<ProductListModel>(jsonstr);
                     ProductListView.ItemsSource = Items.data.product_list.ToList();
+                    Loader.IsVisible = false;
                 }
             }
             catch (Exception ex)
             {
+                Loader.IsVisible = false;
+                NoDataPage.IsVisible = true;
                 var x = ex.Message;
             }
         }

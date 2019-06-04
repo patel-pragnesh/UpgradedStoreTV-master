@@ -13,7 +13,7 @@
         <Image Grid.Row="0" Source="NoData.png" Margin="0,0,0,20" WidthRequest="200"></Image>
         <Label x:Name="HeadingText" Grid.Row="1" VerticalOptions="Start" Text="Sorry! No Data Found" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="Center"></Label>
         <Label x:Name="LabelText" Grid.Row="2" VerticalOptions="Start" Text="Please try again later" HorizontalOptions="Center"></Label>
-        <Button Text="Back" Grid.Row="3" x:Name="BackbuttonItem" Clicked="BackbuttonItem_Clicked" WidthRequest="100" HorizontalOptions="Center" TextColor="White" BackgroundColor="#42aaf4"></Button>
+        <Button Text="Retry" Grid.Row="3" x:Name="BackbuttonItem" Clicked="BackbuttonItem_Clicked" WidthRequest="100" HorizontalOptions="Center" TextColor="White" BackgroundColor="#42aaf4"></Button>
         <!--<Button Text="Back" Grid.Row="4" x:Name="BackbuttonItem" Clicked="BackbuttonItem_Clicked" WidthRequest="100" HorizontalOptions="Center" TextColor="White" BackgroundColor="#42aaf4" IsVisible="False"></Button>-->
     </Grid>
 </StackLayout>

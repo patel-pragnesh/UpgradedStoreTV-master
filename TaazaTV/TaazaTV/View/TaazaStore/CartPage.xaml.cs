@@ -15,6 +15,7 @@ namespace TaazaTV.View.TaazaStore
     public partial class CartPage : ContentPage
     {
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
+        StoreCartModel Items;
         string pid, sid, quan;
 
         public CartPage()
@@ -27,6 +28,10 @@ namespace TaazaTV.View.TaazaStore
         {
             try
             {
+                CartListView.IsVisible = false;
+                Items = new StoreCartModel();
+                Loader.IsVisible = true;
+                await Task.Delay(2500);
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("user_id", AppData.UserId),
@@ -36,21 +41,31 @@ namespace TaazaTV.View.TaazaStore
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GetCartHistoryAPI], parameters);
                 if (jsonstr.ToString() == "NoInternet")
                 {
+                    Loader.IsVisible = false;
+                    CartListView.IsVisible = false;
+                    NoDataPage.IsVisible = true;
                 }
                 else
                 {
-                    var Items = JsonConvert.DeserializeObject<StoreCartModel>(jsonstr);
+                    Items = JsonConvert.DeserializeObject<StoreCartModel>(jsonstr);
                     CartListView.ItemsSource = Items.data.cart_data.history_data;
+                    CartListView.IsVisible = true;
+                    Loader.IsVisible = false;
                 }
+
             }
             catch (Exception ex)
             {
+                Loader.IsVisible = false;
+                CartListView.IsVisible = false;
+                NoDataPage.IsVisible = true;
                 var x = ex.Message;
             }
         }
 
         private async void CheckOut_Clicked(object sender, EventArgs e)
         {
+            if(Items.data.cart_data.history_data.Count() > 0)
             await Navigation.PushAsync(new AddressListPage());
         }
 
@@ -77,6 +92,12 @@ namespace TaazaTV.View.TaazaStore
             (sender as ListView).SelectedItem = null;
         }
 
+        private void NoDataDoSomething(object sender, EventArgs e)
+        {
+            NoDataPage.IsVisible = false;
+            LoadInitialDetails();
+        }
+
         private async void RemoveItemClicked(object sender, EventArgs e)
         {
             var action = await DisplayActionSheet("Do you want to delete this item", "Yes", "No");
@@ -93,6 +114,7 @@ namespace TaazaTV.View.TaazaStore
         {
             try
             {
+                Loader.IsVisible = true;
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                      new KeyValuePair<string, string>("user_id", AppData.UserId),
@@ -103,18 +125,22 @@ namespace TaazaTV.View.TaazaStore
                 };
 
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.AddRemoveCartAPI], parameters);
+            
                 if (jsonstr.ToString() == "NoInternet")
                 {
-
+                    Loader.IsVisible = false;
                 }
 
                 else
                 {
+                   
+                    Loader.IsVisible = false;
                     LoadInitialDetails();
                 }
             }
             catch (Exception ex)
             {
+                Loader.IsVisible = false;
                 await DisplayAlert("Alert", "Some Error Occured!!", "OK");
             }
         }

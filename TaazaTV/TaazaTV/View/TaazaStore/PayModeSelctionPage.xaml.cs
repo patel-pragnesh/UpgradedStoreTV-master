@@ -34,6 +34,8 @@ namespace TaazaTV.View.TaazaStore
         {
             try
             {
+                PaymentGrid.IsVisible = false;
+                Loader.IsVisible = true;
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("user_id", AppData.UserId),
@@ -43,6 +45,9 @@ namespace TaazaTV.View.TaazaStore
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GetCartHistoryAPI], parameters);
                 if (jsonstr.ToString() == "NoInternet")
                 {
+                    NoDataPage.IsVisible = true;
+                    PaymentGrid.IsVisible = false;
+                    Loader.IsVisible = false;
                 }
                 else
                 {
@@ -50,11 +55,16 @@ namespace TaazaTV.View.TaazaStore
                     Amount.Text = Items.data.cart_data.total_price.ToString();
                     ItemCount.Text = Items.data.cart_data.history_data.Count().ToString();
                     TLabel.Text = Items.data.cart_data.total_taazacash_can_use.ToString();
+                    PaymentGrid.IsVisible = true;
+                    Loader.IsVisible = false;
 
                 }
             }
             catch (Exception ex)
             {
+                PaymentGrid.IsVisible = false;
+                NoDataPage.IsVisible = true;
+                Loader.IsVisible = false;
                 var x = ex.Message;
             }
         }
@@ -63,13 +73,17 @@ namespace TaazaTV.View.TaazaStore
         {
             if (AddressType.SelectedIndex == 0)
             {
+                Loader.IsVisible = true;
                 var x = Constant.APIs[(int)Constant.APIName.CallStorePaymentGateway] + "?user_id=" + AppData.UserId + "&cart_id=" + Items.data.cart_data.cart_id + "&address_id=" + addrId + "&mode=" + "OLP" + "&deduct_wallet_amount=" + TaazaPayable.Text;
                 await Navigation.PushAsync(new PaymentGatewayNav(x));
+                Loader.IsVisible = false;
             }
             if (AddressType.SelectedIndex == 1)
             {
+                Loader.IsVisible = true;
                 var x = Constant.APIs[(int)Constant.APIName.CallStorePaymentGateway] + "?user_id=" + AppData.UserId + "&cart_id=" + Items.data.cart_data.cart_id + "&address_id=" + addrId + "&mode=" + "COD" + "&deduct_wallet_amount=" + TaazaPayable.Text;
                 await Navigation.PushAsync(new PaymentGatewayNav(x));
+                Loader.IsVisible = false;
             }
             if (AddressType.SelectedIndex == -1)
             {
@@ -100,6 +114,12 @@ namespace TaazaTV.View.TaazaStore
                 TaazaPayable.Text = "0";
                 Amount.Text = Items.data.cart_data.total_price.ToString();
             }
+        }
+
+        private void NoDataDoSomething(object sender, EventArgs e)
+        {
+            NoDataPage.IsVisible = false;
+            LoadDataFromCartPage();
         }
     }
 }

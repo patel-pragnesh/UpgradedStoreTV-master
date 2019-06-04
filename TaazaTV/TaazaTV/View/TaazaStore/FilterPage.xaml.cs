@@ -30,22 +30,27 @@ namespace TaazaTV.View.TaazaStore
         {
             try
             {
+                Loader.IsVisible = true;
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>() { };
 
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.FilterOptionsAPI], parameters);
                 if (jsonstr.ToString() == "NoInternet")
                 {
-
+                    NoDataPage.IsVisible = true;
+                    Loader.IsVisible = false;
                 }
 
                 else
                 {
                     var Items = JsonConvert.DeserializeObject<ProductFilterModel>(jsonstr);
                     this.BindingContext = Items;
+                    Loader.IsVisible = false;
                 }
             }
             catch (Exception ex)
             {
+                NoDataPage.IsVisible = true;
+                Loader.IsVisible = false;
                 var x = ex.Message;
             }
         }
@@ -83,6 +88,12 @@ namespace TaazaTV.View.TaazaStore
             {
                 retParams.Remove((((sender as CheckBox).Parent as StackLayout).Children[0] as Label).Text);
             }
+        }
+
+        private void NoDataDoSomething(object sender, EventArgs e)
+        {
+            NoDataPage.IsVisible = false;
+            InitialDataLoading();
         }
     }
 }

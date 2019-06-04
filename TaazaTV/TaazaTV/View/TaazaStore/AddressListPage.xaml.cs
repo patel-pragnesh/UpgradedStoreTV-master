@@ -28,8 +28,10 @@ namespace TaazaTV.View.TaazaStore
 
         private async void LoadAddressList()
         {
+           
             try
             {
+                Loader.IsVisible = true;
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("device_type", "ANDROID"),
@@ -40,15 +42,20 @@ namespace TaazaTV.View.TaazaStore
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.UserAddressListAPI], parameters);
                 if (jsonstr.ToString() == "NoInternet")
                 {
+                    Loader.IsVisible = false;
+                    NoDataPage.IsVisible = true;
                 }
                 else
                 {
                     var Items = JsonConvert.DeserializeObject<UserAddressListModel>(jsonstr);
                     AddressList.ItemsSource = Items.data.address;
+                    Loader.IsVisible = false;
                 }
             }
             catch (Exception ex)
             {
+                Loader.IsVisible = false;
+                NoDataPage.IsVisible = true;
                 var x = ex.Message;
             }
         }
@@ -122,5 +129,10 @@ namespace TaazaTV.View.TaazaStore
             await Navigation.PushAsync(new NewAddressPage(id));
         }
 
+        private void NoDataDoSomething(object sender, EventArgs e)
+        {
+            NoDataPage.IsVisible = false;
+            LoadAddressList();
+        }
     }
 }

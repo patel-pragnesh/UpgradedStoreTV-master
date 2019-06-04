@@ -27,6 +27,7 @@ namespace TaazaTV.View.TaazaStore
         {
             try
             {
+                Loader.IsVisible = true;
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("device_type", "ANDROID"),
@@ -37,31 +38,43 @@ namespace TaazaTV.View.TaazaStore
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GetSellerListAPI], parameters);
                 if (jsonstr.ToString() == "NoInternet")
                 {
-
+                    Loader.IsVisible = false;
+                    NoDataPage.IsVisible = true;
                 }
 
                 else
                 {
                     var Items = JsonConvert.DeserializeObject<SellerListModel>(jsonstr);
                     SellersListView.ItemsSource = Items.data.sellers;
+                    Loader.IsVisible = false;
                 }
             }
             catch (Exception ex)
             {
+                Loader.IsVisible = false;
+                NoDataPage.IsVisible = true;
                 var x = ex.Message;
             }
         }
 
         private async void SellerListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            Loader.IsVisible = true;
             SellersListView.SelectedItem = null;
             var model = e.Item as Seller_Data;
             await Navigation.PushAsync(new SellerDetailsPage(model.seller_id.ToString()));
+            Loader.IsVisible = false;
         }
 
         private void Seller_Search_Clicked(object sender, EventArgs e)
         {
             InitialLoading((sender as SearchBar).Text);
+        }
+
+        private void NoDataDoSomething(object sender, EventArgs e)
+        {
+            NoDataPage.IsVisible = false;
+            InitialLoading("");
         }
 
         //private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)

@@ -37,6 +37,7 @@ namespace TaazaTV.View.TaazaStore
         {
             try
             {
+                Loader.IsVisible = true;
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("customer_address_id", addr_id),
@@ -45,17 +46,23 @@ namespace TaazaTV.View.TaazaStore
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.UserAddressDetailsViewAPI], parameters);
                 if (jsonstr.ToString() == "NoInternet")
                 {
+                    NoDataPage.IsVisible = true;
+                    Loader.IsVisible = false;
                 }
                 else
                 {
+
                     var Item = JsonConvert.DeserializeObject<StoreUserAddressModel>(jsonstr);
                     AddressModel = Item.data.address;
                     this.BindingContext = AddressModel;
                     AddressType.Items[AddressModel.type - 1].Checked = true;
+                    Loader.IsVisible = false;
                 }
             }
             catch (Exception ex)
             {
+                Loader.IsVisible = false;
+                NoDataPage.IsVisible = true;
                 var x = ex.Message;
             }
         }
@@ -115,6 +122,7 @@ namespace TaazaTV.View.TaazaStore
                 AddressModel.type = Convert.ToInt32(SelectedType.Id) + 1;
                 try
                 {
+                    Loader.IsVisible = true;
                     List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("user_id", AppData.UserId),
@@ -143,17 +151,22 @@ namespace TaazaTV.View.TaazaStore
 
                     if (jsonstr.ToString() == "NoInternet")
                     {
+                        NoDataPage.IsVisible = true;
+                        Loader.IsVisible = false;
                     }
 
                     else
                     {
                         var Items = JsonConvert.DeserializeObject<SuccessResponseModel>(jsonstr);
                         if (Items.responseText == "Success")
+                            Loader.IsVisible = false;
                             await Navigation.PopAsync();
                     }
                 }
                 catch (Exception ex)
                 {
+                    NoDataPage.IsVisible = true;
+                    Loader.IsVisible = false;
                 }
             }
 
@@ -161,6 +174,12 @@ namespace TaazaTV.View.TaazaStore
             {
                 await DisplayAlert("Alert", "Please check all mandatory fields!!", "OK");
             }
+        }
+
+        private async void NoDataDoSomething(object sender, EventArgs e)
+        {
+            NoDataPage.IsVisible = false;
+            await Navigation.PopAsync();
         }
 
     }

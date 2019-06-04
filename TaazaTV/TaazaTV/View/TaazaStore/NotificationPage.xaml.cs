@@ -28,11 +28,13 @@ namespace TaazaTV.View.TaazaStore
         {
             try
             {
+                Loader.IsVisible = true;
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
                 parameters.Add(new KeyValuePair<string, string>("user_id", AppData.UserId));
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.NotificationListAPI], parameters);
                 if (jsonstr.ToString() == "NoInternet")
                 {
+                    Loader.IsVisible = false;
                     await DisplayAlert("Alert", "Server Error", "OK");
                 }
                 else
@@ -41,15 +43,18 @@ namespace TaazaTV.View.TaazaStore
                     if (des.responseText == "Success")
                     {
                         NotificationListView.ItemsSource = des.data.notification_list;
+                        Loader.IsVisible = false;
                     }
                     else
                     {
+                        Loader.IsVisible = false;
                         await DisplayAlert("Alert", des.responseText, "OK");
                     }
                 }
             }
             catch (Exception ex)
             {
+                Loader.IsVisible = false;
                 await DisplayAlert("Alert", "Server Error", "OK");
             }
         }
@@ -57,6 +62,12 @@ namespace TaazaTV.View.TaazaStore
         private async void BackBtnTapped(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
+        }
+
+        private void NoDataDoSomething(object sender, EventArgs e)
+        {
+            NoDataPage.IsVisible = false;
+            LoadNotifications();
         }
     }
 }

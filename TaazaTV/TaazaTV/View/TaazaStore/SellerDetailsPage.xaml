@@ -4,6 +4,7 @@
              NavigationPage.HasNavigationBar="False"
               xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
               xmlns:customContentView="clr-namespace:TaazaTV.Controls"
+             xmlns:tools="clr-namespace:TaazaTV.View.Tools"
              x:Class="TaazaTV.View.TaazaStore.SellerDetailsPage">
     <ContentPage.Content>
         <Grid>
@@ -88,6 +89,9 @@
 
                 </StackLayout>
             </Grid>
+
+            <tools:NoDataPage Grid.Row="1" x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
+            <tools:Loader x:Name="Loader" Grid.Row="1" IsVisible="False"></tools:Loader>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -30,6 +30,7 @@ namespace TaazaTV.View.TaazaStore
 
         private async void PartialLoading()
         {
+            Loader.IsVisible = true;
             try
             {
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
@@ -41,6 +42,8 @@ namespace TaazaTV.View.TaazaStore
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GetStoreDashboardDataAPI], parameters);
                 if (jsonstr.ToString() == "NoInternet")
                 {
+                    NoDataPage.IsVisible = true;
+                    Loader.IsVisible = false;
                 }
                 else
                 {
@@ -49,11 +52,13 @@ namespace TaazaTV.View.TaazaStore
                     OffersListView.ItemsSource = Items.data.offers;
                     TopSellersListView.ItemsSource = Items.data.top_sellers;
                     TopSellersListView.HeightRequest = Items.data.top_sellers.Count() * 40;
+                    Loader.IsVisible = false;
                 }
             }
             catch(Exception ex)
             {
-
+                Loader.IsVisible = false;
+                NoDataPage.IsVisible = true;
             }
         }
 
@@ -124,6 +129,13 @@ namespace TaazaTV.View.TaazaStore
             {
                 await Navigation.PushAsync(new ProductListPage(((sender as Grid).Children[0] as Label).Text.ToString(),"",""));
             }
+        }
+
+        private void NoDataDoSomething(object sender, EventArgs e)
+        {
+            NoDataPage.IsVisible = false;
+            InitialLoading();
+            PartialLoading();
         }
     }
 }

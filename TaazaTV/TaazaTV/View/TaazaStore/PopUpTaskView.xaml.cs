@@ -30,6 +30,7 @@ namespace TaazaTV.View.TaazaStore
             {
                 if(Invoice.Text != null && Billing.Text != null && TaazaRedeemed.Text != null)
                 {
+                    Loader.IsVisible = true;
                     string[] token = AppData.TaazaCash.Split('.');
                     if (Convert.ToInt32(token[0]) >= Convert.ToInt32(TaazaRedeemed.Text))
                     {
@@ -46,6 +47,7 @@ namespace TaazaTV.View.TaazaStore
                         var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GetOfflinePayOTPAPI], parameters);
                         if (jsonstr.ToString() == "NoInternet")
                         {
+                            Loader.IsVisible = false;
                         }
                         else
                         {
@@ -56,7 +58,9 @@ namespace TaazaTV.View.TaazaStore
                                 ReedemStack.IsVisible = false;
                                 OtpStack.IsVisible = true;
                                 GetOtpButton.IsVisible = false;
+                               
                             }
+                            Loader.IsVisible = false;
                         }
                     }
                     else
@@ -72,6 +76,7 @@ namespace TaazaTV.View.TaazaStore
             }
             catch (Exception ex)
             {
+                Loader.IsVisible = false;
                 var x = ex.Message;
             }
         }

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:customContentView="clr-namespace:TaazaTV.Controls"
+             xmlns:tools="clr-namespace:TaazaTV.View.Tools"
              NavigationPage.HasNavigationBar="False"
              x:Class="TaazaTV.View.TaazaStore.SellerListPage">
     <ContentPage.Content>
@@ -66,6 +67,10 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+
+            <tools:NoDataPage Grid.Row="4" x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
+            <tools:Loader x:Name="Loader" Grid.Row="4" IsVisible="False"></tools:Loader>
 
         </Grid>
     </ContentPage.Content>

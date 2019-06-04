@@ -4,6 +4,7 @@
              xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
               NavigationPage.HasNavigationBar="False"
              xmlns:customContentView="clr-namespace:TaazaTV.Controls"
+             xmlns:tools="clr-namespace:TaazaTV.View.Tools"
              x:Class="TaazaTV.View.TaazaStore.NewAddressPage">
     <ContentPage.Resources>
 
@@ -87,6 +88,11 @@
             </ScrollView>
 
             <Button BackgroundColor="#007acc" TextColor="White" Grid.Row="2" Clicked="SubmitNewAddress"  Text="Save"/>
+
+
+            <tools:NoDataPage Grid.Row="1" x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
+            <tools:Loader x:Name="Loader" Grid.Row="1" IsVisible="False"></tools:Loader>
+
 
         </Grid>
 

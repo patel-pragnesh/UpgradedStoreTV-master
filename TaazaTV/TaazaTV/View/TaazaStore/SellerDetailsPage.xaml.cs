@@ -28,6 +28,7 @@ namespace TaazaTV.View.TaazaStore
         {
             try
             {
+                Loader.IsVisible = true;
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("device_type", "ANDROID"),
@@ -38,6 +39,8 @@ namespace TaazaTV.View.TaazaStore
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GetSellerDetailsAPI], parameters);
                 if (jsonstr.ToString() == "NoInternet")
                 {
+                    Loader.IsVisible = false;
+                    NoDataPage.IsVisible = true;
                 }
                 else
                 {
@@ -49,11 +52,13 @@ namespace TaazaTV.View.TaazaStore
                         Html = "<iframe width=\"100%\" height=\"232\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\" src = \"https://maps.google.com/maps?q=" + Items.data.latitude + "," + Items.data.latitude + "&hl=es;z=14&amp;output=embed\" ></ iframe > "
                     };
                     WebMap.Source = html;
-
+                    Loader.IsVisible = false;
                 }
             }
             catch (Exception ex)
             {
+                Loader.IsVisible = false;
+                NoDataPage.IsVisible = true;
                 var x = ex.Message;
             }
         }
@@ -66,6 +71,12 @@ namespace TaazaTV.View.TaazaStore
         private async void ViewSellerProducts(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ProductListPage("", "", SellerID));
+        }
+
+        private void NoDataDoSomething(object sender, EventArgs e)
+        {
+            NoDataPage.IsVisible = false;
+            InitialLoading();
         }
     }
 }
