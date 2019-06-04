@@ -17,6 +17,7 @@ namespace TaazaTV.View.TaazaStore
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
         Address AddressModel = new Address();
         string cust_addr_id, jsonstr;
+        AddressStateModel StateItems = new AddressStateModel();
         public NewAddressPage(string AddrID)
         {
             InitializeComponent();
@@ -71,13 +72,26 @@ namespace TaazaTV.View.TaazaStore
                 }
                 else
                 {
-                    var Items = JsonConvert.DeserializeObject<AddressStateModel>(jsonstr);
+                    StateItems = JsonConvert.DeserializeObject<AddressStateModel>(jsonstr);
+                    StatePicker.ItemsSource = StateItems.Data.states.Select(x => x.name).ToList();
                 }
             }
             catch (Exception ex)
             {
                 var x = ex.Message;
             }
+        }
+
+        private void StateSelected(object sender, EventArgs e)
+        {
+            AddressModel.state_name = (sender as Picker).SelectedItem.ToString();
+            StateEntry.Text = AddressModel.state_name;
+            AddressModel.state_id = StateItems.Data.states.Where(x => x.name == AddressModel.state_name).Select(x => x.state_id).FirstOrDefault().ToString();
+        }
+
+        private void StateEntryTapped(object sender, EventArgs e)
+        {
+            StatePicker.Focus();
         }
 
         private async void SubmitNewAddress(object sender, EventArgs e)
@@ -93,6 +107,8 @@ namespace TaazaTV.View.TaazaStore
                 && AddressModel.pincode.ToString().Count() == 6
                 && AddressModel.phone.Count() == 10
                 && !String.IsNullOrEmpty(AddressModel.address_2)
+                && !String.IsNullOrEmpty(AddressModel.state_name)
+                && !String.IsNullOrEmpty(AddressModel.state_id)
                 && SelectedType != null
                 )
             {
@@ -110,6 +126,7 @@ namespace TaazaTV.View.TaazaStore
                     new KeyValuePair<string, string>("pincode", AddressModel.pincode.ToString()),
                     new KeyValuePair<string, string>("city_name", AddressModel.city_name),
                     new KeyValuePair<string, string>("state_name", AddressModel.state_name),
+                    new KeyValuePair<string, string>("state_id", AddressModel.state_id),
                     new KeyValuePair<string, string>("type", AddressModel.type.ToString()),
                 };
 
@@ -142,9 +159,8 @@ namespace TaazaTV.View.TaazaStore
 
             else
             {
-                //Show all fields are mandatory!!
+                await DisplayAlert("Alert", "Please check all mandatory fields!!", "OK");
             }
-           
         }
 
     }

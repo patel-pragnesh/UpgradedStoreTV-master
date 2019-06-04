@@ -22,7 +22,7 @@ namespace TaazaTV.Model.TaazaStoreModel
 
     public class State
     {
-        public long state_id { get; set; }
+        public int state_id { get; set; }
 
         public string name { get; set; }
 

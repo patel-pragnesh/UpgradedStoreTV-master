@@ -42,6 +42,8 @@ namespace TaazaTV.Model.TaazaStoreModel
 
         public string state_name { get; set; }
 
+        public string state_id { get; set; }
+
         public int type { get; set; }
 
         public int is_default { get; set; }

@@ -32,7 +32,7 @@
                 <StackLayout Spacing="17" Margin="25">
 
                     <Label Text="Pincode*"/>
-                    <Entry Text="{Binding pincode,Mode=TwoWay}" Placeholder="743145"/>
+                    <Entry Text="{Binding pincode,Mode=TwoWay}" Keyboard="Numeric" Placeholder="743145"/>
 
                     <Label Text="House No., Building name*"/>
                     <Entry Text="{Binding address_1,Mode=TwoWay}" Placeholder="House No. 30/51, RR Flats"/>
@@ -47,7 +47,15 @@
 
                     <StackLayout Spacing="20" Orientation="Horizontal">
                         <Entry Text="{Binding city_name,Mode=TwoWay}" WidthRequest="150" Placeholder="Kolkata"/>
-                        <Entry Text="{Binding state_name,Mode=TwoWay}" WidthRequest="150" Placeholder="West Bengal"/>
+
+                        <StackLayout>
+                            <Entry Text="{Binding state_name,Mode=TwoWay}" x:Name="StateEntry" InputTransparent="True" Placeholder="Select State" WidthRequest="150"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="StateEntryTapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        
                     </StackLayout>
 
                     <Label Text="Landmark (optional)"/>
@@ -73,7 +81,7 @@
                         </controls:BindableRadioGroup.ItemsSource>
                     </controls:BindableRadioGroup>
 
-
+                    <Picker x:Name="StatePicker" IsVisible="False" SelectedIndexChanged="StateSelected" SelectedIndex="-1"/>
 
                 </StackLayout>
             </ScrollView>

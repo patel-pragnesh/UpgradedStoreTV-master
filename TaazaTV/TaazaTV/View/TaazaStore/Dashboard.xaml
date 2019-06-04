@@ -10,16 +10,20 @@
     <ContentPage.Content>
 
         <Grid RowSpacing="0">
+            
             <Grid.Padding>
                 <OnPlatform iOS="0,20,0,0"/>
             </Grid.Padding>
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <ContentView Grid.Row="0" HeightRequest="50" x:Name="HeaderView"/>
+            
             <ScrollView Grid.Row="1">
+                
                 <Grid RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -40,6 +44,7 @@
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
+                                    <Label Text="{Binding product_slug}" IsVisible="False"/>
                                     <Image Grid.RowSpan="2" Source="bannergray.png" />
                                     <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding image}"/>
                                     <Label Grid.Row="1" BackgroundColor="#80000000" Margin="12" TextColor="White" Text="{Binding title}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap"/>
@@ -82,8 +87,12 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding product_category_slug}" IsVisible="False" />
                                     <Image Grid.Column="0" Grid.ColumnSpan="2" Source="{Binding image}" Aspect="AspectFill" HeightRequest="140"/>
                                     <Label HorizontalOptions="Center" Grid.Column="0" VerticalOptions="Center" Text="{Binding title}"/>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OffersListTapped"/>
+                                    </Grid.GestureRecognizers>
                                 </Grid>
                             </DataTemplate>
                         </controls:HorizontalList.ItemTemplate>
@@ -109,7 +118,9 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </Grid>
+                
             </ScrollView>
+            
         </Grid>
 
     </ContentPage.Content>

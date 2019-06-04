@@ -29,6 +29,8 @@ namespace TaazaTV.Model.TaazaStoreModel
         public string image { get; set; }
 
         public string title { get; set; }
+
+        public string product_slug { get; set; }
     }
 
     public partial class Offer
@@ -38,6 +40,10 @@ namespace TaazaTV.Model.TaazaStoreModel
         public string title { get; set; }
 
         public string sub_title { get; set; }
+
+        public string product_category_id { get; set; }
+
+        public string product_category_slug { get; set; }
     }
 
     public partial class TopSeller

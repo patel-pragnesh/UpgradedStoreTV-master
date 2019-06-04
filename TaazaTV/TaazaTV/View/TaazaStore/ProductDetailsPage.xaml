@@ -17,7 +17,7 @@
 
         <ScrollView Grid.Row="1" >
 
-            <Grid RowSpacing="7">
+            <Grid Margin="7,0" RowSpacing="7">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -28,41 +28,41 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <cv:CarouselView HeightRequest="175" Grid.Row="0" Margin="0" ItemsSource="{Binding CarImages}">
+                <cv:CarouselView HeightRequest="200" Grid.Row="0" Margin="0" ItemsSource="{Binding CarImages}">
                     <cv:CarouselView.ItemTemplate>
                         <DataTemplate>
                             <Grid>
                                 <Image Source="bannergray.png" />
-                                <Image Aspect="AspectFill" Source="{Binding normal.image_path}"/>
+                                <Image Aspect="Fill" Source="{Binding normal.image_path}"/>
                             </Grid>
                         </DataTemplate>
                     </cv:CarouselView.ItemTemplate>
                 </cv:CarouselView>
 
                 <StackLayout Grid.Row="1">
-                    <Label TextColor="Black" Text="{Binding Name}"/>
-                    <Label TextColor="Black" Text="{Binding Description}"/>
+                    <Label FontAttributes="Bold" TextColor="Black" FontSize="Medium" Text="{Binding Name}"/>
+                    <Label TextColor="Gray" FontSize="Small" Text="{Binding Description}"/>
                 </StackLayout>
 
                 <StackLayout Margin="0,20" x:Name="PriceStack" Grid.Row="2" Orientation="Horizontal">
-                    <Image HeightRequest="30" WidthRequest="30" Source="rupeesblack.png"/>
-                    <Label TextColor="Black" Text="{Binding PriceRange}"/>
+                    <Image HeightRequest="20" WidthRequest="20" Source="rupeesblack.png"/>
+                    <Label TextColor="#2196F3" FontAttributes="Bold" Text="{Binding PriceRange}"/>
                 </StackLayout>
 
                 <StackLayout Margin="0,20" IsVisible="False" x:Name="OfferStack" Grid.Row="2" Orientation="Horizontal">
-                    <Image HeightRequest="30" WidthRequest="30" Source="rupeesblack.png"/>
+                    <Image HeightRequest="20" WidthRequest="20" Source="rupeesblack.png"/>
                     <Label TextDecorations="Strikethrough" TextColor="Black" Text="{Binding Price}"/>
 
-                    <Image HeightRequest="30" WidthRequest="30" Margin="20,0,0,0" Source="rupeesgreen.png"/>
-                    <Label TextColor="Black" Text="{Binding OfferPrice}"/>
+                    <Image HeightRequest="20" WidthRequest="20" Margin="20,0,0,0" Source="rupeesgreen.png"/>
+                    <Label FontAttributes="Bold" TextColor="Green" Text="{Binding OfferPrice}"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="3">
-                    <Label TextColor="#78b877" Text="{Binding Seller}"/>
-                    <Label TextColor="Black" Text="{Binding SellerDesc}"/>
+                    <Label TextColor="#78b877" FontAttributes="Bold" Text="{Binding Seller}"/>
+                    <Label TextColor="Gray" FontAttributes="Italic" Text="{Binding SellerDesc}"/>
                 </StackLayout>
 
-                <ListView Grid.Row="4" RowHeight="60" ItemTapped="ListViewTapped" x:Name="VariantsListView">
+                <ListView Margin="7,10" Footer="" Grid.Row="4" RowHeight="60" ItemTapped="ListViewTapped" x:Name="VariantsListView">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -90,7 +90,10 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <Button Grid.Row="5" Clicked="AddToCartClicked" Text="Add To Cart"/>
+                <StackLayout HeightRequest="45" Margin="15,0" Orientation="Horizontal" Grid.Row="5">
+                    <Button CornerRadius="10" WidthRequest="130" BackgroundColor="#2196F3" TextColor="White" Clicked="AddToCartClicked" Text="Add To Cart"/>
+                    <Button HorizontalOptions="EndAndExpand" CornerRadius="10" WidthRequest="100" BackgroundColor="#2196F3" TextColor="White" Clicked="BuyNowClicked" Text="Buy Now"/>
+                </StackLayout>
 
             </Grid>
         </ScrollView>

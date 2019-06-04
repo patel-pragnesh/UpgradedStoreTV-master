@@ -98,7 +98,7 @@ namespace TaazaTV.View.TaazaStore
                     Product_Variant_Options item = (sender as HorizontalList).SelectedItem as Product_Variant_Options;
 
                     vm.ProductOptions.SelectMany(a => a.variant_options.Where(b => b.variant_option_id == item.variant_option_id)
-                             .Select(d => { d.background_color = "Purple"; d.IsSelected = true; return d; })).ToList();
+                             .Select(d => { d.background_color = "#2196F3"; d.IsSelected = true; return d; })).ToList();
 
                     SelectedVariants.Add(item.variant_option_id);
 
@@ -167,6 +167,11 @@ namespace TaazaTV.View.TaazaStore
         private void ListViewTapped(object sender, ItemTappedEventArgs e)
         {
             VariantsListView.SelectedItem = null;
+        }
+
+        private void BuyNowClicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

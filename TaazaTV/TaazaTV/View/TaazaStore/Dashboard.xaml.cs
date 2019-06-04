@@ -84,9 +84,12 @@ namespace TaazaTV.View.TaazaStore
             }
         }
 
-        private void StoreFeatured_Tapped(object sender, EventArgs e)
+        private async void StoreFeatured_Tapped(object sender, EventArgs e)
         {
-
+            if(((sender as Grid).Children[0] as Label).Text.ToString() != string.Empty)
+            {
+                await Navigation.PushAsync(new ProductDetailsPage(((sender as Grid).Children[0] as Label).Text.ToString()));
+            }
         }
 
         private async void NavToSellerList(object sender, EventArgs e)
@@ -113,6 +116,14 @@ namespace TaazaTV.View.TaazaStore
         {
             (sender as ListView).SelectedItem = null;
             await Navigation.PushAsync(new SellerDetailsPage((e.Item as TopSeller).seller_id.ToString()));
+        }
+
+        private async void OffersListTapped(object sender, EventArgs e)
+        {
+            if (((sender as Grid).Children[0] as Label).Text.ToString() != string.Empty)
+            {
+                await Navigation.PushAsync(new ProductListPage(((sender as Grid).Children[0] as Label).Text.ToString(),"",""));
+            }
         }
     }
 }
