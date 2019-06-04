@@ -31,7 +31,7 @@ namespace TaazaTV.View.TaazaStore
                 CartListView.IsVisible = false;
                 Items = new StoreCartModel();
                 Loader.IsVisible = true;
-                await Task.Delay(2500);
+                await Task.Delay(1000);
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("user_id", AppData.UserId),

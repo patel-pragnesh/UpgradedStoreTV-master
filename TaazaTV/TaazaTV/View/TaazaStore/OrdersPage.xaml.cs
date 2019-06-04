@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TaazaTV.Helper;
 using TaazaTV.Model.TaazaStoreModel;
+using TaazaTV.View.Navigation;
+using TaazaTV.View.TaazaCash;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,8 +21,8 @@ namespace TaazaTV.View.TaazaStore
         public OrdersPage ()
 		{
 			InitializeComponent ();
+            TaazaCashAmount.Text = AppData.TaazaCash;
             LoadOrdersHistory();
-
         }
 
         private async void LoadOrdersHistory()
@@ -63,6 +65,16 @@ namespace TaazaTV.View.TaazaStore
         {
             NoDataPage.IsVisible = false;
             LoadOrdersHistory();
+        }
+
+        private void BackBtnTapped(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new MasterDetailsPage();
+        }
+
+        private async void TaazaCashTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new TaazaTransactionPage());
         }
     }
 }

@@ -10,7 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <StackLayout BackgroundColor="#2196F3" Orientation="Horizontal" Grid.Row="0">

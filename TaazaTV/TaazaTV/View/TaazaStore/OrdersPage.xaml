@@ -8,11 +8,30 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="60"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <customContentView:StoreTCashHeader Grid.Row="0"/>
+            <Grid x:Name="CustomToolbar" Grid.Row="0" HeightRequest="60" BackgroundColor="#2196F3" VerticalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="Menu" Source="back.png" WidthRequest="23" HeightRequest="23" VerticalOptions="Center" Margin="15,15,5,15" HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackBtnTapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="logo" Grid.Column="1" Source="taazalogo.png" Margin="5,15" Aspect="AspectFit"/>
+                <StackLayout x:Name="TaazaCashTab" Grid.Column="2" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                    <Image Source="taazaicon.png" Margin="10,15,0,15" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    <Label x:Name="TaazaCashAmount" VerticalOptions="Center" Margin="0,0,10,0" TextColor="White" FontAttributes="Bold"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TaazaCashTapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </Grid>
 
             <ListView  Grid.Row="1" RowHeight="285" x:Name="OrdersListView">
                 
@@ -64,7 +83,7 @@
                                         <Label FontSize="Micro" HorizontalOptions="End" Text="DELIVERED"/>
                                     </StackLayout>
 
-                                    <StackLayout Padding="12,0,18,10" Orientation="Horizontal" Grid.Row="7" Grid.ColumnSpan="2">
+                                    <StackLayout Padding="12,0,15,10" Orientation="Horizontal" Grid.Row="7" Grid.ColumnSpan="2">
                                             <Label TextColor="Gray" FontSize="Micro" HorizontalOptions="Start" Text="{Binding order_date}"/>
                                             <Label TextColor="Gray" FontSize="Micro" HorizontalOptions="CenterAndExpand" Text="{Binding dispatched_date}"/>
                                             <Label TextColor="Gray" FontSize="Micro" HorizontalOptions="End" Text="{Binding delivered_date}"/>

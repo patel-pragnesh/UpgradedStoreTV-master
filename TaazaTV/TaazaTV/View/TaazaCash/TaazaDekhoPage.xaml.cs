@@ -46,17 +46,23 @@ namespace TaazaTV.View.TaazaCash
                 if (jsonstr.ToString() == "NoInternet")
                 {
                     NoInternet.IsVisible = true;
+                    MainFrames.IsVisible = false;
                     Loader.IsVisible = false;
                 }
                 else
                 {
                     Items = JsonConvert.DeserializeObject<TaazaDekhoModel>(jsonstr);
                     if (Items.data.details.poll_options.Count() == 0)
+                    {
+                        MainFrames.IsVisible = false;
                         NodataPage.IsVisible = true;
+                    }
+                      
                     else
                     {
                         PollOptions.ItemsSource = Items.data.details.poll_options.Select(x => x.option_value).ToList();
                         Poll_Id = Items.data.details.poll_id.ToString();
+                        MainFrames.IsVisible = true;
 
                         if (Items.data.details == null)
                         {
@@ -94,6 +100,7 @@ namespace TaazaTV.View.TaazaCash
             catch(Exception ex)
             {
                 var a = ex.Message;
+                MainFrames.IsVisible = false;
                 Loader.IsVisible = false;
                 NodataPage.IsVisible = true;
             }
@@ -165,6 +172,7 @@ namespace TaazaTV.View.TaazaCash
         private void DoSomething(object sender, EventArgs e)
         {
             NoInternet.IsVisible = false;
+            NodataPage.IsVisible = false;
             LoadOptions();
         }
 

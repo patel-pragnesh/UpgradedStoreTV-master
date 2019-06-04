@@ -74,6 +74,7 @@ namespace TaazaTV.View.TaazaCash
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.RestaurantDetails], parameters);
                 if (jsonstr.ToString() == "NoInternet")
                 {
+                    Loader.IsVisible = false;
                     NoInternet.IsVisible = true;
                     MainFrame.IsVisible = false;
                     Bannerimg.IsVisible = false;
@@ -114,6 +115,7 @@ namespace TaazaTV.View.TaazaCash
             }
             catch (Exception ex)
             {
+                Loader.IsVisible = false;
                 NoDataPage.IsVisible = true;
             }
         }
@@ -130,11 +132,15 @@ namespace TaazaTV.View.TaazaCash
 
         private void DoSomething(object sender, EventArgs e)
         {
+            NoDataPage.IsVisible = false;
+            NoInternet.IsVisible = false;
             LoadRestaurantDetails(RestaurantID);
         }
 
         private async void NoDataDoSomething(object sender, EventArgs e)
         {
+            NoDataPage.IsVisible = false;
+            NoInternet.IsVisible = false;
             await Navigation.PopAsync();
         }
 

@@ -56,8 +56,8 @@
                 </StackLayout>
             </Grid>
         </StackLayout>
-        <tools:NoDataPage x:Name="NodataPage" IsVisible="False"/>
-        <tools:NoInternetPage x:Name="NoInternet" Grid.Row="1" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething" Margin="0,70,0,0"></tools:NoInternetPage>
-        <tools:Loader x:Name="Loader" Grid.Row="1" IsVisible="False"></tools:Loader>
+        <tools:NoDataPage x:Name="NodataPage"  Grid.Row="2" IsVisible="False"/>
+        <tools:NoInternetPage x:Name="NoInternet" Grid.Row="2" TextColor="Gray" IsVisible="False" VerticalOptions="Center" ClickedButton="DoSomething" Margin="0,70,0,0"></tools:NoInternetPage>
+        <tools:Loader x:Name="Loader" Grid.Row="2" IsVisible="False"></tools:Loader>
     </Grid>
 </ContentPage>
