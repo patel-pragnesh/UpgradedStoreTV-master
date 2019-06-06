@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,11 @@ namespace TaazaTV.View.TaazaStore
 
         string slugVal, searchText, sellerId, priceTo, sorting, priceFrom;
 
+        int pageNumber;
+
         StringBuilder sb = new StringBuilder();
+
+        ObservableCollection<Store_Product_List> ProductListCollection;
 
         private void SortButtonClicked(object sender, EventArgs e)
         {
@@ -33,6 +38,8 @@ namespace TaazaTV.View.TaazaStore
 
         private void PullToRefreshListView(object sender, EventArgs e)
         {
+            pageNumber = 1;
+            ProductListCollection = new ObservableCollection<Store_Product_List>();
             InitialLoading(slugVal, searchText, sellerId, priceFrom, priceTo, sb.ToString(), sorting);
             ProductListView.IsRefreshing = false;
         }
@@ -40,7 +47,8 @@ namespace TaazaTV.View.TaazaStore
         public ProductListPage(string slug_val, string search_text, string seller_ID)
         {
             InitializeComponent();
-
+            ProductListCollection = new ObservableCollection<Store_Product_List>();
+            pageNumber = 1;
             slugVal = slug_val;
             searchText = search_text;
             sellerId = seller_ID;
@@ -67,7 +75,11 @@ namespace TaazaTV.View.TaazaStore
         {
             try
             {
-                Loader.IsVisible = true;
+                if(pageNumber == 1)
+                {
+                    Loader.IsVisible = true;
+                }
+                
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("device_type", "ANDROID"),
@@ -79,7 +91,7 @@ namespace TaazaTV.View.TaazaStore
                     new KeyValuePair<string, string>("price_search_to", priceto),
                     new KeyValuePair<string, string>("brand_search", brandfilters),
                     new KeyValuePair<string, string>("sort_by", sortBy),  // Like price_high_to_low or price_low_to_high
-                    new KeyValuePair<string, string>("page", ""), // call this after lazy loading
+                    new KeyValuePair<string, string>("page", pageNumber.ToString()), // call this after lazy loading
                 };
 
                 var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GeneralProductListAPI], parameters);
@@ -91,8 +103,19 @@ namespace TaazaTV.View.TaazaStore
                 else
                 {
                     var Items = JsonConvert.DeserializeObject<ProductListModel>(jsonstr);
-                    ProductListView.ItemsSource = Items.data.product_list.ToList();
+                    foreach(var item in Items.data.product_list)
+                    {
+                        ProductListCollection.Add(item);
+                    }
+                 // ProductListView.ItemsSource = Items.data.product_list.ToList();
+                    ProductListView.ItemsSource = ProductListCollection.ToList();
                     Loader.IsVisible = false;
+                    if(Items.data.hasMoreData == true)
+                    {
+                        pageNumber++;
+                        InitialLoading(slugVal, searchText, sellerId, priceFrom, priceTo, sb.ToString(), sorting);
+                    }
+                       
                 }
             }
             catch (Exception ex)

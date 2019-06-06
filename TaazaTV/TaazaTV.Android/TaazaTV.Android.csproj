@@ -675,6 +675,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\orderedIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\cancelledIcon.png" />
+  </ItemGroup>
   <Import Project="..\TaazaTV\TaazaTV.projitems" Label="Shared" Condition="Exists('..\TaazaTV\TaazaTV.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

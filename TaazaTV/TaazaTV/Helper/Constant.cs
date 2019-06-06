@@ -99,6 +99,7 @@ namespace TaazaTV.Helper
              HostName + "/order/place-submit",
              HostName + "/product/notification/list",
              HostName + "/order/history",
+             HostName + "/order/cancel-order",
         };
 
 
@@ -178,6 +179,7 @@ namespace TaazaTV.Helper
             CallStorePaymentGateway,
             NotificationListAPI,
             OrdersHistoryAPI,
+            CancelOrderAPI,
         }
     }
 }

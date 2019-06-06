@@ -33,78 +33,95 @@
                 </StackLayout>
             </Grid>
 
-            <ListView  Grid.Row="1" RowHeight="285" x:Name="OrdersListView">
-                
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell IsEnabled="False">
-                        <StackLayout Padding="15,7">
+            <ListView  Grid.Row="1" RowHeight="285" ItemTapped="OrderListItemTapped" x:Name="OrdersListView">
 
-                            <Frame Padding="10,10,10,5">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="15,7">
 
-                                <Grid RowSpacing="5">
+                                <Frame Padding="10,10,10,5">
 
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="80"/>
-                                    </Grid.ColumnDefinitions>
+                                    <Grid RowSpacing="5">
 
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="80"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
 
                                         <Image Margin="10,0,0,30" Grid.Row="0" Grid.RowSpan="5" Grid.Column="1" Source="{Binding product_image_url}" Aspect="AspectFit"/>
 
                                         <Label Grid.Column="0" Grid.Row="0" MaxLines="2" LineBreakMode="NoWrap" Text="{Binding product_name}" Font="Bold" TextColor="Black" />
 
-                                        <Label Grid.Column="0" Grid.Row="1" Text="{Binding product_description}" TextColor="Gray" />
+                                        <Label Grid.Column="0" Grid.Row="1" LineBreakMode="TailTruncation" Text="{Binding product_description}" TextColor="Gray" />
 
                                         <Label Grid.Column="0" Grid.Row="2" FontAttributes="Bold" Text="{Binding order_string}" VerticalOptions="Center" TextColor="Green"/>
 
-                                    <StackLayout Padding="0,2,0,23" Orientation="Horizontal" Grid.Column="0" Grid.Row="3">
-                                        <Image HeightRequest="20" Source="rupeesblack.png"/>
+                                        <StackLayout Padding="0,2,0,23" Orientation="Horizontal" Grid.Column="0" Grid.Row="3">
+                                            <Image HeightRequest="20" Source="rupeesblack.png"/>
                                             <Label VerticalOptions="Center" Text="{Binding total_product_price}" FontAttributes="Bold" TextColor="Black"/>
-                                    </StackLayout>
+                                        </StackLayout>
 
                                         <Image Margin="20,0,24,0" Grid.Row="4" Grid.ColumnSpan="2" Source="{Binding imgSource}"/>
 
-                                    <StackLayout Padding="13,0" Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2">
-                                        <Label FontSize="Micro" HorizontalOptions="Start" Text="ORDERED"/>
-                                        <Label Margin="13,0,0,0" FontSize="Micro" HorizontalOptions="CenterAndExpand" Text="DISPATCHED"/>
-                                        <Label FontSize="Micro" HorizontalOptions="End" Text="DELIVERED"/>
-                                    </StackLayout>
+                                        <Grid Padding="25,5,0,-5" Grid.RowSpan="2" RowSpacing="0" Grid.Row="5" Grid.ColumnSpan="2">
 
-                                    <StackLayout Padding="12,0,15,10" Orientation="Horizontal" Grid.Row="7" Grid.ColumnSpan="2">
-                                            <Label TextColor="Gray" FontSize="Micro" HorizontalOptions="Start" Text="{Binding order_date}"/>
-                                            <Label TextColor="Gray" FontSize="Micro" HorizontalOptions="CenterAndExpand" Text="{Binding dispatched_date}"/>
-                                            <Label TextColor="Gray" FontSize="Micro" HorizontalOptions="End" Text="{Binding delivered_date}"/>
-                                    </StackLayout>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
 
-                                    <BoxView Margin="-15,0" Grid.ColumnSpan="2" BackgroundColor="Gray" HeightRequest="1" Grid.Row="8" />
+                                            <Label Grid.Row="0" Grid.Column="0" TextColor="{Binding orderedFont}" FontSize="Micro" Text="ORDERED"/>
+                                            <Label Margin="5,0,0,0" Grid.Row="0" TextColor="{Binding dispatchedFont}" Grid.Column="1" FontSize="Micro" Text="DISPATCHED"/>
+                                            <Label Margin="15,0,0,0"  Grid.Row="0" TextColor="{Binding deliveredFont}" Grid.Column="2" FontSize="Micro" Text="DELIVERED"/>
 
-                                    <StackLayout Padding="15,5" Grid.ColumnSpan="2" Grid.Row="9" Orientation="Horizontal">
-                                        <Label Margin="0,5" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Micro" TextColor="Gray" FontAttributes="Bold" Text="CANCEL"/>
-                                        <BoxView HorizontalOptions="CenterAndExpand" BackgroundColor="Black" WidthRequest="3" HeightRequest="23"/>
-                                        <Label Margin="0,5" FontSize="Micro" FontAttributes="Bold" HorizontalOptions="End" Text="SUPPORT"/>
-                                    </StackLayout>
+                                            <Label Grid.Row="1" Grid.Column="0" TextColor="{Binding orderedFont}" FontSize="Micro" Text="{Binding order_date}"/>
+                                            <Label Margin="5,0,0,0" Grid.Row="1" Grid.Column="1" TextColor="{Binding dispatchedFont}" FontSize="Micro" Text="{Binding dispatched_date}"/>
+                                            <Label Margin="15,0,0,0" Grid.Row="1" Grid.Column="2" TextColor="{Binding deliveredFont}" FontSize="Micro" Text="{Binding delivered_date}"/>
 
-                                </Grid>
-                            </Frame>
+                                            <Label Text="CANCELLED" TextColor="Red" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" Margin="0,0,10,0" IsVisible="{Binding IsCancelled}"/>
+                                            
+                                        </Grid>
 
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                        <BoxView Margin="-15,0" Grid.ColumnSpan="2" BackgroundColor="Gray" HeightRequest="1" Grid.Row="8" />
+
+                                        <StackLayout Padding="15,5" Grid.ColumnSpan="2" Grid.Row="9" Orientation="Horizontal">
+                                            <Label Text="{Binding order_history_id}" IsVisible="False"/>
+                                            <Label Margin="0,5" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Micro" TextColor="{Binding cancelBtnFont}" FontAttributes="Bold" Text="CANCEL">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="CancelOrderClicked"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <BoxView HorizontalOptions="CenterAndExpand" BackgroundColor="Black" WidthRequest="3" HeightRequest="23"/>
+                                            <Label Margin="0,5" FontSize="Micro" TextColor="Black" FontAttributes="Bold" HorizontalOptions="End" Text="SUPPORT"/>
+                                        </StackLayout>
+
+                                    </Grid>
+                                </Frame>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
 
             <tools:NoDataPage Grid.Row="1" x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>

@@ -13,14 +13,14 @@ using Xamarin.Forms.Xaml;
 
 namespace TaazaTV.View.TaazaStore
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class OrdersPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class OrdersPage : ContentPage
+    {
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
 
-        public OrdersPage ()
-		{
-			InitializeComponent ();
+        public OrdersPage()
+        {
+            InitializeComponent();
             TaazaCashAmount.Text = AppData.TaazaCash;
             LoadOrdersHistory();
         }
@@ -37,7 +37,7 @@ namespace TaazaTV.View.TaazaStore
                 {
                     Loader.IsVisible = false;
                     await DisplayAlert("Alert", "Server Error", "OK");
-                    
+
                 }
                 else
                 {
@@ -75,6 +75,57 @@ namespace TaazaTV.View.TaazaStore
         private async void TaazaCashTapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new TaazaTransactionPage());
+        }
+
+        private async void CancelOrderClicked(object sender, EventArgs e)
+        {
+            if(((sender as Label).TextColor) == Color.Black)
+            {
+                var action = await DisplayActionSheet("Do you want to cancel this order!!", "Yes", "No");
+                if (action == "Yes")
+                {
+                    try
+                    {
+                        Loader.IsVisible = true;
+                        List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+                        parameters.Add(new KeyValuePair<string, string>("user_id", AppData.UserId));
+                        parameters.Add(new KeyValuePair<string, string>("order_history_id", (((sender as Label).Parent as StackLayout).Children[0] as Label).Text.ToString()));
+                        var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.CancelOrderAPI], parameters);
+                        if (jsonstr.ToString() == "NoInternet")
+                        {
+                            Loader.IsVisible = false;
+                            await DisplayAlert("Alert", "Server Error", "OK");
+
+                        }
+                        else
+                        {
+                            var des = JsonConvert.DeserializeObject<SuccessResponseModel>(jsonstr);
+                            if (des.responseText == "Success")
+                            {
+                                Loader.IsVisible = false;
+                                LoadOrdersHistory();
+                            }
+                            else
+                            {
+                                Loader.IsVisible = false;
+                                await DisplayAlert("Alert", des.responseText, "OK");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Loader.IsVisible = false;
+                        await DisplayAlert("Alert", "Server Error", "OK");
+                    }
+
+                }
+            }
+           
+        }
+
+        private void OrderListItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            OrdersListView.SelectedItem = null;
         }
     }
 }

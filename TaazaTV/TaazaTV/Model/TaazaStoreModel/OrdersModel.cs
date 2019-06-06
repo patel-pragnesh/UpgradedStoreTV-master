@@ -68,7 +68,7 @@ namespace TaazaTV.Model.TaazaStoreModel
                     case 3:
                         return "deliveredIcon.png";
                     case 4:
-                        return "";
+                        return "cancelledIcon.png";
                     default:
                         return "";
                 }
@@ -76,6 +76,70 @@ namespace TaazaTV.Model.TaazaStoreModel
             set { }
         }
 
+        public string orderedFont
+        {
+            get
+            {
+                if (order_status_int >= 1)
+                    return "Black";
+                else
+                    return "Gray";
+                
+            }
+            set { }
+        }
 
+        public string dispatchedFont
+        {
+            get
+            {
+                if (order_status_int >= 2)
+                    return "Black";
+                else
+                    return "Gray";
+
+            }
+            set { }
+        }
+
+        public string deliveredFont
+        {
+            get
+            {
+                if (order_status_int >= 3)
+                    return "Black";
+                else
+                    return "Gray";
+
+            }
+            set { }
+        }
+
+        public string cancelBtnFont
+        {
+            get
+            {
+                if (order_status_int == 1)
+                    return "Black";
+                else
+                    return "Gray";
+
+            }
+            set { }
+        }
+
+        public bool IsCancelled
+        {
+            get
+            {
+                if (order_status_int == 4)
+                    return true;
+                else
+                    return false;
+
+            }
+            set { }
+        }
     }
 }
+

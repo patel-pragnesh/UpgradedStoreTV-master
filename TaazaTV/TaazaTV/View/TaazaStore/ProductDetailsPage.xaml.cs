@@ -57,6 +57,7 @@ namespace TaazaTV.View.TaazaStore
                     vm.Name = Items.data.product_details.product_name;
                     vm.Description = Items.data.product_details.product_description;
                     vm.Seller = Items.data.product_details.seller_name;
+    //                vm.Price = Items.data.product_details.price_range;   // iOS gives null reference exception if null "Price"
                     vm.SellerDesc = Items.data.product_details.seller_details;
                     vm.PriceRange = Items.data.product_details.price_range;
                     vm.CarImages = new List<Store_Product_Images>(Items.data.product_details.images);
@@ -118,8 +119,8 @@ namespace TaazaTV.View.TaazaStore
                         vm.ProductID = NewBindingContext.product_id;
                         vm.SkuID = NewBindingContext.sku_id;
 
-                        PriceStack.IsVisible = false;
-                        OfferStack.IsVisible = true;
+               //         PriceStack.IsVisible = false;
+               //         OfferStack.IsVisible = true;
                         Loader.IsVisible = false;
                     }
                 }

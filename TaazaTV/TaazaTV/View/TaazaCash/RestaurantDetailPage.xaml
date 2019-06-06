@@ -7,6 +7,7 @@
               xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
              x:Class="TaazaTV.View.TaazaCash.RestaurantDetailPage">
     <Grid RowSpacing="0" BackgroundColor="White">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
@@ -14,12 +15,15 @@
         </Grid.RowDefinitions>
 
         <StackLayout BackgroundColor="#2196F3" Orientation="Horizontal" Grid.Row="0">
+            
             <Image x:Name="Backbtn" Source="back.png" Margin="15,15,0,15" WidthRequest="25">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="BackBtn_Tapped"/>
                 </Image.GestureRecognizers>
             </Image>
+            
             <Image x:Name="logo" Source="taazalogo.png" Margin="15" Aspect="AspectFit"/>
+            
             <StackLayout x:Name="TaazaCashTab" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
                 <Image Source="taazaicon.png" Margin="10,15,5,15" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                 <Label x:Name="TaazaCashAmount" VerticalOptions="Center" Margin="0,0,10,0" TextColor="White" FontAttributes="Bold"/>

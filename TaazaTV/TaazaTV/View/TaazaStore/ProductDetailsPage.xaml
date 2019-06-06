@@ -52,10 +52,11 @@
 
                 <StackLayout Margin="0,20" IsVisible="False" x:Name="OfferStack" Grid.Row="2" Orientation="Horizontal">
                     <Image HeightRequest="20" WidthRequest="20" Source="rupeesblack.png"/>
-                    <Label TextDecorations="Strikethrough" TextColor="Black" Text="{Binding Price}"/>
+                    <Label TextColor="Black" Text="{Binding Price}"/>
 
                     <Image HeightRequest="20" WidthRequest="20" Margin="20,0,0,0" Source="rupeesgreen.png"/>
-                    <Label FontAttributes="Bold" TextColor="Green" Text="{Binding OfferPrice}"/>
+                    <Label TextDecorations="Strikethrough" FontAttributes="Bold" TextColor="Green" Text="{Binding OfferPrice}"/> <!--this is strikethrough issue in ios-->
+                    <Label x:Name="iosIssue" IsVisible="False" FontAttributes="Bold" TextColor="Green" Text="(offer price)"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="3">
