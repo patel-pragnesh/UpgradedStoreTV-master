@@ -28,6 +28,17 @@ namespace TaazaTV.Controls
                 CartFrame.IsVisible = true;
                 CartLabel.Text = AppData.CartCount;
             }
+
+            if (AppData.NotificationCount == 0)
+            {
+                NotificationFrame.IsVisible = false;
+            }
+
+            else
+            {
+                NotificationFrame.IsVisible = true;
+                NotificationLabel.Text = AppData.NotificationCount.ToString();
+            }
         }
 
         private async void Search_Btn_Tapped(object sender, EventArgs e)

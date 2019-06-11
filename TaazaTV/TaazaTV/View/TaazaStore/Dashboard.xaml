@@ -28,7 +28,7 @@
                 <Grid RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="80"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -60,12 +60,12 @@
                     <controls:HorizontalList Grid.Row="1" 
                     ListOrientation="Horizontal" 
                     x:Name="CategoryListView"
-                    HeightRequest="60">
+                    HeightRequest="80">
                         <controls:HorizontalList.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Padding="5">
                                     <Label InputTransparent="True" IsVisible="False" Text="{Binding category_slug}"/>
-                                    <Image InputTransparent="True" HeightRequest="35" WidthRequest="35" Source="{Binding category_image.category_image_thumb}"/>
+                                    <Image InputTransparent="True" HeightRequest="50" WidthRequest="40" Source="{Binding category_image.category_image_thumb}"/>
                                     <Label InputTransparent="True" FontAttributes="Bold" FontSize="Micro" Text="{Binding category_name}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="CategoryListTapped"/>
@@ -88,9 +88,9 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Text="{Binding product_category_slug}" IsVisible="False" />
-                                    <Image Grid.Column="0" Grid.ColumnSpan="2" Source="{Binding image}" Aspect="AspectFill" HeightRequest="140"/>
-                                    <Label HorizontalOptions="CenterAndExpand" Grid.Column="0" TextColor="White" FontAttributes="Bold" VerticalOptions="Center" Text="{Binding title}"/>
+                                    <Label InputTransparent="True" Text="{Binding product_category_slug}" IsVisible="False" />
+                                    <Image Grid.Column="0" InputTransparent="True" Grid.ColumnSpan="2" Source="{Binding image}" Aspect="AspectFill" HeightRequest="140"/>
+                                    <Label InputTransparent="True" HorizontalOptions="CenterAndExpand" Grid.Column="0" TextColor="White" FontAttributes="Bold" VerticalOptions="Center" Text="{Binding title}"/>
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OffersListTapped"/>
                                     </Grid.GestureRecognizers>

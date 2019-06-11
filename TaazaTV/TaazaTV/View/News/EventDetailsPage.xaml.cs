@@ -80,7 +80,7 @@ namespace TaazaTV.View.News
 
                         if (Items.data.event_details.event_prices.Count() > 0)
                         {
-                            PricelstView.HeightRequest = (Items.data.event_details.event_prices.Count()) * 50;
+                            PricelstView.HeightRequest = ((Items.data.event_details.event_prices.Count()) * 50) + 15;
                             PricelstView.ItemsSource = Items.data.event_details.event_prices;
                             PricesPicker.ItemsSource = Items.data.event_details.event_prices.Select(X => X.ticket_type).ToList();
                         }
@@ -90,8 +90,8 @@ namespace TaazaTV.View.News
                             BookNowCategory.IsVisible = false;
                             PriceListView.IsVisible = false;
                         }
-
                     }
+
                     catch
                     {
                         MainFrame.IsVisible = false;

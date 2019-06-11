@@ -158,10 +158,11 @@ namespace TaazaTV.View.TaazaStore
 
                     else
                     {
-                        var Items = JsonConvert.DeserializeObject<SuccessResponseModel>(jsonstr);
+                        var Items = JsonConvert.DeserializeObject<AddCartResponseModel>(jsonstr);
                         if(Items.responseText == "Success")
                         {
                             Loader.IsVisible = false;
+                            AppData.CartCount = Items.data.cart_count;
                             await DisplayAlert("Alert", "Product Added To Cart!!", "OK");
                         }
                         Loader.IsVisible = false;

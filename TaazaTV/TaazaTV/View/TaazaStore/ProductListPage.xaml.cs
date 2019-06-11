@@ -110,6 +110,8 @@ namespace TaazaTV.View.TaazaStore
                  // ProductListView.ItemsSource = Items.data.product_list.ToList();
                     ProductListView.ItemsSource = ProductListCollection.ToList();
                     Loader.IsVisible = false;
+                    if (ProductListCollection.Count() == 0)
+                        NoDataPage.IsVisible = true;
                     if(Items.data.hasMoreData == true)
                     {
                         pageNumber++;

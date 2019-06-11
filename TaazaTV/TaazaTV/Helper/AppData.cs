@@ -106,6 +106,12 @@ namespace TaazaTV.Helper
             set => AppSettings.AddOrUpdateValue(nameof(TaazaCash), value);
         }
 
+        public static int NotificationCount
+        {
+            get => AppSettings.GetValueOrDefault(nameof(NotificationCount), 0);
+            set => AppSettings.AddOrUpdateValue(nameof(NotificationCount), value);
+        }
+
         public static string CartCount
         {
             get => AppSettings.GetValueOrDefault(nameof(CartCount), string.Empty);

@@ -18,6 +18,7 @@ namespace TaazaTV.Model
         public Headline_News[] headline_news { get; set; }
         public Menu[] menus { get; set; }
         public string userCurrentWalletBalance { get; set; }
+        public int ecommerce_unread_notification_count { get; set; }
         public Ad[] ad_list { get; set; }
     }
 

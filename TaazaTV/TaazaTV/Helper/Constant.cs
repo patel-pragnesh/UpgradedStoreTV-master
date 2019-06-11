@@ -10,7 +10,7 @@ namespace TaazaTV.Helper
 
         //Live URL 
     //   private static string HostName = "http://52.221.138.138/taazatv/public/api/V2";
-    //   public static string ServerURL = "http://52.221.138.138/taazatv/public";
+   //    public static string ServerURL = "http://52.221.138.138/taazatv/public";
 
         //Live URL 
     //    private static string HostName = "http://api.taazatv.com/public/api/V2";

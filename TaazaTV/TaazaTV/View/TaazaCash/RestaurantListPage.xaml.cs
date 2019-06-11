@@ -21,6 +21,7 @@ namespace TaazaTV.View.TaazaCash
         RestaurantListModel Items = new RestaurantListModel();
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
         ObservableCollection<FilterModel> filterModel = new ObservableCollection<FilterModel>();
+        ObservableCollection<_Restaurant_Data> RestListData;
         int i = 0;
 
         public RestaurantListPage()
@@ -72,22 +73,17 @@ namespace TaazaTV.View.TaazaCash
                 }
                 else
                 {
-                    try
-                    {
-                        Items = JsonConvert.DeserializeObject<RestaurantListModel>(jsonstr);
-                    }
-                    catch (Exception ex)
-                    {
-                        NoDataPage.IsVisible = true;
-                    }
+                    Items = JsonConvert.DeserializeObject<RestaurantListModel>(jsonstr);
+                    RestListData = new ObservableCollection<_Restaurant_Data>();
 
                     foreach (var x in Items.data.restaurants.restaurant_data)
                     {
+                        RestListData.Add(x);
                         x.RestBannerImg = x.restaurant_images.Select(Y => Y.imageURL).FirstOrDefault();
                     }
 
                     BindingContext = Items.data.restaurants;
-                    RestaurantlstView.ItemsSource = Items.data.restaurants.restaurant_data;
+                    RestaurantlstView.ItemsSource = RestListData;
 
                     foreach (var x in Items.data.restaurant_category_cuisine)
                     {
@@ -220,6 +216,11 @@ namespace TaazaTV.View.TaazaCash
                     NoDataPage.IsVisible = true;
                 }
 
+                if (Items.data.restaurants.current_page != Items.data.restaurants.total_pages)
+                {
+                    LazyLoadingRestList(Items.data.restaurants.current_page + 1, "", "", "", "");
+                }
+
             }
             catch (Exception ex)
             {
@@ -260,7 +261,6 @@ namespace TaazaTV.View.TaazaCash
 
             }
         }
-
 
         private async void NavToRestDetails(object sender, ItemTappedEventArgs e)
         {
@@ -308,11 +308,14 @@ namespace TaazaTV.View.TaazaCash
 
         private void DoSomething(object sender, EventArgs e)
         {
+            NoInternet.IsVisible = false;
+            NoDataPage.IsVisible = false;
             LoadRestaurantList();
         }
 
         private void NoDataDoSomething(object sender, EventArgs e)
         {
+            NoInternet.IsVisible = false;
             NoDataPage.IsVisible = false;
             UpdateRestList("", "", "", "");
         }
@@ -352,6 +355,7 @@ namespace TaazaTV.View.TaazaCash
         {
             Loader.IsVisible = true;
             NoDataPage.IsVisible = false;
+            NoInternet.IsVisible = false;
             RestaurantlstView.IsVisible = false;
             try
             {
@@ -371,30 +375,83 @@ namespace TaazaTV.View.TaazaCash
                 else
                 {
                     Items = JsonConvert.DeserializeObject<RestaurantListModel>(jsonstr);
+
+                    RestListData = new ObservableCollection<_Restaurant_Data>();
+
+                    if (Items.data.restaurants.restaurant_data.Count() == 0)
+                    {
+                        NoDataPage.IsVisible = true;
+                        Loader.IsVisible = false;
+                    }
+                    else
+                    {
+                        foreach (var x in Items.data.restaurants.restaurant_data)
+                        {
+                            RestListData.Add(x);
+                            x.RestBannerImg = x.restaurant_images.Select(Y => Y.imageURL).FirstOrDefault();
+                        }
+                        RestaurantlstView.ItemsSource = RestListData;
+                        RestaurantlstView.HeightRequest = (Items.data.restaurants.restaurant_data.Count() * RestaurantlstView.RowHeight) + 2;
+
+                        if (Items.data.restaurants.current_page != Items.data.restaurants.total_pages)
+                        {
+                            LazyLoadingRestList(Items.data.restaurants.current_page + 1, SearchText, CategoryTypeID, CuisineTypeId, LocationValue);
+                        }
+                        RestaurantlstView.IsVisible = true;
+                    }
+                  
+                    Loader.IsVisible = false;
                 }
             }
             catch (Exception ex)
             {
                 NoDataPage.IsVisible = true;
             }
-
-            if(Items.data.restaurants.restaurant_data.Count()==0)
-            {
-                NoDataPage.IsVisible = true;
-                Loader.IsVisible = false;
-            }
-            foreach (var x in Items.data.restaurants.restaurant_data)
-            {
-                x.RestBannerImg = x.restaurant_images.Select(Y => Y.imageURL).FirstOrDefault();
-            }
-            RestaurantlstView.ItemsSource = Items.data.restaurants.restaurant_data;
-            RestaurantlstView.HeightRequest = (Items.data.restaurants.restaurant_data.Count() * RestaurantlstView.RowHeight) + 2;
-            RestaurantlstView.IsVisible = true;
-            Loader.IsVisible = false;
-
         }
 
-       
+        private async void LazyLoadingRestList(int j, string search, string catID, string cusID, string LocVal)
+        {
+            try
+            {
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+
+                parameters.Add(new KeyValuePair<string, string>("company_code", Constant.CompanyID));
+                parameters.Add(new KeyValuePair<string, string>("search_text", search));
+                parameters.Add(new KeyValuePair<string, string>("category_id", catID));
+                parameters.Add(new KeyValuePair<string, string>("cuisine_id", cusID));
+                parameters.Add(new KeyValuePair<string, string>("location_search", LocVal));
+                parameters.Add(new KeyValuePair<string, string>("page", j.ToString()));
+
+                var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.RestaurantList], parameters);
+                if (jsonstr.ToString() == "NoInternet")
+                {
+                    NoInternet.IsVisible = true;
+                }
+                else
+                {
+                    Items = JsonConvert.DeserializeObject<RestaurantListModel>(jsonstr);
+
+                    foreach (var item in Items.data.restaurants.restaurant_data)
+                    {
+                        RestListData.Add(item);
+                    }
+                    RestaurantlstView.ItemsSource = RestListData.ToList();
+
+                    if (Items.data.restaurants.current_page != Items.data.restaurants.total_pages)
+                    {
+                        LazyLoadingRestList(Items.data.restaurants.current_page + 1, search, catID, cusID, LocVal);
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                NoDataPage.IsVisible = true;
+            }
+        }
+
     }
 }
 

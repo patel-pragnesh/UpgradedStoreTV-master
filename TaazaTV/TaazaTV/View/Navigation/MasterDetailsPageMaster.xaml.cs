@@ -66,7 +66,7 @@ namespace TaazaTV.View.Navigation
                     new MasterDetailsPageMenuItem { Id = 1, Icon="privacypolicy.png",  Title = "Privacy Policy", TargetType=typeof(PrivacyPolicyPage) },
                     new MasterDetailsPageMenuItem { Id = 3, Icon="terms.png",  Title = "Terms & Conditions", TargetType=typeof(TermsPage) },
                     new MasterDetailsPageMenuItem { Id = 2, Icon="submission.png",  Title = "My Submission", TargetType=typeof(SubmitedNewsPage) },
-                    new MasterDetailsPageMenuItem { Id = 4, Icon="share.png",  Title = "My Orders", TargetType=typeof(OrdersPage) },
+                    new MasterDetailsPageMenuItem { Id = 4, Icon="myOrders.png",  Title = "My Orders", TargetType=typeof(OrdersPage) },
                     new MasterDetailsPageMenuItem { Id = 4, Icon="terms.png",  Title = "TaazaCash Privacy Policy", TargetType=typeof(TaazaCashTerms) }
 
                     });

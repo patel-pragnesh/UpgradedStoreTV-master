@@ -256,7 +256,7 @@ namespace TaazaTV.View.Navigation
                         try
                         {
                             Items = JsonConvert.DeserializeObject<DashboardModel>(jsonstr);
-                           // TaazaCashAmount.Text = Items.data.userCurrentWalletBalance;
+                            AppData.NotificationCount = Items.data.ecommerce_unread_notification_count;
                             AppData.TaazaCash = Items.data.userCurrentWalletBalance;
                             TaazaCashAmount.Text = AppData.TaazaCash;
                             NoInternet.IsVisible = false;

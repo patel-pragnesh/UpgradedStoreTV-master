@@ -65,9 +65,9 @@ namespace TaazaTV.View.TaazaStore
             BrandListView.SelectedItem = null;
         }
 
-        private void ResetClicked(object sender, EventArgs e)
+        private async void ResetClicked(object sender, EventArgs e)
         {
-
+            await Navigation.PopModalAsync();
         }
 
         private async void ApplyClicked(object sender, EventArgs e)

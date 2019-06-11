@@ -55,17 +55,6 @@ namespace TaazaTV.View.TaazaCash
 
         private async void LoadRestaurantDetails(string Id)
         {
-            //var x = await CommonFunc.FooterAdFunc("restaurant-details");
-            //if (x != null && x.Count() > 0)
-            //{
-            //    CarouselAd.ItemsSource = x.ToList();
-            //    CarouselAd.IsVisible = true;
-            //}
-            //else
-            //{
-            //    CarouselAd.IsVisible = false;
-            //}
-
             try
             {
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
@@ -77,7 +66,8 @@ namespace TaazaTV.View.TaazaCash
                     Loader.IsVisible = false;
                     NoInternet.IsVisible = true;
                     MainFrame.IsVisible = false;
-                    Bannerimg.IsVisible = false;
+                    //     Bannerimg.IsVisible = false;
+                //    BannerImgCarousel.IsVisible = false;
                     NoDataPage.IsVisible = false;
                 }
                 else
@@ -92,14 +82,15 @@ namespace TaazaTV.View.TaazaCash
                         };
                         RestDesc.Source = html;
                         RestaurantHeading = Items.data.restaurant_details.restaurant_name;
-                        BannerImage = Items.data.restaurant_details.restaurant_images.Select(X => X.imageURL).FirstOrDefault();
+                        RestImgListView.ItemsSource = Items.data.restaurant_details.restaurant_images.ToList();
+                        //    BannerImage = Items.data.restaurant_details.restaurant_images.Select(X => X.imageURL).FirstOrDefault();
 
                         var html1 = new HtmlWebViewSource
                         {
                             Html = "<iframe width=\"100%\" height=\"200\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\" src = \"https://maps.google.com/maps?q=" + Items.data.restaurant_details.restaurant_vanue.latitude + "," + Items.data.restaurant_details.restaurant_vanue.longitude + "&hl=es;z=14&amp;output=embed\" ></ iframe > "
                         };
                         Map.Source = html1;
-                        Bannerimg.Source = BannerImage;
+                //        Bannerimg.Source = BannerImage;
                         BindingContext = Items.data.restaurant_details;
                         MainFrame.IsVisible = true;
                         Loader.IsVisible = false;
@@ -107,7 +98,8 @@ namespace TaazaTV.View.TaazaCash
                     catch(Exception ex)
                     {
                         MainFrame.IsVisible = false;
-                        Bannerimg.IsVisible = false;
+                        //         Bannerimg.IsVisible = false;
+                        //         BannerimgCarousel.IsVisible = false;
                         NoInternet.IsVisible = false;
                         NoDataPage.IsVisible = true;
                     }

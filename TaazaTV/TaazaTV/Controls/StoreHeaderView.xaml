@@ -65,8 +65,8 @@
                     </Image.GestureRecognizers>
                 </Image>
                 
-                <Frame Style="{StaticResource barFrameStyle}">
-                    <Label Style="{StaticResource barLabelStyle}" Text="2"/>
+                <Frame x:Name="NotificationFrame" Style="{StaticResource barFrameStyle}">
+                    <Label Style="{StaticResource barLabelStyle}" x:Name="NotificationLabel"/>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Bell_Btn_Tapped"/>
                     </Frame.GestureRecognizers>

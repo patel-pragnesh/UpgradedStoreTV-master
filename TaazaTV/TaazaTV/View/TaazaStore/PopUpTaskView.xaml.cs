@@ -17,6 +17,7 @@ namespace TaazaTV.View.TaazaStore
     {
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
         string RestSellId, RestSellType;
+
         public PopUpTaskView(string ID, string Type)
         {
             InitializeComponent();
@@ -98,5 +99,6 @@ namespace TaazaTV.View.TaazaStore
                 await DisplayAlert("Alert", "Please enter a valid amount", "OK");
             }
         }
+
     }
 }

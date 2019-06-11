@@ -95,7 +95,6 @@
             <tools:NoDataPage Grid.Row="1" x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
             <tools:Loader x:Name="Loader" Grid.Row="1" IsVisible="False"></tools:Loader>
 
-
         </Grid>
 
     </ContentPage.Content>

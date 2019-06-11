@@ -51,6 +51,7 @@ namespace TaazaTV.View.TaazaStore
                     CartListView.ItemsSource = Items.data.cart_data.history_data;
                     CartListView.IsVisible = true;
                     Loader.IsVisible = false;
+                    AppData.CartCount = Items.data.cart_data.history_data.Count().ToString();
                 }
 
             }
