@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaazaTV.Component;
+using TaazaTV.Controls;
 using TaazaTV.Helper;
 using TaazaTV.Model.TaazaStoreModel;
 using TaazaTV.ViewModel;
@@ -27,6 +28,7 @@ namespace TaazaTV.View.TaazaStore
         public ProductDetailsPage(string pro_slug)
         {
             InitializeComponent();
+            HeaderView.Content = new StoreHeaderView();
             slug = pro_slug;
             InitialLoading(slug);
             this.BindingContext = vm;
@@ -78,6 +80,12 @@ namespace TaazaTV.View.TaazaStore
                 NoDataPage.IsVisible = true;
                 var x = ex.Message;
             }
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            HeaderView.Content = new StoreHeaderView();
         }
 
         private void VariantsSelectionChanged(object sender, EventArgs e)
@@ -163,6 +171,7 @@ namespace TaazaTV.View.TaazaStore
                         {
                             Loader.IsVisible = false;
                             AppData.CartCount = Items.data.cart_count;
+                            HeaderView.Content = new StoreHeaderView();
                             await DisplayAlert("Alert", "Product Added To Cart!!", "OK");
                         }
                         Loader.IsVisible = false;

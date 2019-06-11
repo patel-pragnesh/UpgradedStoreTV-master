@@ -18,7 +18,7 @@
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
-            <customContentView:StoreHeaderView Grid.Row="0"/>
+            <ContentView Grid.Row="0" HeightRequest="50" x:Name="HeaderView"/>
 
             <ListView ItemTapped="NavToProductDetails" IsPullToRefreshEnabled="True" Refreshing="PullToRefreshListView" Grid.Row="1" x:Name="ProductListView" RowHeight="140">
                 <ListView.ItemTemplate>

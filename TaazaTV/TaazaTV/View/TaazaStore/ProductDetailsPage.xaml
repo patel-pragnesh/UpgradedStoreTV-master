@@ -14,7 +14,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <customContentView:StoreHeaderView Grid.Row="0"/>
+        <ContentView Grid.Row="0" HeightRequest="50" x:Name="HeaderView"/>
 
         <ScrollView Grid.Row="1" >
 

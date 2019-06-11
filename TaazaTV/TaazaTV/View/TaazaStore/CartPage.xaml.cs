@@ -52,6 +52,11 @@ namespace TaazaTV.View.TaazaStore
                     CartListView.IsVisible = true;
                     Loader.IsVisible = false;
                     AppData.CartCount = Items.data.cart_data.history_data.Count().ToString();
+
+                    if(AppData.CartCount == "0")
+                    {
+                        AppData.CartCount = String.Empty;
+                    }
                 }
 
             }

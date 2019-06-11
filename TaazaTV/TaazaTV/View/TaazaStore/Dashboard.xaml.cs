@@ -28,6 +28,12 @@ namespace TaazaTV.View.TaazaStore
             PartialLoading();
         }
 
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            HeaderView.Content = new StoreHeaderView();
+        }
+
         private async void PartialLoading()
         {
             Loader.IsVisible = true;

@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaazaTV.Controls;
 using TaazaTV.Helper;
 using TaazaTV.Model.TaazaStoreModel;
 using Xamarin.Forms;
@@ -36,6 +37,12 @@ namespace TaazaTV.View.TaazaStore
             InitialLoading(slugVal, searchText, sellerId, "", "", "", "");
         }
 
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            HeaderView.Content = new StoreHeaderView();
+        }
+
         private void PullToRefreshListView(object sender, EventArgs e)
         {
             pageNumber = 1;
@@ -47,6 +54,7 @@ namespace TaazaTV.View.TaazaStore
         public ProductListPage(string slug_val, string search_text, string seller_ID)
         {
             InitializeComponent();
+            HeaderView.Content = new StoreHeaderView();
             ProductListCollection = new ObservableCollection<Store_Product_List>();
             pageNumber = 1;
             slugVal = slug_val;

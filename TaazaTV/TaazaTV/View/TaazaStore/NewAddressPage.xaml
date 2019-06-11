@@ -27,7 +27,7 @@
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
-            <customContentView:StoreHeaderView Grid.Row="0"/>
+            <customContentView:StoreTCashHeader Grid.Row="0"/>
 
             <ScrollView Grid.Row="1" >
                 <StackLayout Spacing="17" Margin="25">

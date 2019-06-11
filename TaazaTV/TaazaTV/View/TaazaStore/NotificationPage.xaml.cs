@@ -21,6 +21,7 @@ namespace TaazaTV.View.TaazaStore
 		{
 			InitializeComponent ();
             LoadNotifications();
+            AppData.NotificationCount = 0;
 
         }
 
