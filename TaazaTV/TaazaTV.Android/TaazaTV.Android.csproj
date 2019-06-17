@@ -106,6 +106,12 @@
     <Reference Include="Plugin.CurrentActivity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Plugin.CurrentActivity.2.1.0.4\lib\monoandroid44\Plugin.CurrentActivity.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Messaging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Messaging.5.2.0\lib\MonoAndroid10\Plugin.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Messaging.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Messaging.5.2.0\lib\MonoAndroid10\Plugin.Messaging.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Plugin.Settings, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xam.Plugins.Settings.3.1.1\lib\MonoAndroid10\Plugin.Settings.dll</HintPath>
     </Reference>

@@ -34,7 +34,11 @@
                         <DataTemplate>
                             <Grid>
                                 <Image Source="bannergray.png" />
-                                <Image Aspect="Fill" Source="{Binding normal.image_path}"/>
+                                <Image Aspect="Fill" Source="{Binding normal.image_path}">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ProductDetailsZoomImage"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
                             </Grid>
                         </DataTemplate>
                     </cv:CarouselView.ItemTemplate>

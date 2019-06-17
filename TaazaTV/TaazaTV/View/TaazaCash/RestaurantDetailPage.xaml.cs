@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Plugin.Messaging;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using TaazaTV.Model;
 using TaazaTV.Services;
 using TaazaTV.View.Accounts;
 using TaazaTV.View.TaazaStore;
+using TaazaTV.View.Tools;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -42,6 +44,14 @@ namespace TaazaTV.View.TaazaCash
             RestaurantID = RestaurantId;
             LoadRestaurantDetails(RestaurantID);
 		}
+
+        protected async override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            if (AppData.PopUpProblem)
+                await PopupNavigation.PopAsync(true);
+        }
+
 
         private async void BackBtn_Tapped(object sender, EventArgs e)
         {
@@ -127,6 +137,18 @@ namespace TaazaTV.View.TaazaCash
             NoDataPage.IsVisible = false;
             NoInternet.IsVisible = false;
             LoadRestaurantDetails(RestaurantID);
+        }
+
+        private async void ZoomRestImage(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new ZoomImagePage((sender as Image).Source.ToString().Remove(0, 4)));
+        }
+
+        private void GotoDialer(object sender, EventArgs e)
+        {
+            var PhoneTask = CrossMessaging.Current.PhoneDialer;
+            if (PhoneTask.CanMakePhoneCall)
+                PhoneTask.MakePhoneCall(((sender as StackLayout).Children[1] as Label).Text.ToString());
         }
 
         private async void NoDataDoSomething(object sender, EventArgs e)

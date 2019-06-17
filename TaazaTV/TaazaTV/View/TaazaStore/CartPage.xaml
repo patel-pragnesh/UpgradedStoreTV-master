@@ -43,9 +43,9 @@
                                         <Label Text="{Binding sku_id}"/>
                                         <Label Text="{Binding quantity}"/>
                                     </StackLayout>
-                                    
-                                    <StackLayout BackgroundColor="Green" Margin="-14,-10,15,0" Grid.Row="0" Grid.Column="0">
-                                        <Label HorizontalOptions="Center" FontAttributes="Bold" TextColor="White" FontSize="Small" VerticalOptions="CenterAndExpand" Text="In Stock"/>
+
+                                    <StackLayout BackgroundColor="{Binding stockColor}" Margin="-14,-10,15,0" Grid.Row="0" Grid.Column="0">
+                                        <Label HorizontalOptions="Center" FontAttributes="Bold" TextColor="White" FontSize="Small" VerticalOptions="CenterAndExpand" Text="{Binding stockText}"/>
                                     </StackLayout >
 
                                     <Image Margin="5" Grid.RowSpan="4" Grid.Row="1" Grid.Column="0" Source="{Binding product_image_url}" Aspect="AspectFit"/>

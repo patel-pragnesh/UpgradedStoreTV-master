@@ -43,11 +43,13 @@
 
         <StackLayout BackgroundColor="#2196F3" HeightRequest="50" Orientation="Horizontal">
 
-            <Image Source="back.png" Style="{StaticResource backBtnImgStyle}">
-                <Image.GestureRecognizers>
+            <StackLayout Padding="15">
+                <Image Source="back.png" WidthRequest="20">
+                </Image>
+                <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="BackBtn_Tapped"/>
-                </Image.GestureRecognizers>
-            </Image>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
 
             <Image x:Name="logo" Source="taazalogo.png" Margin="-5,10,25,10" Aspect="AspectFit"/>
 

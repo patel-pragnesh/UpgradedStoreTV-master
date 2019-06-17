@@ -55,6 +55,12 @@ namespace TaazaTV.Model.TaazaStoreModel
 
         public string cancelled_date { get; set; }
 
+        public string seller_name { get; set; }
+
+        public string seller_email_id { get; set; }
+
+        public string seller_phone_no { get; set; }
+
         public string imgSource
         {
             get

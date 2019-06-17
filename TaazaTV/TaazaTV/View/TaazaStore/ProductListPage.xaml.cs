@@ -34,7 +34,7 @@ namespace TaazaTV.View.TaazaStore
         private void NoDataDoSomething(object sender, EventArgs e)
         {
             NoDataPage.IsVisible = false;
-            InitialLoading(slugVal, searchText, sellerId, "", "", "", "");
+            InitialLoading(slugVal, searchText, sellerId, priceFrom, priceTo, sb.ToString(), sorting);
         }
 
         protected async override void OnAppearing()
@@ -71,7 +71,7 @@ namespace TaazaTV.View.TaazaStore
 
                     sb.Append(st[i] + ",");
                 }
-
+                pageNumber = 1;
                 priceFrom = st[0];
                 priceTo = st[1];
 
@@ -85,6 +85,7 @@ namespace TaazaTV.View.TaazaStore
             {
                 if(pageNumber == 1)
                 {
+                    ProductListCollection = new ObservableCollection<Store_Product_List>();
                     Loader.IsVisible = true;
                 }
                 
@@ -145,12 +146,14 @@ namespace TaazaTV.View.TaazaStore
         {
             if (SortingPicker.SelectedIndex == 0)
             {
+                pageNumber = 1;
                 sorting = "price_low_to_high";
                 InitialLoading(slugVal, searchText, sellerId, priceFrom, priceTo, sb.ToString(), sorting);
             }
 
             if (SortingPicker.SelectedIndex == 1)
             {
+                pageNumber = 1;
                 sorting = "price_high_to_low";
                 InitialLoading(slugVal, searchText, sellerId, priceFrom, priceTo, sb.ToString(), sorting);
             }

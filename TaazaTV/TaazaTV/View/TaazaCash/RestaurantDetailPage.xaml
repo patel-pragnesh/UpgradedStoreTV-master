@@ -52,7 +52,11 @@
                         <controls:HorizontalList.ItemTemplate>
                             <DataTemplate>
                                 <Grid HeightRequest="190">
-                                    <Image Source="{Binding imageURL}" WidthRequest="340" Aspect="AspectFill" HeightRequest="190"/>
+                                    <Image Source="{Binding imageURL}" WidthRequest="340" Aspect="AspectFill" HeightRequest="190">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ZoomRestImage"/>
+                                    </Image.GestureRecognizers>
+                                    </Image>
                                 </Grid>
                             </DataTemplate>
                         </controls:HorizontalList.ItemTemplate>
@@ -90,6 +94,9 @@
                             <Image Source="phoneno.png" WidthRequest="30"></Image>
                             <Label Text="{Binding contact_details}" FontSize="15" LineBreakMode="TailTruncation" VerticalOptions="Center"></Label>
                             <!--<Label Text="{Binding event_duration_type_text}" FontSize="15" LineBreakMode="TailTruncation" VerticalOptions="Center"></Label>-->
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="GotoDialer"/>
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
                         <!--<StackLayout Orientation="Horizontal">
                             <Image Source="tickets.png" WidthRequest="30"></Image>

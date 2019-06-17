@@ -24,11 +24,12 @@ namespace TaazaTV.View.TaazaStore
             InitialLoading();
         }
 
-        //protected async override void OnDisappearing()
-        //{
-        //    base.OnDisappearing();
-        //    await PopupNavigation.PopAsync(true);
-        //}
+        protected async override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            if(AppData.PopUpProblem)
+            await PopupNavigation.PopAsync(true);
+        }
 
         private async void InitialLoading()
         {

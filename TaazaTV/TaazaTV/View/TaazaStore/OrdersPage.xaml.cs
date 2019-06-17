@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Plugin.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,7 @@ namespace TaazaTV.View.TaazaStore
                     await DisplayAlert("Alert", "Server Error", "OK");
 
                 }
+
                 else
                 {
                     var des = JsonConvert.DeserializeObject<OrdersModel>(jsonstr);
@@ -54,6 +56,7 @@ namespace TaazaTV.View.TaazaStore
                     }
                 }
             }
+
             catch (Exception ex)
             {
                 Loader.IsVisible = false;
@@ -126,6 +129,15 @@ namespace TaazaTV.View.TaazaStore
         private void OrderListItemTapped(object sender, ItemTappedEventArgs e)
         {
             OrdersListView.SelectedItem = null;
+        }
+
+        private void SupportOrderClicked(object sender, EventArgs e)
+        {
+            var EmailTask = CrossMessaging.Current.EmailMessenger;
+
+            if (EmailTask.CanSendEmail)
+                EmailTask.SendEmail((((sender as Label).Parent as StackLayout).Children[1] as Label).Text.ToString(), "Support Regarding Order No. - " + (((sender as Label).Parent as StackLayout).Children[0] as Label).Text.ToString(), "Messsage Body");
+
         }
     }
 }

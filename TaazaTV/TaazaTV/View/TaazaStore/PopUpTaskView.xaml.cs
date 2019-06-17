@@ -25,6 +25,18 @@ namespace TaazaTV.View.TaazaStore
             RestSellType = Type;
         }
 
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            AppData.PopUpProblem = true;
+        }
+
+        protected async override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            AppData.PopUpProblem = false;
+        }
+
         private async void GetOtpClicked(object sender, EventArgs e)
         {
             try

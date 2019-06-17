@@ -18,6 +18,7 @@ namespace TaazaTV.View.TaazaStore
 	{
         HttpRequestWrapper wrapper = new HttpRequestWrapper();
         List<string> retParams = new List<string>();
+        ProductFilterModel Items = new ProductFilterModel();
 
 
         public FilterPage ()
@@ -42,7 +43,7 @@ namespace TaazaTV.View.TaazaStore
 
                 else
                 {
-                    var Items = JsonConvert.DeserializeObject<ProductFilterModel>(jsonstr);
+                    Items = JsonConvert.DeserializeObject<ProductFilterModel>(jsonstr);
                     this.BindingContext = Items;
                     Loader.IsVisible = false;
                 }
@@ -67,7 +68,10 @@ namespace TaazaTV.View.TaazaStore
 
         private async void ResetClicked(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            List<string> retParams = new List<string>();
+            RangePrice.LeftValue = Items.min_price;
+            RangePrice.RightValue = Items.max_price;
+            InitialDataLoading();
         }
 
         private async void ApplyClicked(object sender, EventArgs e)

@@ -105,13 +105,18 @@
 
                                         <StackLayout Padding="15,5" Grid.ColumnSpan="2" Grid.Row="9" Orientation="Horizontal">
                                             <Label Text="{Binding order_history_id}" IsVisible="False"/>
+                                            <Label Text="{Binding seller_email_id}" IsVisible="False"/>
                                             <Label Margin="0,5" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Micro" TextColor="{Binding cancelBtnFont}" FontAttributes="Bold" Text="CANCEL">
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="CancelOrderClicked"/>
                                                 </Label.GestureRecognizers>
                                             </Label>
                                             <BoxView HorizontalOptions="CenterAndExpand" BackgroundColor="Black" WidthRequest="3" HeightRequest="23"/>
-                                            <Label Margin="0,5" FontSize="Micro" TextColor="Black" FontAttributes="Bold" HorizontalOptions="End" Text="SUPPORT"/>
+                                            <Label Margin="0,5" FontSize="Micro" TextColor="Black" FontAttributes="Bold" HorizontalOptions="End" Text="SUPPORT">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="SupportOrderClicked"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
                                         </StackLayout>
 
                                     </Grid>

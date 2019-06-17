@@ -57,7 +57,7 @@ namespace TaazaTV.View.TaazaStore
                     StoreFeaturedCarousel.ItemsSource = Items.data.features;
                     OffersListView.ItemsSource = Items.data.offers;
                     TopSellersListView.ItemsSource = Items.data.top_sellers;
-                    TopSellersListView.HeightRequest = Items.data.top_sellers.Count() * 40;
+                    TopSellersListView.HeightRequest = (Items.data.top_sellers.Count() * 65) + 15;
                     Loader.IsVisible = false;
                 }
             }

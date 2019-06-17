@@ -28,6 +28,7 @@
                 <Grid RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -57,16 +58,18 @@
                         </cv:CarouselView.ItemTemplate>
                     </cv:CarouselView>
 
-                    <controls:HorizontalList Grid.Row="1" 
+                    <BoxView Margin="0,7" Grid.Row="1" HeightRequest="2" BackgroundColor="Gray"/>
+
+                    <controls:HorizontalList Grid.Row="2" 
                     ListOrientation="Horizontal" 
                     x:Name="CategoryListView"
                     HeightRequest="80">
                         <controls:HorizontalList.ItemTemplate>
                             <DataTemplate>
-                                <StackLayout Padding="5">
+                                <StackLayout HeightRequest="85" WidthRequest="110" Padding="5">
                                     <Label InputTransparent="True" IsVisible="False" Text="{Binding category_slug}"/>
-                                    <Image InputTransparent="True" HeightRequest="50" WidthRequest="40" Source="{Binding category_image.category_image_thumb}"/>
-                                    <Label InputTransparent="True" FontAttributes="Bold" FontSize="Micro" Text="{Binding category_name}"/>
+                                    <Image InputTransparent="True" HeightRequest="55" WidthRequest="100" Source="{Binding category_image.category_image_thumb}"/>
+                                    <Label InputTransparent="True" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Micro" Text="{Binding category_name}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="CategoryListTapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -75,9 +78,9 @@
                         </controls:HorizontalList.ItemTemplate>
                     </controls:HorizontalList>
 
-                    <BoxView Grid.Row="2" HeightRequest="2" BackgroundColor="Gray"/>
+                    <BoxView Margin="0,7" Grid.Row="3" HeightRequest="2" BackgroundColor="Gray"/>
 
-                    <controls:HorizontalList Grid.Row="3" 
+                    <controls:HorizontalList Grid.Row="4" 
                     ListOrientation="Horizontal" 
                     x:Name="OffersListView"
                     HeightRequest="160">
@@ -85,8 +88,8 @@
                             <DataTemplate>
                                 <Grid HeightRequest="140">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="200"/>
+                                        <ColumnDefinition Width="200"/>
                                     </Grid.ColumnDefinitions>
                                     <Label InputTransparent="True" Text="{Binding product_category_slug}" IsVisible="False" />
                                     <Image Grid.Column="0" InputTransparent="True" Grid.ColumnSpan="2" Source="{Binding image}" Aspect="AspectFill" HeightRequest="140"/>
@@ -99,25 +102,28 @@
                         </controls:HorizontalList.ItemTemplate>
                     </controls:HorizontalList>
 
-                    <BoxView Grid.Row="4" HeightRequest="2" BackgroundColor="Gray"/>
+                    <BoxView Margin="0,7" Grid.Row="5" HeightRequest="2" BackgroundColor="Gray"/>
 
-                    <StackLayout Padding="10" Grid.Row="5" Orientation="Horizontal">
+                    <StackLayout Padding="10" Grid.Row="6" Orientation="Horizontal">
                         <Label FontSize="Small" TextColor="ForestGreen" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="FEATURED SELLERS"/>
-                        <Button CornerRadius="15" FontSize="Micro" Padding="15,5" BackgroundColor="#2196F3" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Text="View More" Clicked="NavToSellerList"/>
+                       
                     </StackLayout>
 
-                    <ListView Grid.Row="6" RowHeight="40" ItemTapped="NavSellerDeatils" x:Name="TopSellersListView">
+                    <ListView Grid.Row="7" RowHeight="65" Footer="" ItemTapped="NavSellerDeatils" x:Name="TopSellersListView">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout Padding="7" Spacing="15" Orientation="Horizontal">
-                                        <Image Source="{Binding avater}" HeightRequest="30" WidthRequest="30" HorizontalOptions="Start"/>
+                                        <Image Source="{Binding avater}" HeightRequest="50" WidthRequest="100" HorizontalOptions="Start"/>
                                         <Label Text="{Binding full_name}" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+
+                    <Button Grid.Row="8" CornerRadius="15" FontSize="Micro" Padding="15,5" BackgroundColor="#2196F3" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="View More" Clicked="NavToSellerList"/>
+
                 </Grid>
                 
             </ScrollView>

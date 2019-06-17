@@ -8,6 +8,7 @@ using TaazaTV.Component;
 using TaazaTV.Controls;
 using TaazaTV.Helper;
 using TaazaTV.Model.TaazaStoreModel;
+using TaazaTV.View.Tools;
 using TaazaTV.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -59,7 +60,7 @@ namespace TaazaTV.View.TaazaStore
                     vm.Name = Items.data.product_details.product_name;
                     vm.Description = Items.data.product_details.product_description;
                     vm.Seller = Items.data.product_details.seller_name;
-    //                vm.Price = Items.data.product_details.price_range;   // iOS gives null reference exception if null "Price"
+    //              vm.Price = Items.data.product_details.price_range;   // iOS gives null reference exception if null "Price"
                     vm.SellerDesc = Items.data.product_details.seller_details;
                     vm.PriceRange = Items.data.product_details.price_range;
                     vm.CarImages = new List<Store_Product_Images>(Items.data.product_details.images);
@@ -67,6 +68,10 @@ namespace TaazaTV.View.TaazaStore
                     
                     if (Items.data.product_options.Count() != 0)
                     {
+                        if(Items.data.product_options.Count() ==  1 && Items.data.product_details.sku_variants.Count() == 1)
+                        {
+                            vm.SkuID = Items.data.product_details.sku_variants.Select(x => x.sku_id).FirstOrDefault();
+                        }
                         vm.ProductOptions = new List<Product_Sku_Options>(Items.data.product_options);
                         VariantsListView.ItemsSource = vm.ProductOptions;
                         VariantsListView.HeightRequest = (Items.data.product_options.Count()*60) + 5;
@@ -245,6 +250,11 @@ namespace TaazaTV.View.TaazaStore
         {
             NoDataPage.IsVisible = false;
             InitialLoading(slug);
+        }
+
+        private async void ProductDetailsZoomImage(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new ZoomImagePage((sender as Image).Source.ToString().Remove(0, 4)));
         }
     }
 }

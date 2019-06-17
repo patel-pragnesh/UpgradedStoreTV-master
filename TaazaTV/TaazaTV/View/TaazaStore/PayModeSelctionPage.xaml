@@ -68,7 +68,7 @@
 
                     <StackLayout x:Name="TCashValidator" Orientation="Horizontal">
                         <Label TextColor="Red" Text="Maximum Taaza Cash can be availed is  " FontSize="8"/>
-                        <Label TextColor="Red" x:Name="TLabel" FontSize="8"/>
+                        <Label TextColor="Red" FontAttributes="Bold" x:Name="TLabel" FontSize="8"/>
                     </StackLayout>
                     
                 </StackLayout>

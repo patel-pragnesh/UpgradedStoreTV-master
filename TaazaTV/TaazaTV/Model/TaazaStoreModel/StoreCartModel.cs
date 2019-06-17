@@ -66,6 +66,48 @@ namespace TaazaTV.Model.TaazaStoreModel
         public string product_image_url { get; set; }
 
         public string seller_name { get; set; }
+
+        public int Is_in_stock { get; set; }
+
+        public string stockText
+        {
+            get
+            {
+               if(Is_in_stock == 1)
+               {
+                    return "In Stock";
+               }
+
+                else
+                {
+                    return "Out of Stock";
+                }
+            }
+            set
+            {
+
+            }
+        }
+
+        public string stockColor
+        {
+            get
+            {
+                if (Is_in_stock == 1)
+                {
+                    return "Green";
+                }
+
+                else
+                {
+                    return "Gray";
+                }
+            }
+            set
+            {
+
+            }
+        }
     }
 }
 

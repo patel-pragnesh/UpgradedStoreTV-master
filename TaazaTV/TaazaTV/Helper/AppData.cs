@@ -70,6 +70,12 @@ namespace TaazaTV.Helper
             set => AppSettings.AddOrUpdateValue(nameof(PickerProblem), value);
         }
 
+        public static bool PopUpProblem
+        {
+            get => AppSettings.GetValueOrDefault(nameof(PopUpProblem), false);
+            set => AppSettings.AddOrUpdateValue(nameof(PopUpProblem), value);
+        }
+
         public static bool IsMerchantLogin
         {
             get => AppSettings.GetValueOrDefault(nameof(IsMerchantLogin), false);

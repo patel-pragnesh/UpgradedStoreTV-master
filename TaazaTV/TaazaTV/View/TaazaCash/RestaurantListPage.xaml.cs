@@ -78,8 +78,8 @@ namespace TaazaTV.View.TaazaCash
 
                     foreach (var x in Items.data.restaurants.restaurant_data)
                     {
-                        RestListData.Add(x);
                         x.RestBannerImg = x.restaurant_images.Select(Y => Y.imageURL).FirstOrDefault();
+                        RestListData.Add(x);
                     }
 
                     BindingContext = Items.data.restaurants;
@@ -89,9 +89,6 @@ namespace TaazaTV.View.TaazaCash
                     {
                         filterModel.Add(new FilterModel() { Id = x.cuisine_id, Text = x.cuisine_name, Type = "restaurant_category_cuisine" });
                     }
-
-
-
 
                     StackLayout layoutall = new StackLayout();
                     layoutall.HeightRequest = 37;
@@ -138,7 +135,6 @@ namespace TaazaTV.View.TaazaCash
                         tapGestureRecognizer.Tapped += async (s, e) =>
                         {
                             StackLayout parent = (StackLayout)s;
-                            ;
                             UpdateRestList(((Label)parent.Children[0]).Text, "", "", "");
                         };
 
@@ -387,10 +383,12 @@ namespace TaazaTV.View.TaazaCash
                     {
                         foreach (var x in Items.data.restaurants.restaurant_data)
                         {
-                            RestListData.Add(x);
                             x.RestBannerImg = x.restaurant_images.Select(Y => Y.imageURL).FirstOrDefault();
+                            RestListData.Add(x);
                         }
+
                         RestaurantlstView.ItemsSource = RestListData;
+
                         RestaurantlstView.HeightRequest = (Items.data.restaurants.restaurant_data.Count() * RestaurantlstView.RowHeight) + 2;
 
                         if (Items.data.restaurants.current_page != Items.data.restaurants.total_pages)
@@ -434,6 +432,7 @@ namespace TaazaTV.View.TaazaCash
 
                     foreach (var item in Items.data.restaurants.restaurant_data)
                     {
+                        item.RestBannerImg = item.restaurant_images.Select(Y => Y.imageURL).FirstOrDefault();
                         RestListData.Add(item);
                     }
                     RestaurantlstView.ItemsSource = RestListData.ToList();
