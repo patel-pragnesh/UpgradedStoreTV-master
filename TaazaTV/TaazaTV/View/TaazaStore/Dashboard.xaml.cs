@@ -23,6 +23,7 @@ namespace TaazaTV.View.TaazaStore
         public Dashboard()
         {
             InitializeComponent();
+            AppData.PopUpProblem = false;
             HeaderView.Content = new StoreHeaderView();
             InitialLoading();
             PartialLoading();

@@ -68,7 +68,7 @@
                             <DataTemplate>
                                 <StackLayout HeightRequest="85" WidthRequest="110" Padding="5">
                                     <Label InputTransparent="True" IsVisible="False" Text="{Binding category_slug}"/>
-                                    <Image InputTransparent="True" HeightRequest="55" WidthRequest="100" Source="{Binding category_image.category_image_thumb}"/>
+                                    <Image InputTransparent="True" HeightRequest="55" Aspect="Fill" WidthRequest="100" Source="{Binding category_image.category_image_thumb}"/>
                                     <Label InputTransparent="True" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Micro" Text="{Binding category_name}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="CategoryListTapped"/>
@@ -88,8 +88,8 @@
                             <DataTemplate>
                                 <Grid HeightRequest="140">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="200"/>
-                                        <ColumnDefinition Width="200"/>
+                                        <ColumnDefinition Width="140"/>
+                                        <ColumnDefinition Width="140"/>
                                     </Grid.ColumnDefinitions>
                                     <Label InputTransparent="True" Text="{Binding product_category_slug}" IsVisible="False" />
                                     <Image Grid.Column="0" InputTransparent="True" Grid.ColumnSpan="2" Source="{Binding image}" Aspect="AspectFill" HeightRequest="140"/>

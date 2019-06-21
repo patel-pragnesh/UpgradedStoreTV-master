@@ -22,7 +22,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
-                <Grid RowSpacing="5" Grid.Row="1">
+                <Grid RowSpacing="5" Grid.Row="0" Grid.RowSpan="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -33,12 +33,12 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <cv:CarouselView HeightRequest="125" Grid.Row="0" Margin="0" ItemsSource="{Binding avater}">
+                    <cv:CarouselView HeightRequest="175" Grid.Row="0" Margin="0" ItemsSource="{Binding avater}">
                         <cv:CarouselView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
                                     <Image Source="bannergray.png" />
-                                    <Image Aspect="AspectFill" Source="{Binding avater[0]}"/>
+                                    <Image Aspect="Fill" Source="{Binding image}"/>
                                 </Grid>
                             </DataTemplate>
                         </cv:CarouselView.ItemTemplate>

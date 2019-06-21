@@ -29,12 +29,12 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <cv:CarouselView HeightRequest="200" Grid.Row="0" Margin="0" ItemsSource="{Binding CarImages}">
+                <cv:CarouselView HeightRequest="240" Grid.Row="0" Margin="0" ItemsSource="{Binding CarImages}">
                     <cv:CarouselView.ItemTemplate>
                         <DataTemplate>
                             <Grid>
-                                <Image Source="bannergray.png" />
-                                <Image Aspect="Fill" Source="{Binding normal.image_path}">
+                                <Image Aspect="Fill" Source="bannergray.png" />
+                                <Image Aspect="AspectFill" Source="{Binding normal.image_path}">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ProductDetailsZoomImage"/>
                                     </Image.GestureRecognizers>
@@ -55,11 +55,12 @@
                 </StackLayout>
 
                 <StackLayout Margin="0,20" IsVisible="False" x:Name="OfferStack" Grid.Row="2" Orientation="Horizontal">
-                    <Image HeightRequest="20" WidthRequest="20" Source="rupeesblack.png"/>
-                    <Label TextColor="Black" Text="{Binding Price}"/>
+                    <Image  HeightRequest="20" WidthRequest="20" Source="rupeesblack.png"/>
+                    <Label TextDecorations="Strikethrough" TextColor="Black" Text="{Binding Price}"/>
 
                     <Image HeightRequest="20" WidthRequest="20" Margin="20,0,0,0" Source="rupeesgreen.png"/>
-                    <Label TextDecorations="Strikethrough" FontAttributes="Bold" TextColor="Green" Text="{Binding OfferPrice}"/> <!--this is strikethrough issue in ios-->
+                    <Label  FontAttributes="Bold" TextColor="Green" Text="{Binding OfferPrice}"/>
+                    <!--this is strikethrough issue in ios--> <!--TextDecorations="Strikethrough"-->
                     <Label x:Name="iosIssue" IsVisible="False" FontAttributes="Bold" TextColor="Green" Text="(offer price)"/>
                 </StackLayout>
 
@@ -68,7 +69,7 @@
                     <Label TextColor="Gray" FontAttributes="Italic" Text="{Binding SellerDesc}"/>
                 </StackLayout>
 
-                <ListView Margin="7,10" Footer="" Grid.Row="4" RowHeight="60" ItemTapped="ListViewTapped" x:Name="VariantsListView">
+                <ListView Margin="7,5" Footer="" Grid.Row="4" RowHeight="60" ItemTapped="ListViewTapped" x:Name="VariantsListView">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

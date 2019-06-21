@@ -5,16 +5,16 @@ namespace TaazaTV.Helper
     class Constant
     {
         //staging URL
-        private static string HostName = "http://dev2.maxmobility.in/taazatv/public/api/V2";
-        public static string ServerURL = "http://dev2.maxmobility.in/taazatv/public";
+   //     private static string HostName = "http://dev2.maxmobility.in/taazatv/public/api/V2";
+   //     public static string ServerURL = "http://dev2.maxmobility.in/taazatv/public";
 
         //Live URL 
     //   private static string HostName = "http://52.221.138.138/taazatv/public/api/V2";
    //    public static string ServerURL = "http://52.221.138.138/taazatv/public";
 
         //Live URL 
-    //    private static string HostName = "http://api.taazatv.com/public/api/V2";
-    //    public static string ServerURL = "http://api.taazatv.com/public";
+        private static string HostName = "http://api.taazatv.com/public/api/V2";
+        public static string ServerURL = "http://api.taazatv.com/public";
 
         #region Public Constant        
         public static string CompanyID = "COM1000";

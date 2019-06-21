@@ -124,9 +124,11 @@ namespace TaazaTV.View.TaazaStore
 
         private async void EditButtonTapped(object sender, EventArgs e)
         {
+            Loader.IsVisible = true;
             var id = ((((sender as Image).Parent as StackLayout).Parent as StackLayout).Children[0] as Label).Text;
 
             await Navigation.PushAsync(new NewAddressPage(id));
+            Loader.IsVisible = false;
         }
 
         private void NoDataDoSomething(object sender, EventArgs e)

@@ -103,7 +103,15 @@ namespace TaazaTV.View.TaazaStore
         {
             try
             {
-                NetPay.Text = (Convert.ToInt32(Billing.Text) - Convert.ToInt32(TaazaRedeemed.Text)).ToString();
+                if(Convert.ToInt32(Billing.Text) > Convert.ToInt32(TaazaRedeemed.Text))
+                {
+                    NetPay.Text = (Convert.ToInt32(Billing.Text) - Convert.ToInt32(TaazaRedeemed.Text)).ToString();
+                }
+
+                else
+                {
+                    await DisplayAlert("Alert", "Taaza Cash amount cannot be more than Billing Amount!!", "OK");
+                }
             }
 
             catch

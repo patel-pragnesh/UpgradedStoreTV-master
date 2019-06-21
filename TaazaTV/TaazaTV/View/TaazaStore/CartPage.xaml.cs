@@ -56,6 +56,7 @@ namespace TaazaTV.View.TaazaStore
                     if(AppData.CartCount == "0")
                     {
                         AppData.CartCount = String.Empty;
+                        NoDataPage.IsVisible = true;
                     }
                 }
 
@@ -71,8 +72,20 @@ namespace TaazaTV.View.TaazaStore
 
         private async void CheckOut_Clicked(object sender, EventArgs e)
         {
-            if(Items.data.cart_data.history_data.Count() > 0)
-            await Navigation.PushAsync(new AddressListPage());
+            if (Items.data.cart_data.history_data.Count() > 0)
+            {
+                var x = Items.data.cart_data.history_data.Where(cc => cc.Is_in_stock == 0).FirstOrDefault();
+                if (x == null)
+                {
+                    await Navigation.PushAsync(new AddressListPage());
+                }
+                else
+                {
+                    await DisplayAlert("Alert", "Cart contains out of stock items", "OK");
+                }
+            }
+           
+            
         }
 
         private void Decrease_CountTapped(object sender, EventArgs e)

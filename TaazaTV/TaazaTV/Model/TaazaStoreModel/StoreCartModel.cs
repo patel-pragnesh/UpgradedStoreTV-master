@@ -80,7 +80,7 @@ namespace TaazaTV.Model.TaazaStoreModel
 
                 else
                 {
-                    return "Out of Stock";
+                    return "No Stock";
                 }
             }
             set

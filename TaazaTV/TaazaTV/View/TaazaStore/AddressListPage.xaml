@@ -34,13 +34,19 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
+                <RowDefinition Height="35"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
             <customContentView:StoreTCashHeader Grid.Row="0"/>
-            
-            <ListView x:Name="AddressList" ItemTapped="AddressListTapped" Grid.Row="1" RowHeight="160">
+
+            <StackLayout Grid.Row="1">
+                <Label Margin="20,10" TextColor="Gray" Text="SELECT ADDRESS" FontSize="Small" FontAttributes="Bold"/>
+                <BoxView BackgroundColor="Black" HeightRequest="2"/>
+            </StackLayout>
+               
+            <ListView x:Name="AddressList" ItemTapped="AddressListTapped" Grid.Row="2" RowHeight="160">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -87,10 +93,10 @@
                 </ListView.ItemTemplate>
             </ListView>
           
-            <Button BackgroundColor="#007acc" TextColor="White" Grid.Row="2" Clicked="AddressNewClicked" Text=" Add New Address"/>
+            <Button BackgroundColor="#007acc" TextColor="White" Grid.Row="3" Clicked="AddressNewClicked" Text=" Add New Address"/>
 
-            <tools:NoDataPage Grid.Row="1" x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
-            <tools:Loader x:Name="Loader" Grid.Row="1" IsVisible="False"></tools:Loader>
+            <tools:NoDataPage Grid.Row="2" x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
+            <tools:Loader x:Name="Loader" Grid.Row="2" IsVisible="False"></tools:Loader>
 
         </Grid>
 

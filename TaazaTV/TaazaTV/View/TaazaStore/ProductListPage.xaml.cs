@@ -81,6 +81,7 @@ namespace TaazaTV.View.TaazaStore
 
         private async void InitialLoading(string slug, string search, string sellerid, string pricefrom, string priceto, string brandfilters, string sortBy)
         {
+            NoDataPage.IsVisible = false;
             try
             {
                 if(pageNumber == 1)

@@ -738,6 +738,15 @@
   <ItemGroup>
     <BundleResource Include="Resources\myOrders.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rupeeswhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dustbin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\edit.png" />
+  </ItemGroup>
   <Import Project="..\TaazaTV\TaazaTV.projitems" Label="Shared" Condition="Exists('..\TaazaTV\TaazaTV.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

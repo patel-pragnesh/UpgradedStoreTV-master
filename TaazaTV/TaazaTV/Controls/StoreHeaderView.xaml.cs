@@ -18,7 +18,7 @@ namespace TaazaTV.Controls
         {
             InitializeComponent();
 
-            if(AppData.CartCount == String.Empty)
+            if (AppData.CartCount == String.Empty)
             {
                 CartFrame.IsVisible = false;
             }

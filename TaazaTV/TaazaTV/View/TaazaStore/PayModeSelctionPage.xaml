@@ -36,7 +36,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
     
-    
         <Grid x:Name="PaymentGrid" Grid.Row="0" RowSpacing="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
@@ -73,9 +72,9 @@
                     
                 </StackLayout>
 
-                <StackLayout Spacing="10"  VerticalOptions="Center" WidthRequest="90" HorizontalOptions="End" Orientation="Horizontal">
+                <StackLayout Spacing="10"  VerticalOptions="Center" WidthRequest="110" HorizontalOptions="End" Orientation="Horizontal">
                     <Image Source="taazaicon.png" VerticalOptions="Center" HeightRequest="22" WidthRequest="22"/>
-                    <Entry Keyboard="Numeric" x:Name="TaazaPayable" Text="0" Unfocused="TaazaPaymentChanged" VerticalOptions="Center" Placeholder="000" TextColor="Black" FontAttributes="Bold"/>
+                    <Entry Keyboard="Numeric" x:Name="TaazaPayable" Text="0" Unfocused="TaazaPaymentChanged" VerticalOptions="Center" Placeholder="0000" TextColor="Black" FontAttributes="Bold"/>
                 </StackLayout>
             </StackLayout>
 
@@ -125,14 +124,12 @@
             </Frame>
 
             <StackLayout Padding="20,0" BackgroundColor="#007acc"  Orientation="Horizontal" Grid.Row="11">
-                <Image Source="rupeesblack.png" HeightRequest="20"></Image>
+                <Image Source="rupeeswhite.png" HeightRequest="20"></Image>
                 <Label x:Name="Amount" TextColor="White" FontAttributes="Bold" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
                 <Button BackgroundColor="#007acc" HorizontalOptions="EndAndExpand" TextColor="White" Clicked="CallPaymentApI" Text="Continue"/>
             </StackLayout>
             
-            
         </Grid>
-
 
         <tools:NoDataPage Grid.Row="0" x:Name="NoDataPage" TextColor="Gray" IsVisible="False" VerticalOptions="Center" BackClickedButton="NoDataDoSomething"></tools:NoDataPage>
         <tools:Loader x:Name="Loader" Grid.Row="0" IsVisible="False"></tools:Loader>

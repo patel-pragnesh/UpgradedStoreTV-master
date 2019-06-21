@@ -48,6 +48,12 @@ namespace TaazaTV.View.TaazaStore
                     {
                         Loader.IsVisible = false;
                         OrdersListView.ItemsSource = des.data.order_data;
+
+                        if(des.data.order_data.Count() == 0)
+                        {
+                            NoDataPage.IsVisible = true;
+                        }
+
                     }
                     else
                     {
@@ -136,7 +142,7 @@ namespace TaazaTV.View.TaazaStore
             var EmailTask = CrossMessaging.Current.EmailMessenger;
 
             if (EmailTask.CanSendEmail)
-                EmailTask.SendEmail((((sender as Label).Parent as StackLayout).Children[1] as Label).Text.ToString(), "Support Regarding Order No. - " + (((sender as Label).Parent as StackLayout).Children[0] as Label).Text.ToString(), "Messsage Body");
+                EmailTask.SendEmail((((sender as Label).Parent as StackLayout).Children[2] as Label).Text.ToString(), "Support Regarding Order No. - " + (((sender as Label).Parent as StackLayout).Children[1] as Label).Text.ToString(), "Messsage Body");
 
         }
     }

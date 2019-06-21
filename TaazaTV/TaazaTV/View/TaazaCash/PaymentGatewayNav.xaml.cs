@@ -6,7 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TaazaTV.Helper;
 using TaazaTV.Model;
+using TaazaTV.Model.TaazaStoreModel;
 using TaazaTV.View.Navigation;
+using TaazaTV.View.TaazaStore;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,9 +17,12 @@ namespace TaazaTV.View.TaazaCash
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class PaymentGatewayNav : ContentPage
 	{
-		public PaymentGatewayNav (string urlsource)
+        bool navHelper;
+
+        public PaymentGatewayNav (string urlsource, bool navhelper)
 		{
 			InitializeComponent ();
+            navHelper = navhelper;
 #if __IOS__
             //Set Padding For the top of the page
             this.Padding = new Thickness(0,20,0,0);
@@ -28,11 +33,12 @@ namespace TaazaTV.View.TaazaCash
 
         private void BackBtn_Tapped(object sender, EventArgs e)
         {
-           
-            JustDoIT();
+            JustDoIT(navHelper);
         }
 
-        private async void JustDoIT()
+        // This code is to update taaza cash. payment done or not done both cases!!!!
+
+        private async void JustDoIT(bool helper)
         {
             try
             {
@@ -51,8 +57,15 @@ namespace TaazaTV.View.TaazaCash
                     var Items = JsonConvert.DeserializeObject<ProfileResponse>(jsonstr);
                     AppData.TaazaCash = Items.data.user_data.current_wallet_balance;
                     Loader.IsVisible = false;
-                    await Navigation.PushAsync(new TaazaTransactionPage());
-
+                    if (helper)
+                    {
+                        await Navigation.PushAsync(new OrdersPage());
+                    }
+                   
+                    else
+                    {
+                        await Navigation.PushAsync(new TaazaTransactionPage());
+                    }
                 }
             }
 
@@ -61,6 +74,36 @@ namespace TaazaTV.View.TaazaCash
                 Loader.IsVisible = false;
                 await Navigation.PushAsync(new TaazaTransactionPage());
             }
+
+            try
+            {
+                HttpRequestWrapper wrapper = new HttpRequestWrapper();
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+                parameters.Add(new KeyValuePair<string, string>("user_id", AppData.UserId));
+                var jsonstr = await wrapper.GetResponseAsync(Constant.APIs[(int)Constant.APIName.GetCartHistoryAPI], parameters);
+                if (jsonstr.ToString() == "NoInternet")
+                {
+                }
+                else
+                {
+                    var Items = JsonConvert.DeserializeObject<StoreCartModel>(jsonstr);
+                    if (Items.data.cart_data.history_data.Count() == 0)
+                    {
+                        AppData.CartCount = String.Empty;
+                    }
+                    else
+                    {
+                        AppData.CartCount = Items.data.cart_data.history_data.Count().ToString();
+                    }
+                       
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+
+            }
         }
 
         protected override bool OnBackButtonPressed()
@@ -68,7 +111,7 @@ namespace TaazaTV.View.TaazaCash
             // Begin an asyncronous task on the UI thread because we intend to ask the users permission.
             Device.BeginInvokeOnMainThread(async () =>
             {
-                JustDoIT();
+                JustDoIT(navHelper);
             });
            
            

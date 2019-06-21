@@ -75,14 +75,14 @@ namespace TaazaTV.View.TaazaStore
             {
                 Loader.IsVisible = true;
                 var x = Constant.APIs[(int)Constant.APIName.CallStorePaymentGateway] + "?user_id=" + AppData.UserId + "&cart_id=" + Items.data.cart_data.cart_id + "&address_id=" + addrId + "&mode=" + "OLP" + "&deduct_wallet_amount=" + TaazaPayable.Text;
-                await Navigation.PushAsync(new PaymentGatewayNav(x));
+                await Navigation.PushAsync(new PaymentGatewayNav(x,true));
                 Loader.IsVisible = false;
             }
             if (AddressType.SelectedIndex == 1)
             {
                 Loader.IsVisible = true;
                 var x = Constant.APIs[(int)Constant.APIName.CallStorePaymentGateway] + "?user_id=" + AppData.UserId + "&cart_id=" + Items.data.cart_data.cart_id + "&address_id=" + addrId + "&mode=" + "COD" + "&deduct_wallet_amount=" + TaazaPayable.Text;
-                await Navigation.PushAsync(new PaymentGatewayNav(x));
+                await Navigation.PushAsync(new PaymentGatewayNav(x,true));
                 Loader.IsVisible = false;
             }
             if (AddressType.SelectedIndex == -1)

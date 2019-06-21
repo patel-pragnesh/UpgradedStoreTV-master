@@ -58,7 +58,7 @@
                                     <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
                                         <Image HeightRequest="15" Source="call.png"/>
                                         <Label FontSize="Micro" VerticalOptions="Center" Text="{Binding phone_no}" TextColor="Black"/>
-                                        <Label Margin="0,0,25,0" Text="{Binding seller_type}" HorizontalOptions="EndAndExpand"/>
+                                        <!--<Label Margin="0,0,25,0" Text="{Binding seller_type}" HorizontalOptions="EndAndExpand"/>-->
                                     </StackLayout>
 
                                 </Grid>

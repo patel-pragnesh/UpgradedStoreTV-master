@@ -321,7 +321,7 @@ namespace TaazaTV.View.TaazaCash
                 if (TaazaRedemed <= WalletBalance && TaazaRedemed <= TaazaCashLimit && NetAmount >= 1)
                 {
                     string src = Constant.APIs[(int)Constant.APIName.PaymentEventGateway] + EventID + "&price_id=" + EventPriceID + "&no_of_seat=" + TicketNumbers + "&user_id=" + AppData.UserId + "&deduct_wallet_amount=" + TaazaRedemed;
-                    await Navigation.PushAsync(new PaymentGatewayNav(src));
+                    await Navigation.PushAsync(new PaymentGatewayNav(src, false));
                 }
                 else
                 {
@@ -339,7 +339,7 @@ namespace TaazaTV.View.TaazaCash
                     {
 
                         string src = Constant.APIs[(int)Constant.APIName.PaymentRestGateway] + RestID + "&no_of_seat=" + TicketNumbers + "&user_id=" + AppData.UserId + "&date_of_booking=" + SelecetedDate + "&time_of_booking=" + SelcetedTime + "&deduct_wallet_amount=" + TaazaRedemed;
-                        await Navigation.PushAsync(new PaymentGatewayNav(src));
+                        await Navigation.PushAsync(new PaymentGatewayNav(src, false));
                     }
                     else
                     {

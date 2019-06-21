@@ -68,5 +68,10 @@ namespace TaazaTV.View.TaazaStore
             NoDataPage.IsVisible = false;
             InitialLoading(slug);
         }
+
+        private void SubCatDetailListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            SubCatDetailListView.SelectedItem = null;
+        }
     }
 }

@@ -25,9 +25,7 @@ namespace TaazaTV.Model.TaazaStoreModel
 
         public string email_id { get; set; }
 
-        public string[] avater { get; set; }
-
-        //public SellerImageList[] avater { get; set; }
+        public SellerImageList[] avater { get; set; }
 
         public string address { get; set; }
 

@@ -52,6 +52,7 @@
                         <controls:HorizontalList.ItemTemplate>
                             <DataTemplate>
                                 <Grid HeightRequest="190">
+                                    <Image Source="bannergray.png" WidthRequest="340" Aspect="AspectFill" HeightRequest="190"/>
                                     <Image Source="{Binding imageURL}" WidthRequest="340" Aspect="AspectFill" HeightRequest="190">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ZoomRestImage"/>

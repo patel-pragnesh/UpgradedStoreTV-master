@@ -105,6 +105,7 @@
 
                                         <StackLayout Padding="15,5" Grid.ColumnSpan="2" Grid.Row="9" Orientation="Horizontal">
                                             <Label Text="{Binding order_history_id}" IsVisible="False"/>
+                                            <Label Text="{Binding order_string}" IsVisible="False"/>
                                             <Label Text="{Binding seller_email_id}" IsVisible="False"/>
                                             <Label Margin="0,5" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Micro" TextColor="{Binding cancelBtnFont}" FontAttributes="Bold" Text="CANCEL">
                                                 <Label.GestureRecognizers>

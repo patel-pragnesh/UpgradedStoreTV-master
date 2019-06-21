@@ -74,7 +74,7 @@ namespace TaazaTV.View.TaazaStore
                         }
                         vm.ProductOptions = new List<Product_Sku_Options>(Items.data.product_options);
                         VariantsListView.ItemsSource = vm.ProductOptions;
-                        VariantsListView.HeightRequest = (Items.data.product_options.Count()*60) + 5;
+                        VariantsListView.HeightRequest = (Items.data.product_options.Count()*60);
                     }
                     Loader.IsVisible = false;
                 }
@@ -132,8 +132,8 @@ namespace TaazaTV.View.TaazaStore
                         vm.ProductID = NewBindingContext.product_id;
                         vm.SkuID = NewBindingContext.sku_id;
 
-               //         PriceStack.IsVisible = false;
-               //         OfferStack.IsVisible = true;
+                        PriceStack.IsVisible = false;
+                        OfferStack.IsVisible = true;
                         Loader.IsVisible = false;
                     }
                 }

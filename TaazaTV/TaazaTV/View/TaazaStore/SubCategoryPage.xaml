@@ -21,7 +21,7 @@
             <customContentView:StoreTCashHeader Grid.Row="0"/>
             
             <StackLayout Grid.Row="1">
-                <ListView RowHeight="210" x:Name="SubCatDetailListView">
+                <ListView RowHeight="210" ItemTapped="SubCatDetailListView_ItemTapped" x:Name="SubCatDetailListView">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
